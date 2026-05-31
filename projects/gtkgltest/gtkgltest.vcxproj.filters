@@ -1,0 +1,60 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;c++;cppm;ixx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;h++;hm;inl;inc;ipp;xsd</Extensions>
+    </Filter>
+    <Filter Include="Resource Files">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="Libs">
+      <UniqueIdentifier>{6c442b99-035c-404d-8578-648133594475}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\..\gtkglext\examples\drawshapes.c">
+      <Filter>Libs</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\gtkglext\examples\logo-model.c">
+      <Filter>Libs</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\gtkglext\examples\lw.c">
+      <Filter>Libs</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\gtkglext\examples\trackball.c">
+      <Filter>Libs</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\gtkglext\examples\gears.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\..\gtkglext\examples\drawshapes.h">
+      <Filter>Libs</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\gtkglext\examples\logo-g.h">
+      <Filter>Libs</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\gtkglext\examples\logo-k.h">
+      <Filter>Libs</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\gtkglext\examples\logo-model.h">
+      <Filter>Libs</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\gtkglext\examples\logo-t.h">
+      <Filter>Libs</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\gtkglext\examples\lw.h">
+      <Filter>Libs</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\gtkglext\examples\trackball.h">
+      <Filter>Libs</Filter>
+    </ClInclude>
+  </ItemGroup>
+</Project>

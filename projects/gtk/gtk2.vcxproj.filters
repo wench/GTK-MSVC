@@ -1,0 +1,1709 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;c++;cppm;ixx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;h++;hm;inl;inc;ipp;xsd</Extensions>
+    </Filter>
+    <Filter Include="Resource Files">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="Custom Build Files">
+      <UniqueIdentifier>{1c801adf-5316-4572-ac3b-c6cd072d437e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Generated files">
+      <UniqueIdentifier>{e802c22f-f425-4fee-b2f3-b2c65a3e162a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Generated files\gtk">
+      <UniqueIdentifier>{c4e4e2dd-0fec-41b6-a34d-b7118c5e1dd5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Custom Build Files\gtk">
+      <UniqueIdentifier>{4ecafb57-4b1b-4271-8945-a302f4c1732a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\gtk">
+      <UniqueIdentifier>{5fe57ff6-c374-4366-8b1c-4e256c06792c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\gtk">
+      <UniqueIdentifier>{fb7b8788-627e-4f0a-9f48-d3ba11a72479}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\gtk\cell">
+      <UniqueIdentifier>{736448b0-1766-4bcb-bf8d-d3e8782fc65d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\gtk\deprecated">
+      <UniqueIdentifier>{26249ca8-0c02-4574-95c3-8dab8be7ea08}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\gtk\file">
+      <UniqueIdentifier>{f9223ca4-67e8-4ce5-a116-cb38125cb5f9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\gtk\print">
+      <UniqueIdentifier>{cb535c26-8e42-4221-be2f-da2f2ae5d49d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\gtk\text">
+      <UniqueIdentifier>{1b441c57-1847-4219-8032-e8bac926b09f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\gtk\recent">
+      <UniqueIdentifier>{fb1ed1e9-0dd2-4812-961d-914a35842ad7}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\..\vcpkg.json" />
+    <None Include="..\..\vcpkg-configuration.json" />
+    <None Include="..\..\gtk2-ng\gtk\gtk.def">
+      <Filter>Generated files\gtk</Filter>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <CustomBuild Include="..\..\gtk2-ng\configure.ac">
+      <Filter>Custom Build Files</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\gtk2-ng\gtk\gtk.symbols">
+      <Filter>Custom Build Files\gtk</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\gtk2-ng\gtk\makegtkalias.pl">
+      <Filter>Custom Build Files\gtk</Filter>
+    </CustomBuild>
+    <CustomBuild Include="maketypebuiltins.mak">
+      <Filter>Custom Build Files</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\gtk2-ng\gtk\gtkmarshal.list">
+      <Filter>Custom Build Files\gtk</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\gtk2-ng\gtk\gtkmarshalers.list">
+      <Filter>Custom Build Files\gtk</Filter>
+    </CustomBuild>
+    <CustomBuild Include="build-icon-cache">
+      <Filter>Custom Build Files</Filter>
+    </CustomBuild>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="..\..\gtk2-ng\gtk\gtk-win32.rc">
+      <Filter>Generated files\gtk</Filter>
+    </ResourceCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\..\gtk2-ng\gtk\gtktypebuiltins.c">
+      <Filter>Generated files\gtk</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\gtk2-ng\gtk\gtkmarshal.c">
+      <Filter>Generated files\gtk</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\gtk2-ng\gtk\gtkmarshalers.c">
+      <Filter>Generated files\gtk</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\gtk2-ng\gtk\gtktypeutils.c">
+      <Filter>Source Files\gtk</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\gtk2-ng\gtk\gtkaliasdef.c">
+      <Filter>Generated files\gtk</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\gtk2-ng\gtk\fnmatch.c">
+      <Filter>Source Files\gtk</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\gtk2-ng\gtk\gtkaboutdialog.c">
+      <Filter>Source Files\gtk</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\gtk2-ng\gtk\gtkaccelgroup.c">
+      <Filter>Source Files\gtk</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\gtk2-ng\gtk\gtkaccellabel.c">
+      <Filter>Source Files\gtk</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\gtk2-ng\gtk\gtkaccelmap.c">
+      <Filter>Source Files\gtk</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\gtk2-ng\gtk\gtkaccessible.c">
+      <Filter>Source Files\gtk</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\gtk2-ng\gtk\gtkaction.c">
+      <Filter>Source Files\gtk</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\gtk2-ng\gtk\gtkactiongroup.c">
+      <Filter>Source Files\gtk</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\gtk2-ng\gtk\gtkactivatable.c">
+      <Filter>Source Files\gtk</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\gtk2-ng\gtk\gtkadjustment.c">
+      <Filter>Source Files\gtk</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\gtk2-ng\gtk\gtkalignment.c">
+      <Filter>Source Files\gtk</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\gtk2-ng\gtk\gtkarrow.c">
+      <Filter>Source Files\gtk</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\gtk2-ng\gtk\gtkaspectframe.c">
+      <Filter>Source Files\gtk</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\gtk2-ng\gtk\gtkassistant.c">
+      <Filter>Source Files\gtk</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\gtk2-ng\gtk\gtkbbox.c">
+      <Filter>Source Files\gtk</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\gtk2-ng\gtk\gtkbin.c">
+      <Filter>Source Files\gtk</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\gtk2-ng\gtk\gtkbindings.c">
+      <Filter>Source Files\gtk</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\gtk2-ng\gtk\gtkbox.c">
+      <Filter>Source Files\gtk</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\gtk2-ng\gtk\gtkbuildable.c">
+      <Filter>Source Files\gtk</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\gtk2-ng\gtk\gtkbuilder.c">
+      <Filter>Source Files\gtk</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\gtk2-ng\gtk\gtkbuilderparser.c">
+      <Filter>Source Files\gtk</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\gtk2-ng\gtk\gtkbutton.c">
+      <Filter>Source Files\gtk</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\gtk2-ng\gtk\gtkcalendar.c">
+      <Filter>Source Files\gtk</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\gtk2-ng\gtk\gtkcelleditable.c">
+      <Filter>Source Files\gtk\cell</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\gtk2-ng\gtk\gtkcelllayout.c">
+      <Filter>Source Files\gtk\cell</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\gtk2-ng\gtk\gtkcellrenderer.c">
+      <Filter>Source Files\gtk\cell</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\gtk2-ng\gtk\gtkcellrendereraccel.c">
+      <Filter>Source Files\gtk\cell</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\gtk2-ng\gtk\gtkcellrenderercombo.c">
+      <Filter>Source Files\gtk\cell</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\gtk2-ng\gtk\gtkcellrendererpixbuf.c">
+      <Filter>Source Files\gtk\cell</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\gtk2-ng\gtk\gtkcellrendererprogress.c">
+      <Filter>Source Files\gtk\cell</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\gtk2-ng\gtk\gtkcellrendererspin.c">
+      <Filter>Source Files\gtk\cell</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\gtk2-ng\gtk\gtkcellrendererspinner.c">
+      <Filter>Source Files\gtk\cell</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\gtk2-ng\gtk\gtkcellrenderertext.c">
+      <Filter>Source Files\gtk\cell</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\gtk2-ng\gtk\gtkcellrenderertoggle.c">
+      <Filter>Source Files\gtk\cell</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\gtk2-ng\gtk\gtkcellview.c">
+      <Filter>Source Files\gtk\cell</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\gtk2-ng\gtk\gtkliststore.c">
+      <Filter>Source Files\gtk\cell</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\gtk2-ng\gtk\gtktreednd.c">
+      <Filter>Source Files\gtk\cell</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\gtk2-ng\gtk\gtktreemodel.c">
+      <Filter>Source Files\gtk\cell</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\gtk2-ng\gtk\gtktreemodelfilter.c">
+      <Filter>Source Files\gtk\cell</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\gtk2-ng\gtk\gtktreemodelsort.c">
+      <Filter>Source Files\gtk\cell</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\gtk2-ng\gtk\gtktreeselection.c">
+      <Filter>Source Files\gtk\cell</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\gtk2-ng\gtk\gtktreesortable.c">
+      <Filter>Source Files\gtk\cell</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\gtk2-ng\gtk\gtktreestore.c">
+      <Filter>Source Files\gtk\cell</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\gtk2-ng\gtk\gtktreeview.c">
+      <Filter>Source Files\gtk\cell</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\gtk2-ng\gtk\gtktreeviewcolumn.c">
+      <Filter>Source Files\gtk\cell</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\gtk2-ng\gtk\gtkclist.c">
+      <Filter>Source Files\gtk\deprecated</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\gtk2-ng\gtk\gtkcombo.c">
+      <Filter>Source Files\gtk\deprecated</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\gtk2-ng\gtk\gtkctree.c">
+      <Filter>Source Files\gtk\deprecated</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\gtk2-ng\gtk\gtkfilesel.c">
+      <Filter>Source Files\gtk\deprecated</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\gtk2-ng\gtk\gtkitemfactory.c">
+      <Filter>Source Files\gtk\deprecated</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\gtk2-ng\gtk\gtklist.c">
+      <Filter>Source Files\gtk\deprecated</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\gtk2-ng\gtk\gtklistitem.c">
+      <Filter>Source Files\gtk\deprecated</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\gtk2-ng\gtk\gtkoldeditable.c">
+      <Filter>Source Files\gtk\deprecated</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\gtk2-ng\gtk\gtkoptionmenu.c">
+      <Filter>Source Files\gtk\deprecated</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\gtk2-ng\gtk\gtkpixmap.c">
+      <Filter>Source Files\gtk\deprecated</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\gtk2-ng\gtk\gtkpreview.c">
+      <Filter>Source Files\gtk\deprecated</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\gtk2-ng\gtk\gtkprogress.c">
+      <Filter>Source Files\gtk\deprecated</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\gtk2-ng\gtk\gtkseparatortoolitem.c">
+      <Filter>Source Files\gtk\deprecated</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\gtk2-ng\gtk\gtkshow.c">
+      <Filter>Source Files\gtk\deprecated</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\gtk2-ng\gtk\gtksignal.c">
+      <Filter>Source Files\gtk\deprecated</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\gtk2-ng\gtk\gtktext.c">
+      <Filter>Source Files\gtk\deprecated</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\gtk2-ng\gtk\gtktipsquery.c">
+      <Filter>Source Files\gtk\deprecated</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\gtk2-ng\gtk\gtktoolbar.c">
+      <Filter>Source Files\gtk\deprecated</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\gtk2-ng\gtk\gtktooltips.c">
+      <Filter>Source Files\gtk\deprecated</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\gtk2-ng\gtk\gtktree.c">
+      <Filter>Source Files\gtk\deprecated</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\gtk2-ng\gtk\gtktreeitem.c">
+      <Filter>Source Files\gtk\deprecated</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\gtk2-ng\gtk\gtkfilechooser.c">
+      <Filter>Source Files\gtk\file</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\gtk2-ng\gtk\gtkfilechooserbutton.c">
+      <Filter>Source Files\gtk\file</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\gtk2-ng\gtk\gtkfilechooserdefault.c">
+      <Filter>Source Files\gtk\file</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\gtk2-ng\gtk\gtkfilechooserdialog.c">
+      <Filter>Source Files\gtk\file</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\gtk2-ng\gtk\gtkfilechooserembed.c">
+      <Filter>Source Files\gtk\file</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\gtk2-ng\gtk\gtkfilechooserentry.c">
+      <Filter>Source Files\gtk\file</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\gtk2-ng\gtk\gtkfilechoosersettings.c">
+      <Filter>Source Files\gtk\file</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\gtk2-ng\gtk\gtkfilechooserutils.c">
+      <Filter>Source Files\gtk\file</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\gtk2-ng\gtk\gtkfilechooserwidget.c">
+      <Filter>Source Files\gtk\file</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\gtk2-ng\gtk\gtkfilefilter.c">
+      <Filter>Source Files\gtk\file</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\gtk2-ng\gtk\gtkfilesystem.c">
+      <Filter>Source Files\gtk\file</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\gtk2-ng\gtk\gtkfilesystemmodel.c">
+      <Filter>Source Files\gtk\file</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\gtk2-ng\gtk\gtkprintcontext.c">
+      <Filter>Source Files\gtk\print</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\gtk2-ng\gtk\gtkprintoperation.c">
+      <Filter>Source Files\gtk\print</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\gtk2-ng\gtk\gtkprintoperationpreview.c">
+      <Filter>Source Files\gtk\print</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\gtk2-ng\gtk\gtkprintoperation-win32.c">
+      <Filter>Source Files\gtk\print</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\gtk2-ng\gtk\gtkprintsettings.c">
+      <Filter>Source Files\gtk\print</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\gtk2-ng\gtk\gtkprintutils.c">
+      <Filter>Source Files\gtk\print</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\gtk2-ng\gtk\gtkprint-win32.c">
+      <Filter>Source Files\gtk\print</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\gtk2-ng\gtk\gtktestutils.c">
+      <Filter>Source Files\gtk\text</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\gtk2-ng\gtk\gtktextbtree.c">
+      <Filter>Source Files\gtk\text</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\gtk2-ng\gtk\gtktextbuffer.c">
+      <Filter>Source Files\gtk\text</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\gtk2-ng\gtk\gtktextbufferrichtext.c">
+      <Filter>Source Files\gtk\text</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\gtk2-ng\gtk\gtktextbufferserialize.c">
+      <Filter>Source Files\gtk\text</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\gtk2-ng\gtk\gtktextchild.c">
+      <Filter>Source Files\gtk\text</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\gtk2-ng\gtk\gtktextdisplay.c">
+      <Filter>Source Files\gtk\text</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\gtk2-ng\gtk\gtktextiter.c">
+      <Filter>Source Files\gtk\text</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\gtk2-ng\gtk\gtktextlayout.c">
+      <Filter>Source Files\gtk\text</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\gtk2-ng\gtk\gtktextmark.c">
+      <Filter>Source Files\gtk\text</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\gtk2-ng\gtk\gtktextsegment.c">
+      <Filter>Source Files\gtk\text</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\gtk2-ng\gtk\gtktexttag.c">
+      <Filter>Source Files\gtk\text</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\gtk2-ng\gtk\gtktexttagtable.c">
+      <Filter>Source Files\gtk\text</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\gtk2-ng\gtk\gtktexttypes.c">
+      <Filter>Source Files\gtk\text</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\gtk2-ng\gtk\gtktextutil.c">
+      <Filter>Source Files\gtk\text</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\gtk2-ng\gtk\gtktextview.c">
+      <Filter>Source Files\gtk\text</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\gtk2-ng\gtk\gtkrecentaction.c">
+      <Filter>Source Files\gtk\recent</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\gtk2-ng\gtk\gtkrecentchooser.c">
+      <Filter>Source Files\gtk\recent</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\gtk2-ng\gtk\gtkrecentchooserdefault.c">
+      <Filter>Source Files\gtk\recent</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\gtk2-ng\gtk\gtkrecentchooserdialog.c">
+      <Filter>Source Files\gtk\recent</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\gtk2-ng\gtk\gtkrecentchoosermenu.c">
+      <Filter>Source Files\gtk\recent</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\gtk2-ng\gtk\gtkrecentchooserutils.c">
+      <Filter>Source Files\gtk\recent</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\gtk2-ng\gtk\gtkrecentchooserwidget.c">
+      <Filter>Source Files\gtk\recent</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\gtk2-ng\gtk\gtkrecentfilter.c">
+      <Filter>Source Files\gtk\recent</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\gtk2-ng\gtk\gtkrecentmanager.c">
+      <Filter>Source Files\gtk\recent</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\gtk2-ng\gtk\gtkcheckbutton.c">
+      <Filter>Source Files\gtk</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\gtk2-ng\gtk\gtkcheckmenuitem.c">
+      <Filter>Source Files\gtk</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\gtk2-ng\gtk\gtkclipboard.c">
+      <Filter>Source Files\gtk</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\gtk2-ng\gtk\gtkcolorbutton.c">
+      <Filter>Source Files\gtk</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\gtk2-ng\gtk\gtkcolorsel.c">
+      <Filter>Source Files\gtk</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\gtk2-ng\gtk\gtkcolorseldialog.c">
+      <Filter>Source Files\gtk</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\gtk2-ng\gtk\gtkcombobox.c">
+      <Filter>Source Files\gtk</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\gtk2-ng\gtk\gtkcomboboxentry.c">
+      <Filter>Source Files\gtk</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\gtk2-ng\gtk\gtkcomboboxtext.c">
+      <Filter>Source Files\gtk</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\gtk2-ng\gtk\gtkcontainer.c">
+      <Filter>Source Files\gtk</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\gtk2-ng\gtk\gtkcurve.c">
+      <Filter>Source Files\gtk</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\gtk2-ng\gtk\gtkdialog.c">
+      <Filter>Source Files\gtk</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\gtk2-ng\gtk\gtkdnd.c">
+      <Filter>Source Files\gtk</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\gtk2-ng\gtk\gtkdrawingarea.c">
+      <Filter>Source Files\gtk</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\gtk2-ng\gtk\gtkeditable.c">
+      <Filter>Source Files\gtk</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\gtk2-ng\gtk\gtkentry.c">
+      <Filter>Source Files\gtk</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\gtk2-ng\gtk\gtkentrybuffer.c">
+      <Filter>Source Files\gtk</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\gtk2-ng\gtk\gtkentrycompletion.c">
+      <Filter>Source Files\gtk</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\gtk2-ng\gtk\gtkeventbox.c">
+      <Filter>Source Files\gtk</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\gtk2-ng\gtk\gtkexpander.c">
+      <Filter>Source Files\gtk</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\gtk2-ng\gtk\gtkfixed.c">
+      <Filter>Source Files\gtk</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\gtk2-ng\gtk\gtkfontbutton.c">
+      <Filter>Source Files\gtk</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\gtk2-ng\gtk\gtkfontsel.c">
+      <Filter>Source Files\gtk</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\gtk2-ng\gtk\gtkframe.c">
+      <Filter>Source Files\gtk</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\gtk2-ng\gtk\gtkgamma.c">
+      <Filter>Source Files\gtk</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\gtk2-ng\gtk\gtkgc.c">
+      <Filter>Source Files\gtk</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\gtk2-ng\gtk\gtkhandlebox.c">
+      <Filter>Source Files\gtk</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\gtk2-ng\gtk\gtkhbbox.c">
+      <Filter>Source Files\gtk</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\gtk2-ng\gtk\gtkhbox.c">
+      <Filter>Source Files\gtk</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\gtk2-ng\gtk\gtkhpaned.c">
+      <Filter>Source Files\gtk</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\gtk2-ng\gtk\gtkhruler.c">
+      <Filter>Source Files\gtk</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\gtk2-ng\gtk\gtkhscale.c">
+      <Filter>Source Files\gtk</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\gtk2-ng\gtk\gtkhscrollbar.c">
+      <Filter>Source Files\gtk</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\gtk2-ng\gtk\gtkhseparator.c">
+      <Filter>Source Files\gtk</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\gtk2-ng\gtk\gtkhsv.c">
+      <Filter>Source Files\gtk</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\gtk2-ng\gtk\gtkiconcache.c">
+      <Filter>Source Files\gtk</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\gtk2-ng\gtk\gtkiconcachevalidator.c">
+      <Filter>Source Files\gtk</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\gtk2-ng\gtk\gtkiconfactory.c">
+      <Filter>Source Files\gtk</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\gtk2-ng\gtk\gtkicontheme.c">
+      <Filter>Source Files\gtk</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\gtk2-ng\gtk\gtkiconview.c">
+      <Filter>Source Files\gtk</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\gtk2-ng\gtk\gtkimage.c">
+      <Filter>Source Files\gtk</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\gtk2-ng\gtk\gtkimagemenuitem.c">
+      <Filter>Source Files\gtk</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\gtk2-ng\gtk\gtkimcontext.c">
+      <Filter>Source Files\gtk</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\gtk2-ng\gtk\gtkimcontextsimple.c">
+      <Filter>Source Files\gtk</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\gtk2-ng\gtk\gtkimmodule.c">
+      <Filter>Source Files\gtk</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\gtk2-ng\gtk\gtkimmulticontext.c">
+      <Filter>Source Files\gtk</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\gtk2-ng\gtk\gtkinfobar.c">
+      <Filter>Source Files\gtk</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\gtk2-ng\gtk\gtkinputdialog.c">
+      <Filter>Source Files\gtk</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\gtk2-ng\gtk\gtkinvisible.c">
+      <Filter>Source Files\gtk</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\gtk2-ng\gtk\gtkitem.c">
+      <Filter>Source Files\gtk</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\gtk2-ng\gtk\gtkkeyhash.c">
+      <Filter>Source Files\gtk</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\gtk2-ng\gtk\gtklabel.c">
+      <Filter>Source Files\gtk</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\gtk2-ng\gtk\gtklayout.c">
+      <Filter>Source Files\gtk</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\gtk2-ng\gtk\gtklinkbutton.c">
+      <Filter>Source Files\gtk</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\gtk2-ng\gtk\gtkmain.c">
+      <Filter>Source Files\gtk</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\gtk2-ng\gtk\gtkmenu.c">
+      <Filter>Source Files\gtk</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\gtk2-ng\gtk\gtkmenubar.c">
+      <Filter>Source Files\gtk</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\gtk2-ng\gtk\gtkmenuitem.c">
+      <Filter>Source Files\gtk</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\gtk2-ng\gtk\gtkmenushell.c">
+      <Filter>Source Files\gtk</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\gtk2-ng\gtk\gtkmenutoolbutton.c">
+      <Filter>Source Files\gtk</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\gtk2-ng\gtk\gtkmessagedialog.c">
+      <Filter>Source Files\gtk</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\gtk2-ng\gtk\gtkmisc.c">
+      <Filter>Source Files\gtk</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\gtk2-ng\gtk\gtkmnemonichash.c">
+      <Filter>Source Files\gtk</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\gtk2-ng\gtk\gtkmodules.c">
+      <Filter>Source Files\gtk</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\gtk2-ng\gtk\gtkmountoperation.c">
+      <Filter>Source Files\gtk</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\gtk2-ng\gtk\gtkmountoperation-stub.c">
+      <Filter>Source Files\gtk</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\gtk2-ng\gtk\gtknotebook.c">
+      <Filter>Source Files\gtk</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\gtk2-ng\gtk\gtkobject.c">
+      <Filter>Source Files\gtk</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\gtk2-ng\gtk\gtkoffscreenwindow.c">
+      <Filter>Source Files\gtk</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\gtk2-ng\gtk\gtkorientable.c">
+      <Filter>Source Files\gtk</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\gtk2-ng\gtk\gtkpagesetup.c">
+      <Filter>Source Files\gtk</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\gtk2-ng\gtk\gtkpaned.c">
+      <Filter>Source Files\gtk</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\gtk2-ng\gtk\gtkpango.c">
+      <Filter>Source Files\gtk</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\gtk2-ng\gtk\gtkpapersize.c">
+      <Filter>Source Files\gtk</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\gtk2-ng\gtk\gtkpathbar.c">
+      <Filter>Source Files\gtk</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\gtk2-ng\gtk\gtkplug.c">
+      <Filter>Source Files\gtk</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\gtk2-ng\gtk\gtkplug-win32.c">
+      <Filter>Source Files\gtk</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\gtk2-ng\gtk\gtkprogressbar.c">
+      <Filter>Source Files\gtk</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\gtk2-ng\gtk\gtkquery.c">
+      <Filter>Source Files\gtk</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\gtk2-ng\gtk\gtkradioaction.c">
+      <Filter>Source Files\gtk</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\gtk2-ng\gtk\gtkradiobutton.c">
+      <Filter>Source Files\gtk</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\gtk2-ng\gtk\gtkradiomenuitem.c">
+      <Filter>Source Files\gtk</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\gtk2-ng\gtk\gtkradiotoolbutton.c">
+      <Filter>Source Files\gtk</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\gtk2-ng\gtk\gtkrange.c">
+      <Filter>Source Files\gtk</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\gtk2-ng\gtk\gtkrbtree.c">
+      <Filter>Source Files\gtk</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\gtk2-ng\gtk\gtkrc.c">
+      <Filter>Source Files\gtk</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\gtk2-ng\gtk\gtkruler.c">
+      <Filter>Source Files\gtk</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\gtk2-ng\gtk\gtkscale.c">
+      <Filter>Source Files\gtk</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\gtk2-ng\gtk\gtkscalebutton.c">
+      <Filter>Source Files\gtk</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\gtk2-ng\gtk\gtkscrollbar.c">
+      <Filter>Source Files\gtk</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\gtk2-ng\gtk\gtkscrolledwindow.c">
+      <Filter>Source Files\gtk</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\gtk2-ng\gtk\gtksearchengine.c">
+      <Filter>Source Files\gtk</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\gtk2-ng\gtk\gtksearchenginebeagle.c">
+      <Filter>Source Files\gtk</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\gtk2-ng\gtk\gtksearchenginesimple.c">
+      <Filter>Source Files\gtk</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\gtk2-ng\gtk\gtksearchenginetracker.c">
+      <Filter>Source Files\gtk</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\gtk2-ng\gtk\gtkselection.c">
+      <Filter>Source Files\gtk</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\gtk2-ng\gtk\gtkseparator.c">
+      <Filter>Source Files\gtk</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\gtk2-ng\gtk\gtkseparatormenuitem.c">
+      <Filter>Source Files\gtk</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\gtk2-ng\gtk\gtksettings.c">
+      <Filter>Source Files\gtk</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\gtk2-ng\gtk\gtksizegroup.c">
+      <Filter>Source Files\gtk</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\gtk2-ng\gtk\gtksocket.c">
+      <Filter>Source Files\gtk</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\gtk2-ng\gtk\gtksocket-win32.c">
+      <Filter>Source Files\gtk</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\gtk2-ng\gtk\gtkspinbutton.c">
+      <Filter>Source Files\gtk</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\gtk2-ng\gtk\gtkspinner.c">
+      <Filter>Source Files\gtk</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\gtk2-ng\gtk\gtkstatusbar.c">
+      <Filter>Source Files\gtk</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\gtk2-ng\gtk\gtkstatusicon.c">
+      <Filter>Source Files\gtk</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\gtk2-ng\gtk\gtkstock.c">
+      <Filter>Source Files\gtk</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\gtk2-ng\gtk\gtkstyle.c">
+      <Filter>Source Files\gtk</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\gtk2-ng\gtk\gtkpixdatautils.c">
+      <Filter>Source Files\gtk</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\gtk2-ng\gtk\gtkuimanager.c">
+      <Filter>Source Files\gtk</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\gtk2-ng\gtk\gtkvbbox.c">
+      <Filter>Source Files\gtk</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\gtk2-ng\gtk\gtkvbox.c">
+      <Filter>Source Files\gtk</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\gtk2-ng\gtk\gtkviewport.c">
+      <Filter>Source Files\gtk</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\gtk2-ng\gtk\gtkvolumebutton.c">
+      <Filter>Source Files\gtk</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\gtk2-ng\gtk\gtkvpaned.c">
+      <Filter>Source Files\gtk</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\gtk2-ng\gtk\gtkvruler.c">
+      <Filter>Source Files\gtk</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\gtk2-ng\gtk\gtkvscale.c">
+      <Filter>Source Files\gtk</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\gtk2-ng\gtk\gtkvscrollbar.c">
+      <Filter>Source Files\gtk</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\gtk2-ng\gtk\gtkvseparator.c">
+      <Filter>Source Files\gtk</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\gtk2-ng\gtk\gtkwidget.c">
+      <Filter>Source Files\gtk</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\gtk2-ng\gtk\gtkwin32embed.c">
+      <Filter>Source Files\gtk</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\gtk2-ng\gtk\gtkwin32embedwidget.c">
+      <Filter>Source Files\gtk</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\gtk2-ng\gtk\gtkwindow.c">
+      <Filter>Source Files\gtk</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\gtk2-ng\gtk\gtkwindow-decorate.c">
+      <Filter>Source Files\gtk</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\gtk2-ng\gtk\gtktable.c">
+      <Filter>Source Files\gtk</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\gtk2-ng\gtk\gtktearoffmenuitem.c">
+      <Filter>Source Files\gtk</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\gtk2-ng\gtk\gtkthemes.c">
+      <Filter>Source Files\gtk</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\gtk2-ng\gtk\gtktoggleaction.c">
+      <Filter>Source Files\gtk</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\gtk2-ng\gtk\gtktogglebutton.c">
+      <Filter>Source Files\gtk</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\gtk2-ng\gtk\gtktoggletoolbutton.c">
+      <Filter>Source Files\gtk</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\gtk2-ng\gtk\gtktoolbutton.c">
+      <Filter>Source Files\gtk</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\gtk2-ng\gtk\gtktoolitem.c">
+      <Filter>Source Files\gtk</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\gtk2-ng\gtk\gtktoolitemgroup.c">
+      <Filter>Source Files\gtk</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\gtk2-ng\gtk\gtktoolpalette.c">
+      <Filter>Source Files\gtk</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\gtk2-ng\gtk\gtktoolshell.c">
+      <Filter>Source Files\gtk</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\gtk2-ng\gtk\gtktooltip.c">
+      <Filter>Source Files\gtk</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\gtk2-ng\gtk\gtktreedatalist.c">
+      <Filter>Source Files\gtk</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\..\gtk2-ng\gtk\gtktypebuiltins.h">
+      <Filter>Generated files\gtk</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\gtk2-ng\gtk\gtkmarshal.h">
+      <Filter>Generated files\gtk</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\gtk2-ng\gtk\gtkmarshalers.h">
+      <Filter>Generated files\gtk</Filter>
+    </ClInclude>
+    <ClInclude Include="config.h">
+      <Filter>Generated files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\gtk2-ng\gtk\gtktypeutils.h">
+      <Filter>Header Files\gtk</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\gtk2-ng\gtk\gtkalias.h">
+      <Filter>Generated files\gtk</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\gtk2-ng\gtk\xembed.h">
+      <Filter>Header Files\gtk</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\gtk2-ng\gtk\gtktreestore.h">
+      <Filter>Header Files\gtk</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\gtk2-ng\gtk\gtktreeview.h">
+      <Filter>Header Files\gtk</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\gtk2-ng\gtk\gtktreeviewcolumn.h">
+      <Filter>Header Files\gtk</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\gtk2-ng\gtk\gtkuimanager.h">
+      <Filter>Header Files\gtk</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\gtk2-ng\gtk\gtkunixprint.h">
+      <Filter>Header Files\gtk</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\gtk2-ng\gtk\gtkvbbox.h">
+      <Filter>Header Files\gtk</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\gtk2-ng\gtk\gtkvbox.h">
+      <Filter>Header Files\gtk</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\gtk2-ng\gtk\gtkviewport.h">
+      <Filter>Header Files\gtk</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\gtk2-ng\gtk\gtkvolumebutton.h">
+      <Filter>Header Files\gtk</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\gtk2-ng\gtk\gtkvpaned.h">
+      <Filter>Header Files\gtk</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\gtk2-ng\gtk\gtkvruler.h">
+      <Filter>Header Files\gtk</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\gtk2-ng\gtk\gtkvscale.h">
+      <Filter>Header Files\gtk</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\gtk2-ng\gtk\gtkvscrollbar.h">
+      <Filter>Header Files\gtk</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\gtk2-ng\gtk\gtkvseparator.h">
+      <Filter>Header Files\gtk</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\gtk2-ng\gtk\gtkwidget.h">
+      <Filter>Header Files\gtk</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\gtk2-ng\gtk\gtkwin32embed.h">
+      <Filter>Header Files\gtk</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\gtk2-ng\gtk\gtkwin32embedwidget.h">
+      <Filter>Header Files\gtk</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\gtk2-ng\gtk\gtkwindow.h">
+      <Filter>Header Files\gtk</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\gtk2-ng\gtk\gtkwindow-decorate.h">
+      <Filter>Header Files\gtk</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\gtk2-ng\gtk\gtkxembed.h">
+      <Filter>Header Files\gtk</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\gtk2-ng\gtk\gtk.h">
+      <Filter>Header Files\gtk</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\gtk2-ng\gtk\gtkaboutdialog.h">
+      <Filter>Header Files\gtk</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\gtk2-ng\gtk\gtkaccelgroup.h">
+      <Filter>Header Files\gtk</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\gtk2-ng\gtk\gtkaccellabel.h">
+      <Filter>Header Files\gtk</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\gtk2-ng\gtk\gtkaccelmap.h">
+      <Filter>Header Files\gtk</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\gtk2-ng\gtk\gtkaccessible.h">
+      <Filter>Header Files\gtk</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\gtk2-ng\gtk\gtkaction.h">
+      <Filter>Header Files\gtk</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\gtk2-ng\gtk\gtkactiongroup.h">
+      <Filter>Header Files\gtk</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\gtk2-ng\gtk\gtkactivatable.h">
+      <Filter>Header Files\gtk</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\gtk2-ng\gtk\gtkadjustment.h">
+      <Filter>Header Files\gtk</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\gtk2-ng\gtk\gtkalignment.h">
+      <Filter>Header Files\gtk</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\gtk2-ng\gtk\gtkarrow.h">
+      <Filter>Header Files\gtk</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\gtk2-ng\gtk\gtkaspectframe.h">
+      <Filter>Header Files\gtk</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\gtk2-ng\gtk\gtkassistant.h">
+      <Filter>Header Files\gtk</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\gtk2-ng\gtk\gtkbbox.h">
+      <Filter>Header Files\gtk</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\gtk2-ng\gtk\gtkbin.h">
+      <Filter>Header Files\gtk</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\gtk2-ng\gtk\gtkbindings.h">
+      <Filter>Header Files\gtk</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\gtk2-ng\gtk\gtkbox.h">
+      <Filter>Header Files\gtk</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\gtk2-ng\gtk\gtkbuildable.h">
+      <Filter>Header Files\gtk</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\gtk2-ng\gtk\gtkbuilder.h">
+      <Filter>Header Files\gtk</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\gtk2-ng\gtk\gtkbuilderprivate.h">
+      <Filter>Header Files\gtk</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\gtk2-ng\gtk\gtkbutton.h">
+      <Filter>Header Files\gtk</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\gtk2-ng\gtk\gtkcalendar.h">
+      <Filter>Header Files\gtk</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\gtk2-ng\gtk\gtkcelleditable.h">
+      <Filter>Header Files\gtk</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\gtk2-ng\gtk\gtkcelllayout.h">
+      <Filter>Header Files\gtk</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\gtk2-ng\gtk\gtkcellrenderer.h">
+      <Filter>Header Files\gtk</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\gtk2-ng\gtk\gtkcellrendereraccel.h">
+      <Filter>Header Files\gtk</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\gtk2-ng\gtk\gtkcellrenderercombo.h">
+      <Filter>Header Files\gtk</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\gtk2-ng\gtk\gtkcellrendererpixbuf.h">
+      <Filter>Header Files\gtk</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\gtk2-ng\gtk\gtkcellrendererprogress.h">
+      <Filter>Header Files\gtk</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\gtk2-ng\gtk\gtkcellrendererspin.h">
+      <Filter>Header Files\gtk</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\gtk2-ng\gtk\gtkcellrendererspinner.h">
+      <Filter>Header Files\gtk</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\gtk2-ng\gtk\gtkcellrenderertext.h">
+      <Filter>Header Files\gtk</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\gtk2-ng\gtk\gtkcellrenderertoggle.h">
+      <Filter>Header Files\gtk</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\gtk2-ng\gtk\gtkcellview.h">
+      <Filter>Header Files\gtk</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\gtk2-ng\gtk\gtkcheckbutton.h">
+      <Filter>Header Files\gtk</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\gtk2-ng\gtk\gtkcheckmenuitem.h">
+      <Filter>Header Files\gtk</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\gtk2-ng\gtk\gtkclipboard.h">
+      <Filter>Header Files\gtk</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\gtk2-ng\gtk\gtkclist.h">
+      <Filter>Header Files\gtk</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\gtk2-ng\gtk\gtkcolorbutton.h">
+      <Filter>Header Files\gtk</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\gtk2-ng\gtk\gtkcolorsel.h">
+      <Filter>Header Files\gtk</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\gtk2-ng\gtk\gtkcolorseldialog.h">
+      <Filter>Header Files\gtk</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\gtk2-ng\gtk\gtkcombo.h">
+      <Filter>Header Files\gtk</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\gtk2-ng\gtk\gtkcombobox.h">
+      <Filter>Header Files\gtk</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\gtk2-ng\gtk\gtkcomboboxentry.h">
+      <Filter>Header Files\gtk</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\gtk2-ng\gtk\gtkcomboboxtext.h">
+      <Filter>Header Files\gtk</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\gtk2-ng\gtk\gtkcontainer.h">
+      <Filter>Header Files\gtk</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\gtk2-ng\gtk\gtkctree.h">
+      <Filter>Header Files\gtk</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\gtk2-ng\gtk\gtkcurve.h">
+      <Filter>Header Files\gtk</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\gtk2-ng\gtk\gtkcustompaperunixdialog.h">
+      <Filter>Header Files\gtk</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\gtk2-ng\gtk\gtkdebug.h">
+      <Filter>Header Files\gtk</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\gtk2-ng\gtk\gtkdialog.h">
+      <Filter>Header Files\gtk</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\gtk2-ng\gtk\gtkdnd.h">
+      <Filter>Header Files\gtk</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\gtk2-ng\gtk\gtkdndcursors.h">
+      <Filter>Header Files\gtk</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\gtk2-ng\gtk\gtkdrawingarea.h">
+      <Filter>Header Files\gtk</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\gtk2-ng\gtk\gtkeditable.h">
+      <Filter>Header Files\gtk</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\gtk2-ng\gtk\gtkentry.h">
+      <Filter>Header Files\gtk</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\gtk2-ng\gtk\gtkentrybuffer.h">
+      <Filter>Header Files\gtk</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\gtk2-ng\gtk\gtkentrycompletion.h">
+      <Filter>Header Files\gtk</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\gtk2-ng\gtk\gtkentryprivate.h">
+      <Filter>Header Files\gtk</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\gtk2-ng\gtk\gtkenums.h">
+      <Filter>Header Files\gtk</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\gtk2-ng\gtk\gtkeventbox.h">
+      <Filter>Header Files\gtk</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\gtk2-ng\gtk\gtkexpander.h">
+      <Filter>Header Files\gtk</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\gtk2-ng\gtk\gtkfilechooser.h">
+      <Filter>Header Files\gtk</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\gtk2-ng\gtk\gtkfilechooserbutton.h">
+      <Filter>Header Files\gtk</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\gtk2-ng\gtk\gtkfilechooserdefault.h">
+      <Filter>Header Files\gtk</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\gtk2-ng\gtk\gtkfilechooserdialog.h">
+      <Filter>Header Files\gtk</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\gtk2-ng\gtk\gtkfilechooserembed.h">
+      <Filter>Header Files\gtk</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\gtk2-ng\gtk\gtkfilechooserentry.h">
+      <Filter>Header Files\gtk</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\gtk2-ng\gtk\gtkfilechooserprivate.h">
+      <Filter>Header Files\gtk</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\gtk2-ng\gtk\gtkfilechoosersettings.h">
+      <Filter>Header Files\gtk</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\gtk2-ng\gtk\gtkfilechooserutils.h">
+      <Filter>Header Files\gtk</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\gtk2-ng\gtk\gtkfilechooserwidget.h">
+      <Filter>Header Files\gtk</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\gtk2-ng\gtk\gtkfilefilter.h">
+      <Filter>Header Files\gtk</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\gtk2-ng\gtk\gtkfilesel.h">
+      <Filter>Header Files\gtk</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\gtk2-ng\gtk\gtkfilesystem.h">
+      <Filter>Header Files\gtk</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\gtk2-ng\gtk\gtkfilesystemmodel.h">
+      <Filter>Header Files\gtk</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\gtk2-ng\gtk\gtkfixed.h">
+      <Filter>Header Files\gtk</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\gtk2-ng\gtk\gtkfontbutton.h">
+      <Filter>Header Files\gtk</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\gtk2-ng\gtk\gtkfontsel.h">
+      <Filter>Header Files\gtk</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\gtk2-ng\gtk\gtkframe.h">
+      <Filter>Header Files\gtk</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\gtk2-ng\gtk\gtkgamma.h">
+      <Filter>Header Files\gtk</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\gtk2-ng\gtk\gtkgc.h">
+      <Filter>Header Files\gtk</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\gtk2-ng\gtk\gtkhandlebox.h">
+      <Filter>Header Files\gtk</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\gtk2-ng\gtk\gtkhbbox.h">
+      <Filter>Header Files\gtk</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\gtk2-ng\gtk\gtkhbox.h">
+      <Filter>Header Files\gtk</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\gtk2-ng\gtk\gtkhpaned.h">
+      <Filter>Header Files\gtk</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\gtk2-ng\gtk\gtkhruler.h">
+      <Filter>Header Files\gtk</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\gtk2-ng\gtk\gtkhscale.h">
+      <Filter>Header Files\gtk</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\gtk2-ng\gtk\gtkhscrollbar.h">
+      <Filter>Header Files\gtk</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\gtk2-ng\gtk\gtkhseparator.h">
+      <Filter>Header Files\gtk</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\gtk2-ng\gtk\gtkhsv.h">
+      <Filter>Header Files\gtk</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\gtk2-ng\gtk\gtkiconcache.h">
+      <Filter>Header Files\gtk</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\gtk2-ng\gtk\gtkiconcachevalidator.h">
+      <Filter>Header Files\gtk</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\gtk2-ng\gtk\gtkiconfactory.h">
+      <Filter>Header Files\gtk</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\gtk2-ng\gtk\gtkicontheme.h">
+      <Filter>Header Files\gtk</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\gtk2-ng\gtk\gtkiconview.h">
+      <Filter>Header Files\gtk</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\gtk2-ng\gtk\gtkimage.h">
+      <Filter>Header Files\gtk</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\gtk2-ng\gtk\gtkimagemenuitem.h">
+      <Filter>Header Files\gtk</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\gtk2-ng\gtk\gtkimcontext.h">
+      <Filter>Header Files\gtk</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\gtk2-ng\gtk\gtkimcontextsimple.h">
+      <Filter>Header Files\gtk</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\gtk2-ng\gtk\gtkimcontextsimpleseqs.h">
+      <Filter>Header Files\gtk</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\gtk2-ng\gtk\gtkimmodule.h">
+      <Filter>Header Files\gtk</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\gtk2-ng\gtk\gtkimmulticontext.h">
+      <Filter>Header Files\gtk</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\gtk2-ng\gtk\gtkinfobar.h">
+      <Filter>Header Files\gtk</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\gtk2-ng\gtk\gtkinputdialog.h">
+      <Filter>Header Files\gtk</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\gtk2-ng\gtk\gtkintl.h">
+      <Filter>Header Files\gtk</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\gtk2-ng\gtk\gtkinvisible.h">
+      <Filter>Header Files\gtk</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\gtk2-ng\gtk\gtkitem.h">
+      <Filter>Header Files\gtk</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\gtk2-ng\gtk\gtkitemfactory.h">
+      <Filter>Header Files\gtk</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\gtk2-ng\gtk\gtkkeyhash.h">
+      <Filter>Header Files\gtk</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\gtk2-ng\gtk\gtklabel.h">
+      <Filter>Header Files\gtk</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\gtk2-ng\gtk\gtklayout.h">
+      <Filter>Header Files\gtk</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\gtk2-ng\gtk\gtklinkbutton.h">
+      <Filter>Header Files\gtk</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\gtk2-ng\gtk\gtklist.h">
+      <Filter>Header Files\gtk</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\gtk2-ng\gtk\gtklistitem.h">
+      <Filter>Header Files\gtk</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\gtk2-ng\gtk\gtkliststore.h">
+      <Filter>Header Files\gtk</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\gtk2-ng\gtk\gtkmain.h">
+      <Filter>Header Files\gtk</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\gtk2-ng\gtk\gtkmenu.h">
+      <Filter>Header Files\gtk</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\gtk2-ng\gtk\gtkmenubar.h">
+      <Filter>Header Files\gtk</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\gtk2-ng\gtk\gtkmenuitem.h">
+      <Filter>Header Files\gtk</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\gtk2-ng\gtk\gtkmenushell.h">
+      <Filter>Header Files\gtk</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\gtk2-ng\gtk\gtkmenutoolbutton.h">
+      <Filter>Header Files\gtk</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\gtk2-ng\gtk\gtkmessagedialog.h">
+      <Filter>Header Files\gtk</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\gtk2-ng\gtk\gtkmisc.h">
+      <Filter>Header Files\gtk</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\gtk2-ng\gtk\gtkmnemonichash.h">
+      <Filter>Header Files\gtk</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\gtk2-ng\gtk\gtkmodules.h">
+      <Filter>Header Files\gtk</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\gtk2-ng\gtk\gtkmountoperation.h">
+      <Filter>Header Files\gtk</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\gtk2-ng\gtk\gtkmountoperationprivate.h">
+      <Filter>Header Files\gtk</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\gtk2-ng\gtk\gtknotebook.h">
+      <Filter>Header Files\gtk</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\gtk2-ng\gtk\gtkobject.h">
+      <Filter>Header Files\gtk</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\gtk2-ng\gtk\gtkoffscreenwindow.h">
+      <Filter>Header Files\gtk</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\gtk2-ng\gtk\gtkoldeditable.h">
+      <Filter>Header Files\gtk</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\gtk2-ng\gtk\gtkoptionmenu.h">
+      <Filter>Header Files\gtk</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\gtk2-ng\gtk\gtkorientable.h">
+      <Filter>Header Files\gtk</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\gtk2-ng\gtk\gtkpagesetup.h">
+      <Filter>Header Files\gtk</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\gtk2-ng\gtk\gtkpagesetupunixdialog.h">
+      <Filter>Header Files\gtk</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\gtk2-ng\gtk\gtkpaned.h">
+      <Filter>Header Files\gtk</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\gtk2-ng\gtk\gtkpango.h">
+      <Filter>Header Files\gtk</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\gtk2-ng\gtk\gtkpapersize.h">
+      <Filter>Header Files\gtk</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\gtk2-ng\gtk\gtkpathbar.h">
+      <Filter>Header Files\gtk</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\gtk2-ng\gtk\gtkpixdatautils.h">
+      <Filter>Header Files\gtk</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\gtk2-ng\gtk\gtkpixmap.h">
+      <Filter>Header Files\gtk</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\gtk2-ng\gtk\gtkplug.h">
+      <Filter>Header Files\gtk</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\gtk2-ng\gtk\gtkplugprivate.h">
+      <Filter>Header Files\gtk</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\gtk2-ng\gtk\gtkpreview.h">
+      <Filter>Header Files\gtk</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\gtk2-ng\gtk\gtkprintbackend.h">
+      <Filter>Header Files\gtk</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\gtk2-ng\gtk\gtkprintcontext.h">
+      <Filter>Header Files\gtk</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\gtk2-ng\gtk\gtkprinter.h">
+      <Filter>Header Files\gtk</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\gtk2-ng\gtk\gtkprinteroption.h">
+      <Filter>Header Files\gtk</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\gtk2-ng\gtk\gtkprinteroptionset.h">
+      <Filter>Header Files\gtk</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\gtk2-ng\gtk\gtkprinteroptionwidget.h">
+      <Filter>Header Files\gtk</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\gtk2-ng\gtk\gtkprinter-private.h">
+      <Filter>Header Files\gtk</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\gtk2-ng\gtk\gtkprintjob.h">
+      <Filter>Header Files\gtk</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\gtk2-ng\gtk\gtkprintoperation.h">
+      <Filter>Header Files\gtk</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\gtk2-ng\gtk\gtkprintoperationpreview.h">
+      <Filter>Header Files\gtk</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\gtk2-ng\gtk\gtkprintoperation-private.h">
+      <Filter>Header Files\gtk</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\gtk2-ng\gtk\gtkprintsettings.h">
+      <Filter>Header Files\gtk</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\gtk2-ng\gtk\gtkprintunixdialog.h">
+      <Filter>Header Files\gtk</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\gtk2-ng\gtk\gtkprintutils.h">
+      <Filter>Header Files\gtk</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\gtk2-ng\gtk\gtkprint-win32.h">
+      <Filter>Header Files\gtk</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\gtk2-ng\gtk\gtkprivate.h">
+      <Filter>Header Files\gtk</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\gtk2-ng\gtk\gtkprogress.h">
+      <Filter>Header Files\gtk</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\gtk2-ng\gtk\gtkprogressbar.h">
+      <Filter>Header Files\gtk</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\gtk2-ng\gtk\gtkquartz.h">
+      <Filter>Header Files\gtk</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\gtk2-ng\gtk\gtkquery.h">
+      <Filter>Header Files\gtk</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\gtk2-ng\gtk\gtkradioaction.h">
+      <Filter>Header Files\gtk</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\gtk2-ng\gtk\gtkradiobutton.h">
+      <Filter>Header Files\gtk</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\gtk2-ng\gtk\gtkradiomenuitem.h">
+      <Filter>Header Files\gtk</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\gtk2-ng\gtk\gtkradiotoolbutton.h">
+      <Filter>Header Files\gtk</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\gtk2-ng\gtk\gtkrange.h">
+      <Filter>Header Files\gtk</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\gtk2-ng\gtk\gtkrbtree.h">
+      <Filter>Header Files\gtk</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\gtk2-ng\gtk\gtkrc.h">
+      <Filter>Header Files\gtk</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\gtk2-ng\gtk\gtkrecentaction.h">
+      <Filter>Header Files\gtk</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\gtk2-ng\gtk\gtkrecentchooser.h">
+      <Filter>Header Files\gtk</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\gtk2-ng\gtk\gtkrecentchooserdefault.h">
+      <Filter>Header Files\gtk</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\gtk2-ng\gtk\gtkrecentchooserdialog.h">
+      <Filter>Header Files\gtk</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\gtk2-ng\gtk\gtkrecentchoosermenu.h">
+      <Filter>Header Files\gtk</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\gtk2-ng\gtk\gtkrecentchooserprivate.h">
+      <Filter>Header Files\gtk</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\gtk2-ng\gtk\gtkrecentchooserutils.h">
+      <Filter>Header Files\gtk</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\gtk2-ng\gtk\gtkrecentchooserwidget.h">
+      <Filter>Header Files\gtk</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\gtk2-ng\gtk\gtkrecentfilter.h">
+      <Filter>Header Files\gtk</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\gtk2-ng\gtk\gtkrecentmanager.h">
+      <Filter>Header Files\gtk</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\gtk2-ng\gtk\gtkruler.h">
+      <Filter>Header Files\gtk</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\gtk2-ng\gtk\gtkscale.h">
+      <Filter>Header Files\gtk</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\gtk2-ng\gtk\gtkscalebutton.h">
+      <Filter>Header Files\gtk</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\gtk2-ng\gtk\gtkscrollbar.h">
+      <Filter>Header Files\gtk</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\gtk2-ng\gtk\gtkscrolledwindow.h">
+      <Filter>Header Files\gtk</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\gtk2-ng\gtk\gtksearchengine.h">
+      <Filter>Header Files\gtk</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\gtk2-ng\gtk\gtksearchenginebeagle.h">
+      <Filter>Header Files\gtk</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\gtk2-ng\gtk\gtksearchenginequartz.h">
+      <Filter>Header Files\gtk</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\gtk2-ng\gtk\gtksearchenginesimple.h">
+      <Filter>Header Files\gtk</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\gtk2-ng\gtk\gtksearchenginetracker.h">
+      <Filter>Header Files\gtk</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\gtk2-ng\gtk\gtkselection.h">
+      <Filter>Header Files\gtk</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\gtk2-ng\gtk\gtkseparator.h">
+      <Filter>Header Files\gtk</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\gtk2-ng\gtk\gtkseparatormenuitem.h">
+      <Filter>Header Files\gtk</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\gtk2-ng\gtk\gtkseparatortoolitem.h">
+      <Filter>Header Files\gtk</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\gtk2-ng\gtk\gtksettings.h">
+      <Filter>Header Files\gtk</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\gtk2-ng\gtk\gtkshow.h">
+      <Filter>Header Files\gtk</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\gtk2-ng\gtk\gtksignal.h">
+      <Filter>Header Files\gtk</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\gtk2-ng\gtk\gtksizegroup.h">
+      <Filter>Header Files\gtk</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\gtk2-ng\gtk\gtksocket.h">
+      <Filter>Header Files\gtk</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\gtk2-ng\gtk\gtksocketprivate.h">
+      <Filter>Header Files\gtk</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\gtk2-ng\gtk\gtkspinbutton.h">
+      <Filter>Header Files\gtk</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\gtk2-ng\gtk\gtkspinner.h">
+      <Filter>Header Files\gtk</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\gtk2-ng\gtk\gtkstatusbar.h">
+      <Filter>Header Files\gtk</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\gtk2-ng\gtk\gtkstatusicon.h">
+      <Filter>Header Files\gtk</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\gtk2-ng\gtk\gtkstock.h">
+      <Filter>Header Files\gtk</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\gtk2-ng\gtk\gtkstyle.h">
+      <Filter>Header Files\gtk</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\gtk2-ng\gtk\gtktable.h">
+      <Filter>Header Files\gtk</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\gtk2-ng\gtk\gtktearoffmenuitem.h">
+      <Filter>Header Files\gtk</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\gtk2-ng\gtk\gtktestutils.h">
+      <Filter>Header Files\gtk</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\gtk2-ng\gtk\gtktext.h">
+      <Filter>Header Files\gtk</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\gtk2-ng\gtk\gtktextbtree.h">
+      <Filter>Header Files\gtk</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\gtk2-ng\gtk\gtktextbuffer.h">
+      <Filter>Header Files\gtk</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\gtk2-ng\gtk\gtktextbufferrichtext.h">
+      <Filter>Header Files\gtk</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\gtk2-ng\gtk\gtktextbufferserialize.h">
+      <Filter>Header Files\gtk</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\gtk2-ng\gtk\gtktextchild.h">
+      <Filter>Header Files\gtk</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\gtk2-ng\gtk\gtktextchildprivate.h">
+      <Filter>Header Files\gtk</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\gtk2-ng\gtk\gtktextdisplay.h">
+      <Filter>Header Files\gtk</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\gtk2-ng\gtk\gtktextiter.h">
+      <Filter>Header Files\gtk</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\gtk2-ng\gtk\gtktextiterprivate.h">
+      <Filter>Header Files\gtk</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\gtk2-ng\gtk\gtktextlayout.h">
+      <Filter>Header Files\gtk</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\gtk2-ng\gtk\gtktextmark.h">
+      <Filter>Header Files\gtk</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\gtk2-ng\gtk\gtktextmarkprivate.h">
+      <Filter>Header Files\gtk</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\gtk2-ng\gtk\gtktextsegment.h">
+      <Filter>Header Files\gtk</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\gtk2-ng\gtk\gtktexttag.h">
+      <Filter>Header Files\gtk</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\gtk2-ng\gtk\gtktexttagprivate.h">
+      <Filter>Header Files\gtk</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\gtk2-ng\gtk\gtktexttagtable.h">
+      <Filter>Header Files\gtk</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\gtk2-ng\gtk\gtktexttypes.h">
+      <Filter>Header Files\gtk</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\gtk2-ng\gtk\gtktextutil.h">
+      <Filter>Header Files\gtk</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\gtk2-ng\gtk\gtktextview.h">
+      <Filter>Header Files\gtk</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\gtk2-ng\gtk\gtkthemes.h">
+      <Filter>Header Files\gtk</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\gtk2-ng\gtk\gtktipsquery.h">
+      <Filter>Header Files\gtk</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\gtk2-ng\gtk\gtktoggleaction.h">
+      <Filter>Header Files\gtk</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\gtk2-ng\gtk\gtktoggleactionprivate.h">
+      <Filter>Header Files\gtk</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\gtk2-ng\gtk\gtktogglebutton.h">
+      <Filter>Header Files\gtk</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\gtk2-ng\gtk\gtktoggletoolbutton.h">
+      <Filter>Header Files\gtk</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\gtk2-ng\gtk\gtktoolbar.h">
+      <Filter>Header Files\gtk</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\gtk2-ng\gtk\gtktoolbutton.h">
+      <Filter>Header Files\gtk</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\gtk2-ng\gtk\gtktoolitem.h">
+      <Filter>Header Files\gtk</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\gtk2-ng\gtk\gtktoolitemgroup.h">
+      <Filter>Header Files\gtk</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\gtk2-ng\gtk\gtktoolpalette.h">
+      <Filter>Header Files\gtk</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\gtk2-ng\gtk\gtktoolpaletteprivate.h">
+      <Filter>Header Files\gtk</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\gtk2-ng\gtk\gtktoolshell.h">
+      <Filter>Header Files\gtk</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\gtk2-ng\gtk\gtktooltip.h">
+      <Filter>Header Files\gtk</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\gtk2-ng\gtk\gtktooltips.h">
+      <Filter>Header Files\gtk</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\gtk2-ng\gtk\gtktrayicon.h">
+      <Filter>Header Files\gtk</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\gtk2-ng\gtk\gtktree.h">
+      <Filter>Header Files\gtk</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\gtk2-ng\gtk\gtktreedatalist.h">
+      <Filter>Header Files\gtk</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\gtk2-ng\gtk\gtktreednd.h">
+      <Filter>Header Files\gtk</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\gtk2-ng\gtk\gtktreeitem.h">
+      <Filter>Header Files\gtk</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\gtk2-ng\gtk\gtktreemodel.h">
+      <Filter>Header Files\gtk</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\gtk2-ng\gtk\gtktreemodelfilter.h">
+      <Filter>Header Files\gtk</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\gtk2-ng\gtk\gtktreemodelsort.h">
+      <Filter>Header Files\gtk</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\gtk2-ng\gtk\gtktreeprivate.h">
+      <Filter>Header Files\gtk</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\gtk2-ng\gtk\gtktreeselection.h">
+      <Filter>Header Files\gtk</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\gtk2-ng\gtk\gtktreesortable.h">
+      <Filter>Header Files\gtk</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\gtk2-ng\gtk\gtkversion.h">
+      <Filter>Generated files\gtk</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\gtk2-ng\gtk\gtkbuiltincache.h">
+      <Filter>Generated files\gtk</Filter>
+    </ClInclude>
+  </ItemGroup>
+</Project>

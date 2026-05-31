@@ -1,0 +1,919 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|ARM64">
+      <Configuration>Debug</Configuration>
+      <Platform>ARM64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|ARM64">
+      <Configuration>Release</Configuration>
+      <Platform>ARM64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\..\gtk2-ng\gdk\gdk.h" />
+    <ClInclude Include="..\..\gtk2-ng\gdk\gdkalias.h" />
+    <ClInclude Include="..\..\gtk2-ng\gdk\gdkapplaunchcontext.h" />
+    <ClInclude Include="..\..\gtk2-ng\gdk\gdkcairo.h" />
+    <ClInclude Include="..\..\gtk2-ng\gdk\gdkcolor.h" />
+    <ClInclude Include="..\..\gtk2-ng\gdk\gdkcursor.h" />
+    <ClInclude Include="..\..\gtk2-ng\gdk\gdkdisplay.h" />
+    <ClInclude Include="..\..\gtk2-ng\gdk\gdkdisplaymanager.h" />
+    <ClInclude Include="..\..\gtk2-ng\gdk\gdkdnd.h" />
+    <ClInclude Include="..\..\gtk2-ng\gdk\gdkdrawable.h" />
+    <ClInclude Include="..\..\gtk2-ng\gdk\gdkenumtypes.h" />
+    <ClInclude Include="..\..\gtk2-ng\gdk\gdkevents.h" />
+    <ClInclude Include="..\..\gtk2-ng\gdk\gdkfont.h" />
+    <ClInclude Include="..\..\gtk2-ng\gdk\gdkgc.h" />
+    <ClInclude Include="..\..\gtk2-ng\gdk\gdki18n.h" />
+    <ClInclude Include="..\..\gtk2-ng\gdk\gdkimage.h" />
+    <ClInclude Include="..\..\gtk2-ng\gdk\gdkinput.h" />
+    <ClInclude Include="..\..\gtk2-ng\gdk\gdkinternals.h" />
+    <ClInclude Include="..\..\gtk2-ng\gdk\gdkintl.h" />
+    <ClInclude Include="..\..\gtk2-ng\gdk\gdkkeys.h" />
+    <ClInclude Include="..\..\gtk2-ng\gdk\gdkkeysyms-compat.h" />
+    <ClInclude Include="..\..\gtk2-ng\gdk\gdkkeysyms.h" />
+    <ClInclude Include="..\..\gtk2-ng\gdk\gdkmarshalers.h" />
+    <ClInclude Include="..\..\gtk2-ng\gdk\gdkmedialib.h" />
+    <ClInclude Include="..\..\gtk2-ng\gdk\gdkpango.h" />
+    <ClInclude Include="..\..\gtk2-ng\gdk\gdkpixbuf.h" />
+    <ClInclude Include="..\..\gtk2-ng\gdk\gdkpixmap.h" />
+    <ClInclude Include="..\..\gtk2-ng\gdk\gdkpoly-generic.h" />
+    <ClInclude Include="..\..\gtk2-ng\gdk\gdkprivate.h" />
+    <ClInclude Include="..\..\gtk2-ng\gdk\gdkproperty.h" />
+    <ClInclude Include="..\..\gtk2-ng\gdk\gdkregion-generic.h" />
+    <ClInclude Include="..\..\gtk2-ng\gdk\gdkregion.h" />
+    <ClInclude Include="..\..\gtk2-ng\gdk\gdkrgb.h" />
+    <ClInclude Include="..\..\gtk2-ng\gdk\gdkscreen.h" />
+    <ClInclude Include="..\..\gtk2-ng\gdk\gdkselection.h" />
+    <ClInclude Include="..\..\gtk2-ng\gdk\gdkspawn.h" />
+    <ClInclude Include="..\..\gtk2-ng\gdk\gdktestutils.h" />
+    <ClInclude Include="..\..\gtk2-ng\gdk\gdktypes.h" />
+    <ClInclude Include="..\..\gtk2-ng\gdk\gdkvisual.h" />
+    <ClInclude Include="..\..\gtk2-ng\gdk\gdkwindow.h" />
+    <ClInclude Include="..\..\gtk2-ng\gdk\gdkwindowimpl.h" />
+    <ClInclude Include="..\..\gtk2-ng\gdk\keyname-table.h" />
+    <ClInclude Include="..\..\gtk2-ng\gdk\win32\gdkdrawable-win32.h" />
+    <ClInclude Include="..\..\gtk2-ng\gdk\win32\gdkinput-win32.h" />
+    <ClInclude Include="..\..\gtk2-ng\gdk\win32\gdkpixmap-win32.h" />
+    <ClInclude Include="..\..\gtk2-ng\gdk\win32\gdkprivate-win32.h" />
+    <ClInclude Include="..\..\gtk2-ng\gdk\win32\gdkwin32.h" />
+    <ClInclude Include="..\..\gtk2-ng\gdk\win32\gdkwin32keys.h" />
+    <ClInclude Include="..\..\gtk2-ng\gdk\win32\gdkwindow-win32.h" />
+    <ClInclude Include="..\..\gtk2-ng\gdk\win32\pktdef.h" />
+    <ClInclude Include="..\..\gtk2-ng\gdk\win32\wintab.h" />
+    <ClInclude Include="..\..\gtk2-ng\gdk\win32\xcursors.h" />
+    <ClInclude Include="..\config.h" />
+    <ClInclude Include="gdkconfig.h" />
+    <ClInclude Include="gdkwin32.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="..\..\gtk2-ng\gdk\win32\rc\gdk.rc" />
+  </ItemGroup>
+  <ItemGroup>
+    <CustomBuild Include="..\..\gtk2-ng\configure.ac">
+      <FileType>Document</FileType>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">"$(OutDir)idnhat.exe" %(RelativeDir)configure.ac %(RelativeDir)config.h.win32.in %(RelativeDir)gdk\win32\rc\gdk.rc.in </Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(OutDir)idnhat.exe;%(RelativeDir)config.h.win32.in;%(RelativeDir)gdk\win32\rc\gdk.rc.in</AdditionalInputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">false</LinkObjects>
+      <BuildInParallel Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</BuildInParallel>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">"$(OutDir)idnhat.exe" %(RelativeDir)configure.ac %(RelativeDir)config.h.win32.in %(RelativeDir)gdk\win32\rc\gdk.rc.in </Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(OutDir)idnhat.exe;%(RelativeDir)config.h.win32.in;%(RelativeDir)gdk\win32\rc\gdk.rc.in</AdditionalInputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">false</LinkObjects>
+      <BuildInParallel Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</BuildInParallel>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">"$(OutDir)idnhat.exe" %(RelativeDir)configure.ac %(RelativeDir)config.h.win32.in %(RelativeDir)gdk\win32\rc\gdk.rc.in </Command>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|ARM64'">"$(SolutionDir)build\$(Configuration)\x64\GTK\idnhat.exe" %(RelativeDir)configure.ac %(RelativeDir)config.h.win32.in %(RelativeDir)gdk\win32\rc\gdk.rc.in 
+</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(OutDir)idnhat.exe;%(RelativeDir)config.h.win32.in;%(RelativeDir)gdk\win32\rc\gdk.rc.in</AdditionalInputs>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|ARM64'">$(SolutionDir)build\$(Configuration)\x64\GTK\idnhat.exe;%(RelativeDir)config.h.win32.in;%(RelativeDir)gdk\win32\rc\gdk.rc.in</AdditionalInputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</LinkObjects>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Debug|ARM64'">false</LinkObjects>
+      <BuildInParallel Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</BuildInParallel>
+      <BuildInParallel Condition="'$(Configuration)|$(Platform)'=='Debug|ARM64'">true</BuildInParallel>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">"$(OutDir)idnhat.exe" %(RelativeDir)configure.ac %(RelativeDir)config.h.win32.in %(RelativeDir)gdk\win32\rc\gdk.rc.in </Command>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|ARM64'">"$(SolutionDir)build\$(Configuration)\x64\GTK\idnhat.exe" %(RelativeDir)configure.ac %(RelativeDir)config.h.win32.in %(RelativeDir)gdk\win32\rc\gdk.rc.in 
+</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(OutDir)idnhat.exe;%(RelativeDir)config.h.win32.in;%(RelativeDir)gdk\win32\rc\gdk.rc.in</AdditionalInputs>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|ARM64'">$(SolutionDir)build\$(Configuration)\x64\GTK\idnhat.exe;%(RelativeDir)config.h.win32.in;%(RelativeDir)gdk\win32\rc\gdk.rc.in</AdditionalInputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Release|x64'">false</LinkObjects>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Release|ARM64'">false</LinkObjects>
+      <BuildInParallel Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</BuildInParallel>
+      <BuildInParallel Condition="'$(Configuration)|$(Platform)'=='Release|ARM64'">true</BuildInParallel>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">%(RelativeDir)config.h.win32;%(RelativeDir)gdk\win32\rc\gdk.rc</Outputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">%(RelativeDir)config.h.win32;%(RelativeDir)gdk\win32\rc\gdk.rc</Outputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">%(RelativeDir)config.h.win32;%(RelativeDir)gdk\win32\rc\gdk.rc</Outputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|ARM64'">%(RelativeDir)config.h.win32;%(RelativeDir)gdk\win32\rc\gdk.rc</Outputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">%(RelativeDir)config.h.win32;%(RelativeDir)gdk\win32\rc\gdk.rc</Outputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|ARM64'">%(RelativeDir)config.h.win32;%(RelativeDir)gdk\win32\rc\gdk.rc</Outputs>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Running idnhat to parse configure.ac and process .in files</Message>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Running idnhat to parse configure.ac and process .in files</Message>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Running idnhat to parse configure.ac and process .in files</Message>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|ARM64'">Running idnhat to parse configure.ac and process .in files</Message>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Running idnhat to parse configure.ac and process .in files</Message>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|ARM64'">Running idnhat to parse configure.ac and process .in files</Message>
+    </CustomBuild>
+    <CustomBuild Include="..\..\gtk2-ng\gdk\gdk.symbols">
+      <FileType>Document</FileType>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">echo EXPORTS &gt; %(RelativeDir)gdk.def
+cl /EP -DINCLUDE_VARIABLES -DG_OS_WIN32 -DGDK_WINDOWING_WIN32 -DALL_FILES -DG_GNUC_CONST= %(RelativeDir)gdk.symbols -Dgdk_atom_get_type=;gdk_atom_get_type &gt;&gt; %(RelativeDir)gdk.def
+</Command>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">%(RelativeDir)gdk.def</Outputs>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">echo EXPORTS &gt; %(RelativeDir)gdk.def
+cl /EP -DINCLUDE_VARIABLES -DG_OS_WIN32 -DGDK_WINDOWING_WIN32 -DALL_FILES -DG_GNUC_CONST= %(RelativeDir)gdk.symbols -Dgdk_atom_get_type=;gdk_atom_get_type &gt;&gt; %(RelativeDir)gdk.def
+</Command>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">%(RelativeDir)gdk.def</Outputs>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">echo EXPORTS &gt; %(RelativeDir)gdk.def
+cl /EP -DINCLUDE_VARIABLES -DG_OS_WIN32 -DGDK_WINDOWING_WIN32 -DALL_FILES -DG_GNUC_CONST= %(RelativeDir)gdk.symbols -Dgdk_atom_get_type=;gdk_atom_get_type &gt;&gt; %(RelativeDir)gdk.def
+</Command>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|ARM64'">echo EXPORTS &gt; %(RelativeDir)gdk.def
+cl /EP -DINCLUDE_VARIABLES -DG_OS_WIN32 -DGDK_WINDOWING_WIN32 -DALL_FILES -DG_GNUC_CONST= %(RelativeDir)gdk.symbols -Dgdk_atom_get_type=;gdk_atom_get_type &gt;&gt; %(RelativeDir)gdk.def
+</Command>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">%(RelativeDir)gdk.def</Outputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|ARM64'">%(RelativeDir)gdk.def</Outputs>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">echo EXPORTS &gt; %(RelativeDir)gdk.def
+cl /EP -DINCLUDE_VARIABLES -DG_OS_WIN32 -DGDK_WINDOWING_WIN32 -DALL_FILES -DG_GNUC_CONST= %(RelativeDir)gdk.symbols -Dgdk_atom_get_type=;gdk_atom_get_type &gt;&gt; %(RelativeDir)gdk.def
+</Command>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|ARM64'">echo EXPORTS &gt; %(RelativeDir)gdk.def
+cl /EP -DINCLUDE_VARIABLES -DG_OS_WIN32 -DGDK_WINDOWING_WIN32 -DALL_FILES -DG_GNUC_CONST= %(RelativeDir)gdk.symbols -Dgdk_atom_get_type=;gdk_atom_get_type &gt;&gt; %(RelativeDir)gdk.def
+</Command>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">%(RelativeDir)gdk.def</Outputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|ARM64'">%(RelativeDir)gdk.def</Outputs>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Generating gdk.def</Message>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Generating gdk.def</Message>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Generating gdk.def</Message>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|ARM64'">Generating gdk.def</Message>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Generating gdk.def</Message>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|ARM64'">Generating gdk.def</Message>
+    </CustomBuild>
+    <None Include="..\..\gtk2-ng\config.h.win32" />
+    <None Include="..\..\gtk2-ng\gdk\gdk.def" />
+    <None Include="..\..\gtk2-ng\gdk\gdkconfig.h.win32" />
+    <CustomBuild Include="..\..\gtk2-ng\gdk\makegdkalias.pl">
+      <FileType>Document</FileType>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">perl %(RelativeDir)makegdkalias.pl &lt; %(RelativeDir)gdk.symbols &gt; %(RelativeDir)gdkalias.h
+perl %(RelativeDir)makegdkalias.pl -def &lt; %(RelativeDir)gdk.symbols &gt; %(RelativeDir)gdkaliasdef.c
+
+</Command>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">%(RelativeDir)gdkalias.h;%(RelativeDir)gdkaliasdef.c;%(Outputs)</Outputs>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">%(RelativeDir)gdk.symbols;%(AdditionalInputs)</AdditionalInputs>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">perl %(RelativeDir)makegdkalias.pl &lt; %(RelativeDir)gdk.symbols &gt; %(RelativeDir)gdkalias.h
+perl %(RelativeDir)makegdkalias.pl -def &lt; %(RelativeDir)gdk.symbols &gt; %(RelativeDir)gdkaliasdef.c
+
+</Command>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">%(RelativeDir)gdkalias.h;%(RelativeDir)gdkaliasdef.c;%(Outputs)</Outputs>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">%(RelativeDir)gdk.symbols;%(AdditionalInputs)</AdditionalInputs>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">perl %(RelativeDir)makegdkalias.pl &lt; %(RelativeDir)gdk.symbols &gt; %(RelativeDir)gdkalias.h
+perl %(RelativeDir)makegdkalias.pl -def &lt; %(RelativeDir)gdk.symbols &gt; %(RelativeDir)gdkaliasdef.c
+
+</Command>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|ARM64'">perl %(RelativeDir)makegdkalias.pl &lt; %(RelativeDir)gdk.symbols &gt; %(RelativeDir)gdkalias.h
+perl %(RelativeDir)makegdkalias.pl -def &lt; %(RelativeDir)gdk.symbols &gt; %(RelativeDir)gdkaliasdef.c
+
+</Command>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">%(RelativeDir)gdkalias.h;%(RelativeDir)gdkaliasdef.c;%(Outputs)</Outputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|ARM64'">%(RelativeDir)gdkalias.h;%(RelativeDir)gdkaliasdef.c;%(Outputs)</Outputs>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">%(RelativeDir)gdk.symbols;%(AdditionalInputs)</AdditionalInputs>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|ARM64'">%(RelativeDir)gdk.symbols;%(AdditionalInputs)</AdditionalInputs>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">perl %(RelativeDir)makegdkalias.pl &lt; %(RelativeDir)gdk.symbols &gt; %(RelativeDir)gdkalias.h
+perl %(RelativeDir)makegdkalias.pl -def &lt; %(RelativeDir)gdk.symbols &gt; %(RelativeDir)gdkaliasdef.c
+
+</Command>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|ARM64'">perl %(RelativeDir)makegdkalias.pl &lt; %(RelativeDir)gdk.symbols &gt; %(RelativeDir)gdkalias.h
+perl %(RelativeDir)makegdkalias.pl -def &lt; %(RelativeDir)gdk.symbols &gt; %(RelativeDir)gdkaliasdef.c
+
+</Command>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">%(RelativeDir)gdkalias.h;%(RelativeDir)gdkaliasdef.c;%(Outputs)</Outputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|ARM64'">%(RelativeDir)gdkalias.h;%(RelativeDir)gdkaliasdef.c;%(Outputs)</Outputs>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">%(RelativeDir)gdk.symbols;%(AdditionalInputs)</AdditionalInputs>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|ARM64'">%(RelativeDir)gdk.symbols;%(AdditionalInputs)</AdditionalInputs>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Generating gdkalias</Message>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Generating gdkalias</Message>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Generating gdkalias</Message>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|ARM64'">Generating gdkalias</Message>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Generating gdkalias</Message>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|ARM64'">Generating gdkalias</Message>
+    </CustomBuild>
+    <CustomBuild Include="..\..\gtk2-ng\gdk\gdkenumtypes.c.template">
+      <FileType>Document</FileType>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">%(relativeDir)gdkenumtypes.c</Outputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">%(relativeDir)gdkenumtypes.c</Outputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">%(relativeDir)gdkenumtypes.c</Outputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|ARM64'">%(relativeDir)gdkenumtypes.c</Outputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">%(relativeDir)gdkenumtypes.c</Outputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|ARM64'">%(relativeDir)gdkenumtypes.c</Outputs>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">cd %(relativedir)
+python3 "$(GLIB_TOOLS)glib-mkenums" --template gdkenumtypes.c.template gdk.h gdkcolor.h gdkcursor.h gdkdnd.h gdkdrawable.h gdkevents.h gdkfont.h gdkgc.h gdkkeysyms.h gdki18n.h gdkimage.h gdkinput.h gdkkeys.h gdkpango.h gdkpixbuf.h gdkpixmap.h gdkproperty.h gdkregion.h gdkrgb.h gdkselection.h gdktypes.h gdkvisual.h gdkwindow.h &gt; gdkenumtypes.c
+</Command>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">cd %(relativedir)
+python3 "$(GLIB_TOOLS)glib-mkenums" --template gdkenumtypes.c.template gdk.h gdkcolor.h gdkcursor.h gdkdnd.h gdkdrawable.h gdkevents.h gdkfont.h gdkgc.h gdkkeysyms.h gdki18n.h gdkimage.h gdkinput.h gdkkeys.h gdkpango.h gdkpixbuf.h gdkpixmap.h gdkproperty.h gdkregion.h gdkrgb.h gdkselection.h gdktypes.h gdkvisual.h gdkwindow.h &gt; gdkenumtypes.c
+</Command>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">cd %(relativedir)
+python3 "$(GLIB_TOOLS)glib-mkenums" --template gdkenumtypes.c.template gdk.h gdkcolor.h gdkcursor.h gdkdnd.h gdkdrawable.h gdkevents.h gdkfont.h gdkgc.h gdkkeysyms.h gdki18n.h gdkimage.h gdkinput.h gdkkeys.h gdkpango.h gdkpixbuf.h gdkpixmap.h gdkproperty.h gdkregion.h gdkrgb.h gdkselection.h gdktypes.h gdkvisual.h gdkwindow.h &gt; gdkenumtypes.c
+</Command>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|ARM64'">cd %(relativedir)
+python3 "$(GLIB_TOOLS)glib-mkenums" --template gdkenumtypes.c.template gdk.h gdkcolor.h gdkcursor.h gdkdnd.h gdkdrawable.h gdkevents.h gdkfont.h gdkgc.h gdkkeysyms.h gdki18n.h gdkimage.h gdkinput.h gdkkeys.h gdkpango.h gdkpixbuf.h gdkpixmap.h gdkproperty.h gdkregion.h gdkrgb.h gdkselection.h gdktypes.h gdkvisual.h gdkwindow.h &gt; gdkenumtypes.c
+</Command>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">cd %(relativedir)
+python3 "$(GLIB_TOOLS)glib-mkenums" --template gdkenumtypes.c.template gdk.h gdkcolor.h gdkcursor.h gdkdnd.h gdkdrawable.h gdkevents.h gdkfont.h gdkgc.h gdkkeysyms.h gdki18n.h gdkimage.h gdkinput.h gdkkeys.h gdkpango.h gdkpixbuf.h gdkpixmap.h gdkproperty.h gdkregion.h gdkrgb.h gdkselection.h gdktypes.h gdkvisual.h gdkwindow.h &gt; gdkenumtypes.c
+</Command>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|ARM64'">cd %(relativedir)
+python3 "$(GLIB_TOOLS)glib-mkenums" --template gdkenumtypes.c.template gdk.h gdkcolor.h gdkcursor.h gdkdnd.h gdkdrawable.h gdkevents.h gdkfont.h gdkgc.h gdkkeysyms.h gdki18n.h gdkimage.h gdkinput.h gdkkeys.h gdkpango.h gdkpixbuf.h gdkpixmap.h gdkproperty.h gdkregion.h gdkrgb.h gdkselection.h gdktypes.h gdkvisual.h gdkwindow.h &gt; gdkenumtypes.c
+</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">%(relativeDir)gdk.h;%(relativeDir)gdkcolor.h;%(relativeDir)gdkcursor.h;%(relativeDir)gdkdnd.h;%(relativeDir)gdkdrawable.h;%(relativeDir)gdkevents.h;%(relativeDir)gdkfont.h;%(relativeDir)gdkgc.h;%(relativeDir)gdkkeysyms.h;%(relativeDir)gdki18n.h;%(relativeDir)gdkimage.h;%(relativeDir)gdkinput.h;%(relativeDir)gdkkeys.h;%(relativeDir)gdkpango.h;%(relativeDir)gdkpixbuf.h;%(relativeDir)gdkpixmap.h	;%(relativeDir)gdkproperty.h;%(relativeDir)gdkregion.h;%(relativeDir)gdkrgb.h;%(relativeDir)gdkselection.h;%(relativeDir)gdktypes.h;%(relativeDir)gdkvisual.h;%(relativeDir)gdkwindow.h;%(AdditionalInputs)</AdditionalInputs>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">%(relativeDir)gdk.h;%(relativeDir)gdkcolor.h;%(relativeDir)gdkcursor.h;%(relativeDir)gdkdnd.h;%(relativeDir)gdkdrawable.h;%(relativeDir)gdkevents.h;%(relativeDir)gdkfont.h;%(relativeDir)gdkgc.h;%(relativeDir)gdkkeysyms.h;%(relativeDir)gdki18n.h;%(relativeDir)gdkimage.h;%(relativeDir)gdkinput.h;%(relativeDir)gdkkeys.h;%(relativeDir)gdkpango.h;%(relativeDir)gdkpixbuf.h;%(relativeDir)gdkpixmap.h	;%(relativeDir)gdkproperty.h;%(relativeDir)gdkregion.h;%(relativeDir)gdkrgb.h;%(relativeDir)gdkselection.h;%(relativeDir)gdktypes.h;%(relativeDir)gdkvisual.h;%(relativeDir)gdkwindow.h;%(AdditionalInputs)</AdditionalInputs>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">%(relativeDir)gdk.h;%(relativeDir)gdkcolor.h;%(relativeDir)gdkcursor.h;%(relativeDir)gdkdnd.h;%(relativeDir)gdkdrawable.h;%(relativeDir)gdkevents.h;%(relativeDir)gdkfont.h;%(relativeDir)gdkgc.h;%(relativeDir)gdkkeysyms.h;%(relativeDir)gdki18n.h;%(relativeDir)gdkimage.h;%(relativeDir)gdkinput.h;%(relativeDir)gdkkeys.h;%(relativeDir)gdkpango.h;%(relativeDir)gdkpixbuf.h;%(relativeDir)gdkpixmap.h	;%(relativeDir)gdkproperty.h;%(relativeDir)gdkregion.h;%(relativeDir)gdkrgb.h;%(relativeDir)gdkselection.h;%(relativeDir)gdktypes.h;%(relativeDir)gdkvisual.h;%(relativeDir)gdkwindow.h;%(AdditionalInputs)</AdditionalInputs>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|ARM64'">%(relativeDir)gdk.h;%(relativeDir)gdkcolor.h;%(relativeDir)gdkcursor.h;%(relativeDir)gdkdnd.h;%(relativeDir)gdkdrawable.h;%(relativeDir)gdkevents.h;%(relativeDir)gdkfont.h;%(relativeDir)gdkgc.h;%(relativeDir)gdkkeysyms.h;%(relativeDir)gdki18n.h;%(relativeDir)gdkimage.h;%(relativeDir)gdkinput.h;%(relativeDir)gdkkeys.h;%(relativeDir)gdkpango.h;%(relativeDir)gdkpixbuf.h;%(relativeDir)gdkpixmap.h	;%(relativeDir)gdkproperty.h;%(relativeDir)gdkregion.h;%(relativeDir)gdkrgb.h;%(relativeDir)gdkselection.h;%(relativeDir)gdktypes.h;%(relativeDir)gdkvisual.h;%(relativeDir)gdkwindow.h;%(AdditionalInputs)</AdditionalInputs>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">%(relativeDir)gdk.h;%(relativeDir)gdkcolor.h;%(relativeDir)gdkcursor.h;%(relativeDir)gdkdnd.h;%(relativeDir)gdkdrawable.h;%(relativeDir)gdkevents.h;%(relativeDir)gdkfont.h;%(relativeDir)gdkgc.h;%(relativeDir)gdkkeysyms.h;%(relativeDir)gdki18n.h;%(relativeDir)gdkimage.h;%(relativeDir)gdkinput.h;%(relativeDir)gdkkeys.h;%(relativeDir)gdkpango.h;%(relativeDir)gdkpixbuf.h;%(relativeDir)gdkpixmap.h	;%(relativeDir)gdkproperty.h;%(relativeDir)gdkregion.h;%(relativeDir)gdkrgb.h;%(relativeDir)gdkselection.h;%(relativeDir)gdktypes.h;%(relativeDir)gdkvisual.h;%(relativeDir)gdkwindow.h;%(AdditionalInputs)</AdditionalInputs>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|ARM64'">%(relativeDir)gdk.h;%(relativeDir)gdkcolor.h;%(relativeDir)gdkcursor.h;%(relativeDir)gdkdnd.h;%(relativeDir)gdkdrawable.h;%(relativeDir)gdkevents.h;%(relativeDir)gdkfont.h;%(relativeDir)gdkgc.h;%(relativeDir)gdkkeysyms.h;%(relativeDir)gdki18n.h;%(relativeDir)gdkimage.h;%(relativeDir)gdkinput.h;%(relativeDir)gdkkeys.h;%(relativeDir)gdkpango.h;%(relativeDir)gdkpixbuf.h;%(relativeDir)gdkpixmap.h	;%(relativeDir)gdkproperty.h;%(relativeDir)gdkregion.h;%(relativeDir)gdkrgb.h;%(relativeDir)gdkselection.h;%(relativeDir)gdktypes.h;%(relativeDir)gdkvisual.h;%(relativeDir)gdkwindow.h;%(AdditionalInputs)</AdditionalInputs>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Generating gdkenumtypes.c</Message>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Generating gdkenumtypes.c</Message>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Generating gdkenumtypes.c</Message>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|ARM64'">Generating gdkenumtypes.c</Message>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Generating gdkenumtypes.c</Message>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|ARM64'">Generating gdkenumtypes.c</Message>
+    </CustomBuild>
+    <CustomBuild Include="..\..\gtk2-ng\gdk\gdkenumtypes.h.template">
+      <FileType>Document</FileType>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">cd %(relativedir)
+python3 "$(GLIB_TOOLS)\glib-mkenums"  --template gdkenumtypes.h.template gdk.h gdkcolor.h gdkcursor.h gdkdnd.h gdkdrawable.h gdkevents.h gdkfont.h gdkgc.h gdkkeysyms.h gdki18n.h gdkimage.h gdkinput.h gdkkeys.h gdkpango.h gdkpixbuf.h gdkpixmap.h gdkproperty.h gdkregion.h gdkrgb.h gdkselection.h gdktypes.h gdkvisual.h gdkwindow.h &gt; gdkenumtypes.h
+</Command>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">%(relativeDir)gdkenumtypes.h</Outputs>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">cd %(relativedir)
+python3 "$(GLIB_TOOLS)\glib-mkenums"  --template gdkenumtypes.h.template gdk.h gdkcolor.h gdkcursor.h gdkdnd.h gdkdrawable.h gdkevents.h gdkfont.h gdkgc.h gdkkeysyms.h gdki18n.h gdkimage.h gdkinput.h gdkkeys.h gdkpango.h gdkpixbuf.h gdkpixmap.h gdkproperty.h gdkregion.h gdkrgb.h gdkselection.h gdktypes.h gdkvisual.h gdkwindow.h &gt; gdkenumtypes.h
+</Command>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">%(relativeDir)gdkenumtypes.h</Outputs>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">cd %(relativedir)
+python3 "$(GLIB_TOOLS)\glib-mkenums"  --template gdkenumtypes.h.template gdk.h gdkcolor.h gdkcursor.h gdkdnd.h gdkdrawable.h gdkevents.h gdkfont.h gdkgc.h gdkkeysyms.h gdki18n.h gdkimage.h gdkinput.h gdkkeys.h gdkpango.h gdkpixbuf.h gdkpixmap.h gdkproperty.h gdkregion.h gdkrgb.h gdkselection.h gdktypes.h gdkvisual.h gdkwindow.h &gt; gdkenumtypes.h
+</Command>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|ARM64'">cd %(relativedir)
+python3 "$(GLIB_TOOLS)\glib-mkenums"  --template gdkenumtypes.h.template gdk.h gdkcolor.h gdkcursor.h gdkdnd.h gdkdrawable.h gdkevents.h gdkfont.h gdkgc.h gdkkeysyms.h gdki18n.h gdkimage.h gdkinput.h gdkkeys.h gdkpango.h gdkpixbuf.h gdkpixmap.h gdkproperty.h gdkregion.h gdkrgb.h gdkselection.h gdktypes.h gdkvisual.h gdkwindow.h &gt; gdkenumtypes.h
+</Command>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">%(relativeDir)gdkenumtypes.h</Outputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|ARM64'">%(relativeDir)gdkenumtypes.h</Outputs>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">cd %(relativedir)
+python3 "$(GLIB_TOOLS)\glib-mkenums"  --template gdkenumtypes.h.template gdk.h gdkcolor.h gdkcursor.h gdkdnd.h gdkdrawable.h gdkevents.h gdkfont.h gdkgc.h gdkkeysyms.h gdki18n.h gdkimage.h gdkinput.h gdkkeys.h gdkpango.h gdkpixbuf.h gdkpixmap.h gdkproperty.h gdkregion.h gdkrgb.h gdkselection.h gdktypes.h gdkvisual.h gdkwindow.h &gt; gdkenumtypes.h
+</Command>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|ARM64'">cd %(relativedir)
+python3 "$(GLIB_TOOLS)\glib-mkenums"  --template gdkenumtypes.h.template gdk.h gdkcolor.h gdkcursor.h gdkdnd.h gdkdrawable.h gdkevents.h gdkfont.h gdkgc.h gdkkeysyms.h gdki18n.h gdkimage.h gdkinput.h gdkkeys.h gdkpango.h gdkpixbuf.h gdkpixmap.h gdkproperty.h gdkregion.h gdkrgb.h gdkselection.h gdktypes.h gdkvisual.h gdkwindow.h &gt; gdkenumtypes.h
+</Command>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">%(relativeDir)gdkenumtypes.h</Outputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|ARM64'">%(relativeDir)gdkenumtypes.h</Outputs>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">%(relativeDir)gdk.h;%(relativeDir)gdkcolor.h;%(relativeDir)gdkcursor.h;%(relativeDir)gdkdnd.h;%(relativeDir)gdkdrawable.h;%(relativeDir)gdkevents.h;%(relativeDir)gdkfont.h;%(relativeDir)gdkgc.h;%(relativeDir)gdkkeysyms.h;%(relativeDir)gdki18n.h;%(relativeDir)gdkimage.h;%(relativeDir)gdkinput.h;%(relativeDir)gdkkeys.h;%(relativeDir)gdkpango.h;%(relativeDir)gdkpixbuf.h;%(relativeDir)gdkpixmap.h	;%(relativeDir)gdkproperty.h;%(relativeDir)gdkregion.h;%(relativeDir)gdkrgb.h;%(relativeDir)gdkselection.h;%(relativeDir)gdktypes.h;%(relativeDir)gdkvisual.h;%(relativeDir)gdkwindow.h;%(AdditionalInputs)</AdditionalInputs>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">%(relativeDir)gdk.h;%(relativeDir)gdkcolor.h;%(relativeDir)gdkcursor.h;%(relativeDir)gdkdnd.h;%(relativeDir)gdkdrawable.h;%(relativeDir)gdkevents.h;%(relativeDir)gdkfont.h;%(relativeDir)gdkgc.h;%(relativeDir)gdkkeysyms.h;%(relativeDir)gdki18n.h;%(relativeDir)gdkimage.h;%(relativeDir)gdkinput.h;%(relativeDir)gdkkeys.h;%(relativeDir)gdkpango.h;%(relativeDir)gdkpixbuf.h;%(relativeDir)gdkpixmap.h	;%(relativeDir)gdkproperty.h;%(relativeDir)gdkregion.h;%(relativeDir)gdkrgb.h;%(relativeDir)gdkselection.h;%(relativeDir)gdktypes.h;%(relativeDir)gdkvisual.h;%(relativeDir)gdkwindow.h;%(AdditionalInputs)</AdditionalInputs>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">%(relativeDir)gdk.h;%(relativeDir)gdkcolor.h;%(relativeDir)gdkcursor.h;%(relativeDir)gdkdnd.h;%(relativeDir)gdkdrawable.h;%(relativeDir)gdkevents.h;%(relativeDir)gdkfont.h;%(relativeDir)gdkgc.h;%(relativeDir)gdkkeysyms.h;%(relativeDir)gdki18n.h;%(relativeDir)gdkimage.h;%(relativeDir)gdkinput.h;%(relativeDir)gdkkeys.h;%(relativeDir)gdkpango.h;%(relativeDir)gdkpixbuf.h;%(relativeDir)gdkpixmap.h	;%(relativeDir)gdkproperty.h;%(relativeDir)gdkregion.h;%(relativeDir)gdkrgb.h;%(relativeDir)gdkselection.h;%(relativeDir)gdktypes.h;%(relativeDir)gdkvisual.h;%(relativeDir)gdkwindow.h;%(AdditionalInputs)</AdditionalInputs>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|ARM64'">%(relativeDir)gdk.h;%(relativeDir)gdkcolor.h;%(relativeDir)gdkcursor.h;%(relativeDir)gdkdnd.h;%(relativeDir)gdkdrawable.h;%(relativeDir)gdkevents.h;%(relativeDir)gdkfont.h;%(relativeDir)gdkgc.h;%(relativeDir)gdkkeysyms.h;%(relativeDir)gdki18n.h;%(relativeDir)gdkimage.h;%(relativeDir)gdkinput.h;%(relativeDir)gdkkeys.h;%(relativeDir)gdkpango.h;%(relativeDir)gdkpixbuf.h;%(relativeDir)gdkpixmap.h	;%(relativeDir)gdkproperty.h;%(relativeDir)gdkregion.h;%(relativeDir)gdkrgb.h;%(relativeDir)gdkselection.h;%(relativeDir)gdktypes.h;%(relativeDir)gdkvisual.h;%(relativeDir)gdkwindow.h;%(AdditionalInputs)</AdditionalInputs>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">%(relativeDir)gdk.h;%(relativeDir)gdkcolor.h;%(relativeDir)gdkcursor.h;%(relativeDir)gdkdnd.h;%(relativeDir)gdkdrawable.h;%(relativeDir)gdkevents.h;%(relativeDir)gdkfont.h;%(relativeDir)gdkgc.h;%(relativeDir)gdkkeysyms.h;%(relativeDir)gdki18n.h;%(relativeDir)gdkimage.h;%(relativeDir)gdkinput.h;%(relativeDir)gdkkeys.h;%(relativeDir)gdkpango.h;%(relativeDir)gdkpixbuf.h;%(relativeDir)gdkpixmap.h	;%(relativeDir)gdkproperty.h;%(relativeDir)gdkregion.h;%(relativeDir)gdkrgb.h;%(relativeDir)gdkselection.h;%(relativeDir)gdktypes.h;%(relativeDir)gdkvisual.h;%(relativeDir)gdkwindow.h;%(AdditionalInputs)</AdditionalInputs>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|ARM64'">%(relativeDir)gdk.h;%(relativeDir)gdkcolor.h;%(relativeDir)gdkcursor.h;%(relativeDir)gdkdnd.h;%(relativeDir)gdkdrawable.h;%(relativeDir)gdkevents.h;%(relativeDir)gdkfont.h;%(relativeDir)gdkgc.h;%(relativeDir)gdkkeysyms.h;%(relativeDir)gdki18n.h;%(relativeDir)gdkimage.h;%(relativeDir)gdkinput.h;%(relativeDir)gdkkeys.h;%(relativeDir)gdkpango.h;%(relativeDir)gdkpixbuf.h;%(relativeDir)gdkpixmap.h	;%(relativeDir)gdkproperty.h;%(relativeDir)gdkregion.h;%(relativeDir)gdkrgb.h;%(relativeDir)gdkselection.h;%(relativeDir)gdktypes.h;%(relativeDir)gdkvisual.h;%(relativeDir)gdkwindow.h;%(AdditionalInputs)</AdditionalInputs>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Generating gdkenumtypes.h</Message>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Generating gdkenumtypes.h</Message>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Generating gdkenumtypes.h</Message>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|ARM64'">Generating gdkenumtypes.h</Message>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Generating gdkenumtypes.h</Message>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|ARM64'">Generating gdkenumtypes.h</Message>
+    </CustomBuild>
+    <CustomBuild Include="..\..\gtk2-ng\gdk\gdkmarshalers.list">
+      <FileType>Document</FileType>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">%(RelativeDir)gdkmarshalers.h;%(RelativeDir)gdkmarshalers.c</Outputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">%(RelativeDir)gdkmarshalers.h;%(RelativeDir)gdkmarshalers.c</Outputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">%(RelativeDir)gdkmarshalers.h;%(RelativeDir)gdkmarshalers.c</Outputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|ARM64'">%(RelativeDir)gdkmarshalers.h;%(RelativeDir)gdkmarshalers.c</Outputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">%(RelativeDir)gdkmarshalers.h;%(RelativeDir)gdkmarshalers.c</Outputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|ARM64'">%(RelativeDir)gdkmarshalers.h;%(RelativeDir)gdkmarshalers.c</Outputs>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">cd %(relativedir)
+python3 $(_ZVcpkgCurrentInstalledDir)tools\glib\glib-genmarshal  --prefix=_gdk_marshal gdkmarshalers.list --header &gt;&gt;gdkmarshalers.h
+python3 $(_ZVcpkgCurrentInstalledDir)tools\glib\glib-genmarshal  --prefix=_gdk_marshal gdkmarshalers.list --body &gt;gdkmarshalers.c
+
+</Command>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">cd %(relativedir)
+python3 $(_ZVcpkgCurrentInstalledDir)tools\glib\glib-genmarshal  --prefix=_gdk_marshal gdkmarshalers.list --header &gt;&gt;gdkmarshalers.h
+python3 $(_ZVcpkgCurrentInstalledDir)tools\glib\glib-genmarshal  --prefix=_gdk_marshal gdkmarshalers.list --body &gt;gdkmarshalers.c
+
+</Command>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">cd %(relativedir)
+python3 $(_ZVcpkgCurrentInstalledDir)tools\glib\glib-genmarshal  --prefix=_gdk_marshal gdkmarshalers.list --header &gt;&gt;gdkmarshalers.h
+python3 $(_ZVcpkgCurrentInstalledDir)tools\glib\glib-genmarshal  --prefix=_gdk_marshal gdkmarshalers.list --body &gt;gdkmarshalers.c
+
+</Command>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|ARM64'">cd %(relativedir)
+python3 $(_ZVcpkgCurrentInstalledDir)tools\glib\glib-genmarshal  --prefix=_gdk_marshal gdkmarshalers.list --header &gt;&gt;gdkmarshalers.h
+python3 $(_ZVcpkgCurrentInstalledDir)tools\glib\glib-genmarshal  --prefix=_gdk_marshal gdkmarshalers.list --body &gt;gdkmarshalers.c
+
+</Command>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">cd %(relativedir)
+python3 $(_ZVcpkgCurrentInstalledDir)tools\glib\glib-genmarshal  --prefix=_gdk_marshal gdkmarshalers.list --header &gt;&gt;gdkmarshalers.h
+python3 $(_ZVcpkgCurrentInstalledDir)tools\glib\glib-genmarshal  --prefix=_gdk_marshal gdkmarshalers.list --body &gt;gdkmarshalers.c
+
+</Command>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|ARM64'">cd %(relativedir)
+python3 $(_ZVcpkgCurrentInstalledDir)tools\glib\glib-genmarshal  --prefix=_gdk_marshal gdkmarshalers.list --header &gt;&gt;gdkmarshalers.h
+python3 $(_ZVcpkgCurrentInstalledDir)tools\glib\glib-genmarshal  --prefix=_gdk_marshal gdkmarshalers.list --body &gt;gdkmarshalers.c
+
+</Command>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Generating gdkmarshalers</Message>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Generating gdkmarshalers</Message>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Generating gdkmarshalers</Message>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|ARM64'">Generating gdkmarshalers</Message>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Generating gdkmarshalers</Message>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|ARM64'">Generating gdkmarshalers</Message>
+    </CustomBuild>
+    <None Include="..\..\vcpkg-configuration.json" />
+    <None Include="..\..\vcpkg.json" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\..\gtk2-ng\gdk\gdk.c" />
+    <ClCompile Include="..\..\gtk2-ng\gdk\gdkaliasdef.c" />
+    <ClCompile Include="..\..\gtk2-ng\gdk\gdkapplaunchcontext.c" />
+    <ClCompile Include="..\..\gtk2-ng\gdk\gdkcairo.c" />
+    <ClCompile Include="..\..\gtk2-ng\gdk\gdkcolor.c" />
+    <ClCompile Include="..\..\gtk2-ng\gdk\gdkcursor.c" />
+    <ClCompile Include="..\..\gtk2-ng\gdk\gdkdisplay.c" />
+    <ClCompile Include="..\..\gtk2-ng\gdk\gdkdisplaymanager.c" />
+    <ClCompile Include="..\..\gtk2-ng\gdk\gdkdnd.c" />
+    <ClCompile Include="..\..\gtk2-ng\gdk\gdkdraw.c" />
+    <ClCompile Include="..\..\gtk2-ng\gdk\gdkenumtypes.c" />
+    <ClCompile Include="..\..\gtk2-ng\gdk\gdkevents.c" />
+    <ClCompile Include="..\..\gtk2-ng\gdk\gdkfont.c" />
+    <ClCompile Include="..\..\gtk2-ng\gdk\gdkgc.c" />
+    <ClCompile Include="..\..\gtk2-ng\gdk\gdkglobals.c" />
+    <ClCompile Include="..\..\gtk2-ng\gdk\gdkimage.c" />
+    <ClCompile Include="..\..\gtk2-ng\gdk\gdkkeynames.c" />
+    <ClCompile Include="..\..\gtk2-ng\gdk\gdkkeys.c" />
+    <ClCompile Include="..\..\gtk2-ng\gdk\gdkkeyuni.c" />
+    <ClCompile Include="..\..\gtk2-ng\gdk\gdkmarshalers.c" />
+    <ClCompile Include="..\..\gtk2-ng\gdk\gdkoffscreenwindow.c" />
+    <ClCompile Include="..\..\gtk2-ng\gdk\gdkpango.c" />
+    <ClCompile Include="..\..\gtk2-ng\gdk\gdkpixbuf-drawable.c" />
+    <ClCompile Include="..\..\gtk2-ng\gdk\gdkpixbuf-render.c" />
+    <ClCompile Include="..\..\gtk2-ng\gdk\gdkpixmap.c" />
+    <ClCompile Include="..\..\gtk2-ng\gdk\gdkpolyreg-generic.c" />
+    <ClCompile Include="..\..\gtk2-ng\gdk\gdkrectangle.c" />
+    <ClCompile Include="..\..\gtk2-ng\gdk\gdkregion-generic.c" />
+    <ClCompile Include="..\..\gtk2-ng\gdk\gdkrgb.c" />
+    <ClCompile Include="..\..\gtk2-ng\gdk\gdkscreen.c" />
+    <ClCompile Include="..\..\gtk2-ng\gdk\gdkselection.c" />
+    <ClCompile Include="..\..\gtk2-ng\gdk\gdkvisual.c" />
+    <ClCompile Include="..\..\gtk2-ng\gdk\gdkwindow.c" />
+    <ClCompile Include="..\..\gtk2-ng\gdk\gdkwindowimpl.c" />
+    <ClCompile Include="..\..\gtk2-ng\gdk\win32\gdkapplaunchcontext-win32.c">
+      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">INSIDE_GDK_WIN32;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">INSIDE_GDK_WIN32;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">INSIDE_GDK_WIN32;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Debug|ARM64'">INSIDE_GDK_WIN32;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Release|x64'">INSIDE_GDK_WIN32;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Release|ARM64'">INSIDE_GDK_WIN32;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ClCompile>
+    <ClCompile Include="..\..\gtk2-ng\gdk\win32\gdkcolor-win32.c">
+      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">INSIDE_GDK_WIN32;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Debug|ARM64'">INSIDE_GDK_WIN32;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">INSIDE_GDK_WIN32;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">INSIDE_GDK_WIN32;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Release|x64'">INSIDE_GDK_WIN32;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Release|ARM64'">INSIDE_GDK_WIN32;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ClCompile>
+    <ClCompile Include="..\..\gtk2-ng\gdk\win32\gdkcursor-win32.c" />
+    <ClCompile Include="..\..\gtk2-ng\gdk\win32\gdkdisplay-win32.c">
+      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">INSIDE_GDK_WIN32;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">INSIDE_GDK_WIN32;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">INSIDE_GDK_WIN32;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Debug|ARM64'">INSIDE_GDK_WIN32;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Release|x64'">INSIDE_GDK_WIN32;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Release|ARM64'">INSIDE_GDK_WIN32;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ClCompile>
+    <ClCompile Include="..\..\gtk2-ng\gdk\win32\gdkdnd-win32.c">
+      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">INSIDE_GDK_WIN32;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">INSIDE_GDK_WIN32;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">INSIDE_GDK_WIN32;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Debug|ARM64'">INSIDE_GDK_WIN32;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Release|x64'">INSIDE_GDK_WIN32;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Release|ARM64'">INSIDE_GDK_WIN32;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ClCompile>
+    <ClCompile Include="..\..\gtk2-ng\gdk\win32\gdkdrawable-win32.c">
+      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">INSIDE_GDK_WIN32;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">INSIDE_GDK_WIN32;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">INSIDE_GDK_WIN32;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Debug|ARM64'">INSIDE_GDK_WIN32;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Release|x64'">INSIDE_GDK_WIN32;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Release|ARM64'">INSIDE_GDK_WIN32;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ClCompile>
+    <ClCompile Include="..\..\gtk2-ng\gdk\win32\gdkevents-win32.c">
+      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">INSIDE_GDK_WIN32;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">INSIDE_GDK_WIN32;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">INSIDE_GDK_WIN32;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Debug|ARM64'">INSIDE_GDK_WIN32;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Release|x64'">INSIDE_GDK_WIN32;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Release|ARM64'">INSIDE_GDK_WIN32;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ClCompile>
+    <ClCompile Include="..\..\gtk2-ng\gdk\win32\gdkfont-win32.c">
+      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">INSIDE_GDK_WIN32;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">INSIDE_GDK_WIN32;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">INSIDE_GDK_WIN32;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Debug|ARM64'">INSIDE_GDK_WIN32;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Release|x64'">INSIDE_GDK_WIN32;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Release|ARM64'">INSIDE_GDK_WIN32;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ClCompile>
+    <ClCompile Include="..\..\gtk2-ng\gdk\win32\gdkgc-win32.c">
+      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">INSIDE_GDK_WIN32;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">INSIDE_GDK_WIN32;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">INSIDE_GDK_WIN32;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Debug|ARM64'">INSIDE_GDK_WIN32;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Release|x64'">INSIDE_GDK_WIN32;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Release|ARM64'">INSIDE_GDK_WIN32;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ClCompile>
+    <ClCompile Include="..\..\gtk2-ng\gdk\win32\gdkgeometry-win32.c">
+      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">INSIDE_GDK_WIN32;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">INSIDE_GDK_WIN32;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">INSIDE_GDK_WIN32;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Debug|ARM64'">INSIDE_GDK_WIN32;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Release|x64'">INSIDE_GDK_WIN32;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Release|ARM64'">INSIDE_GDK_WIN32;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ClCompile>
+    <ClCompile Include="..\..\gtk2-ng\gdk\win32\gdkglobals-win32.c">
+      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">INSIDE_GDK_WIN32;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">INSIDE_GDK_WIN32;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">INSIDE_GDK_WIN32;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Debug|ARM64'">INSIDE_GDK_WIN32;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Release|x64'">INSIDE_GDK_WIN32;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Release|ARM64'">INSIDE_GDK_WIN32;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ClCompile>
+    <ClCompile Include="..\..\gtk2-ng\gdk\win32\gdkim-win32.c">
+      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">INSIDE_GDK_WIN32;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">INSIDE_GDK_WIN32;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">INSIDE_GDK_WIN32;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Debug|ARM64'">INSIDE_GDK_WIN32;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Release|x64'">INSIDE_GDK_WIN32;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Release|ARM64'">INSIDE_GDK_WIN32;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ClCompile>
+    <ClCompile Include="..\..\gtk2-ng\gdk\win32\gdkimage-win32.c">
+      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">INSIDE_GDK_WIN32;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">INSIDE_GDK_WIN32;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">INSIDE_GDK_WIN32;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Debug|ARM64'">INSIDE_GDK_WIN32;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Release|x64'">INSIDE_GDK_WIN32;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Release|ARM64'">INSIDE_GDK_WIN32;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ClCompile>
+    <ClCompile Include="..\..\gtk2-ng\gdk\win32\gdkinput-win32.c">
+      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">INSIDE_GDK_WIN32;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">INSIDE_GDK_WIN32;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">INSIDE_GDK_WIN32;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Debug|ARM64'">INSIDE_GDK_WIN32;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Release|x64'">INSIDE_GDK_WIN32;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Release|ARM64'">INSIDE_GDK_WIN32;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ClCompile>
+    <ClCompile Include="..\..\gtk2-ng\gdk\win32\gdkinput.c">
+      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">INSIDE_GDK_WIN32;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">INSIDE_GDK_WIN32;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">INSIDE_GDK_WIN32;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Debug|ARM64'">INSIDE_GDK_WIN32;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Release|x64'">INSIDE_GDK_WIN32;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Release|ARM64'">INSIDE_GDK_WIN32;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ClCompile>
+    <ClCompile Include="..\..\gtk2-ng\gdk\win32\gdkkeys-win32.c">
+      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">INSIDE_GDK_WIN32;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">INSIDE_GDK_WIN32;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">INSIDE_GDK_WIN32;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Debug|ARM64'">INSIDE_GDK_WIN32;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Release|x64'">INSIDE_GDK_WIN32;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Release|ARM64'">INSIDE_GDK_WIN32;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ClCompile>
+    <ClCompile Include="..\..\gtk2-ng\gdk\win32\gdkmain-win32.c">
+      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">INSIDE_GDK_WIN32;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">INSIDE_GDK_WIN32;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">INSIDE_GDK_WIN32;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Debug|ARM64'">INSIDE_GDK_WIN32;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Release|x64'">INSIDE_GDK_WIN32;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Release|ARM64'">INSIDE_GDK_WIN32;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ClCompile>
+    <ClCompile Include="..\..\gtk2-ng\gdk\win32\gdkpixmap-win32.c">
+      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">INSIDE_GDK_WIN32;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">INSIDE_GDK_WIN32;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">INSIDE_GDK_WIN32;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Debug|ARM64'">INSIDE_GDK_WIN32;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Release|x64'">INSIDE_GDK_WIN32;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Release|ARM64'">INSIDE_GDK_WIN32;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ClCompile>
+    <ClCompile Include="..\..\gtk2-ng\gdk\win32\gdkproperty-win32.c">
+      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">INSIDE_GDK_WIN32;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">INSIDE_GDK_WIN32;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">INSIDE_GDK_WIN32;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Debug|ARM64'">INSIDE_GDK_WIN32;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Release|x64'">INSIDE_GDK_WIN32;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Release|ARM64'">INSIDE_GDK_WIN32;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ClCompile>
+    <ClCompile Include="..\..\gtk2-ng\gdk\win32\gdkscreen-win32.c">
+      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">INSIDE_GDK_WIN32;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">INSIDE_GDK_WIN32;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">INSIDE_GDK_WIN32;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Debug|ARM64'">INSIDE_GDK_WIN32;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Release|x64'">INSIDE_GDK_WIN32;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Release|ARM64'">INSIDE_GDK_WIN32;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ClCompile>
+    <ClCompile Include="..\..\gtk2-ng\gdk\win32\gdkselection-win32.c">
+      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">INSIDE_GDK_WIN32;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">INSIDE_GDK_WIN32;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">INSIDE_GDK_WIN32;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Debug|ARM64'">INSIDE_GDK_WIN32;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Release|x64'">INSIDE_GDK_WIN32;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Release|ARM64'">INSIDE_GDK_WIN32;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ClCompile>
+    <ClCompile Include="..\..\gtk2-ng\gdk\win32\gdkspawn-win32.c">
+      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">INSIDE_GDK_WIN32;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">INSIDE_GDK_WIN32;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">INSIDE_GDK_WIN32;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Debug|ARM64'">INSIDE_GDK_WIN32;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Release|x64'">INSIDE_GDK_WIN32;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Release|ARM64'">INSIDE_GDK_WIN32;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ClCompile>
+    <ClCompile Include="..\..\gtk2-ng\gdk\win32\gdktestutils-win32.c">
+      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">INSIDE_GDK_WIN32;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">INSIDE_GDK_WIN32;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">INSIDE_GDK_WIN32;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Debug|ARM64'">INSIDE_GDK_WIN32;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Release|x64'">INSIDE_GDK_WIN32;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Release|ARM64'">INSIDE_GDK_WIN32;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ClCompile>
+    <ClCompile Include="..\..\gtk2-ng\gdk\win32\gdkvisual-win32.c">
+      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">INSIDE_GDK_WIN32;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">INSIDE_GDK_WIN32;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">INSIDE_GDK_WIN32;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Debug|ARM64'">INSIDE_GDK_WIN32;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Release|x64'">INSIDE_GDK_WIN32;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Release|ARM64'">INSIDE_GDK_WIN32;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ClCompile>
+    <ClCompile Include="..\..\gtk2-ng\gdk\win32\gdkwin32id.c">
+      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">INSIDE_GDK_WIN32;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">INSIDE_GDK_WIN32;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">INSIDE_GDK_WIN32;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Debug|ARM64'">INSIDE_GDK_WIN32;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Release|x64'">INSIDE_GDK_WIN32;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Release|ARM64'">INSIDE_GDK_WIN32;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ClCompile>
+    <ClCompile Include="..\..\gtk2-ng\gdk\win32\gdkwindow-win32.c">
+      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">INSIDE_GDK_WIN32;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">INSIDE_GDK_WIN32;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">INSIDE_GDK_WIN32;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Debug|ARM64'">INSIDE_GDK_WIN32;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Release|x64'">INSIDE_GDK_WIN32;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Release|ARM64'">INSIDE_GDK_WIN32;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ClCompile>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <VCProjectVersion>17.0</VCProjectVersion>
+    <Keyword>Win32Proj</Keyword>
+    <ProjectGuid>{eb66d1ab-97ed-49d5-b1e6-77f341b4a378}</ProjectGuid>
+    <RootNamespace>gdk2</RootNamespace>
+    <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
+    <ProjectName>gdk2</ProjectName>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v143</PlatformToolset>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v143</PlatformToolset>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v143</PlatformToolset>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|ARM64'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v143</PlatformToolset>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v143</PlatformToolset>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|ARM64'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v143</PlatformToolset>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="Shared">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="..\..\gtk.props" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="..\..\gtk.props" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="..\..\gtk.props" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debug|ARM64'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="..\..\gtk.props" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="..\..\gtk.props" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release|ARM64'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="..\..\gtk.props" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <CustomBuildBeforeTargets>
+    </CustomBuildBeforeTargets>
+    <CustomBuildAfterTargets>VcpkgInstallManifestDependencies</CustomBuildAfterTargets>
+    <OutDir>$(SolutionDir)build\$(Configuration)\$(PlatformShortname)\GTK\</OutDir>
+    <IntDir>$(SolutionDir)build\intermediate\$(Configuration)\$(PlatformShortname)\$(ProjectName)\</IntDir>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <CustomBuildBeforeTargets>
+    </CustomBuildBeforeTargets>
+    <CustomBuildAfterTargets>VcpkgInstallManifestDependencies</CustomBuildAfterTargets>
+    <OutDir>$(SolutionDir)build\$(Configuration)\$(PlatformShortname)\GTK\</OutDir>
+    <IntDir>$(SolutionDir)build\intermediate\$(Configuration)\$(PlatformShortname)\$(ProjectName)\</IntDir>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <CustomBuildBeforeTargets>
+    </CustomBuildBeforeTargets>
+    <CustomBuildAfterTargets>VcpkgInstallManifestDependencies</CustomBuildAfterTargets>
+    <CopyLocalDeploymentContent>true</CopyLocalDeploymentContent>
+    <CopyLocalDebugSymbols>true</CopyLocalDebugSymbols>
+    <OutDir>$(SolutionDir)build\$(Configuration)\$(PlatformShortname)\GTK\</OutDir>
+    <IntDir>$(SolutionDir)build\intermediate\$(Configuration)\$(PlatformShortname)\$(ProjectName)\</IntDir>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|ARM64'">
+    <CustomBuildBeforeTargets />
+    <CustomBuildAfterTargets>VcpkgInstallManifestDependencies</CustomBuildAfterTargets>
+    <CopyLocalDeploymentContent>true</CopyLocalDeploymentContent>
+    <CopyLocalDebugSymbols>true</CopyLocalDebugSymbols>
+    <OutDir>$(SolutionDir)build\$(Configuration)\$(PlatformShortname)\GTK\</OutDir>
+    <IntDir>$(SolutionDir)build\intermediate\$(Configuration)\$(PlatformShortname)\$(ProjectName)\</IntDir>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <CustomBuildBeforeTargets>
+    </CustomBuildBeforeTargets>
+    <CustomBuildAfterTargets>VcpkgInstallManifestDependencies</CustomBuildAfterTargets>
+    <OutDir>$(SolutionDir)build\$(Configuration)\$(PlatformShortname)\GTK\</OutDir>
+    <IntDir>$(SolutionDir)build\intermediate\$(Configuration)\$(PlatformShortname)\$(ProjectName)\</IntDir>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|ARM64'">
+    <CustomBuildBeforeTargets />
+    <CustomBuildAfterTargets>VcpkgInstallManifestDependencies</CustomBuildAfterTargets>
+    <OutDir>$(SolutionDir)build\$(Configuration)\$(PlatformShortname)\GTK\</OutDir>
+    <IntDir>$(SolutionDir)build\intermediate\$(Configuration)\$(PlatformShortname)\$(ProjectName)\</IntDir>
+  </PropertyGroup>
+  <PropertyGroup Label="Vcpkg" Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <VcpkgTriplet>$(PlatformShortName.ToLower)-windows</VcpkgTriplet>
+    <VcpkgHostTriplet>$(PreferredToolArchitecture.ToLower)-windows</VcpkgHostTriplet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|ARM64'" Label="Vcpkg">
+    <VcpkgTriplet>$(PlatformShortName.ToLower)-windows</VcpkgTriplet>
+    <VcpkgHostTriplet>$(PreferredToolArchitecture.ToLower)-windows</VcpkgHostTriplet>
+  </PropertyGroup>
+  <PropertyGroup Label="Vcpkg" Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <VcpkgTriplet>$(PlatformShortName.ToLower)-windows</VcpkgTriplet>
+    <VcpkgHostTriplet>$(PreferredToolArchitecture.ToLower)-windows</VcpkgHostTriplet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|ARM64'" Label="Vcpkg">
+    <VcpkgTriplet>$(PlatformShortName.ToLower)-windows</VcpkgTriplet>
+    <VcpkgHostTriplet>$(PreferredToolArchitecture.ToLower)-windows</VcpkgHostTriplet>
+  </PropertyGroup>
+  <PropertyGroup Label="Vcpkg" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <VcpkgTriplet>$(PlatformShortName.ToLower)-windows</VcpkgTriplet>
+    <VcpkgHostTriplet>$(PreferredToolArchitecture.ToLower)-windows</VcpkgHostTriplet>
+  </PropertyGroup>
+  <PropertyGroup Label="Vcpkg" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <VcpkgTriplet>$(PlatformShortName.ToLower)-windows</VcpkgTriplet>
+    <VcpkgHostTriplet>$(PreferredToolArchitecture.ToLower)-windows</VcpkgHostTriplet>
+  </PropertyGroup>
+  <PropertyGroup Label="Vcpkg">
+    <VcpkgEnabled>true</VcpkgEnabled>
+    <VcpkgEnableManifest>true</VcpkgEnableManifest>
+    <VcpkgXUseBuiltInApplocalDeps>false</VcpkgXUseBuiltInApplocalDeps>
+    <VcpkgAutoLink>false</VcpkgAutoLink>
+    <VcpkgApplocalDeps>false</VcpkgApplocalDeps>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <SDLCheck>true</SDLCheck>
+      <PreprocessorDefinitions>WIN32;_DEBUG;GDK2_EXPORTS;_WINDOWS;_USRDLL;HAVE_CONFIG_H;GDK_ENABLE_BROKEN;G_LOG_DOMAIN="Gdk";GDK_COMPILATION;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ConformanceMode>true</ConformanceMode>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
+      <LanguageStandard_C>stdc11</LanguageStandard_C>
+      <DisableSpecificWarnings>4996;4703</DisableSpecificWarnings>
+      <AdditionalIncludeDirectories>$(GDK_BUILD_INCLUDES)</AdditionalIncludeDirectories>
+      <LanguageStandard>stdcpp20</LanguageStandard>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <EnableUAC>false</EnableUAC>
+      <AdditionalDependencies>gdi32.lib;user32.lib;imm32.lib;shell32.lib;ole32.lib;uuid.lib;gio-2.0.lib;cairo.lib;gdk_pixbuf-2.0.lib;pango-1.0.lib;pangocairo-1.0.lib;intl.lib;$(CoreLibraryDependencies);%(AdditionalDependencies)</AdditionalDependencies>
+      <ModuleDefinitionFile>$(GTK_SOURCE_ROOT)gdk\gdk.def</ModuleDefinitionFile>
+    </Link>
+    <PreBuildEvent>
+      <Command>
+      </Command>
+    </PreBuildEvent>
+    <PostBuildEvent>
+      <Command>copy "$(GDK_LIB_BIN)*.dll" "$(OutDir)" &gt; nul
+copy "$(GDK_LIB_BIN)*.pdb" "$(OutDir)" &gt; nul
+</Command>
+    </PostBuildEvent>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <SDLCheck>true</SDLCheck>
+      <PreprocessorDefinitions>WIN32;NDEBUG;GDK2_EXPORTS;_WINDOWS;_USRDLL;HAVE_CONFIG_H;GDK_ENABLE_BROKEN;G_LOG_DOMAIN="Gdk";GDK_COMPILATION;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ConformanceMode>true</ConformanceMode>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
+      <LanguageStandard_C>stdc11</LanguageStandard_C>
+      <DisableSpecificWarnings>4996;4703</DisableSpecificWarnings>
+      <AdditionalIncludeDirectories>$(GDK_BUILD_INCLUDES)</AdditionalIncludeDirectories>
+      <LanguageStandard>stdcpp20</LanguageStandard>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <EnableUAC>false</EnableUAC>
+      <AdditionalDependencies>gdi32.lib;user32.lib;imm32.lib;shell32.lib;ole32.lib;uuid.lib;gio-2.0.lib;cairo.lib;gdk_pixbuf-2.0.lib;pango-1.0.lib;pangocairo-1.0.lib;intl.lib;$(CoreLibraryDependencies);%(AdditionalDependencies)</AdditionalDependencies>
+      <ModuleDefinitionFile>$(GTK_SOURCE_ROOT)gdk\gdk.def</ModuleDefinitionFile>
+    </Link>
+    <PreBuildEvent>
+      <Command>
+      </Command>
+    </PreBuildEvent>
+    <PostBuildEvent>
+      <Command>copy "$(GDK_LIB_BIN)*.dll" "$(OutDir)" &gt; nul
+copy "$(GDK_LIB_BIN)*.pdb" "$(OutDir)" &gt; nul
+</Command>
+    </PostBuildEvent>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <SDLCheck>true</SDLCheck>
+      <PreprocessorDefinitions>_DEBUG;GDK2_EXPORTS;_WINDOWS;_USRDLL;HAVE_CONFIG_H;GDK_ENABLE_BROKEN;G_LOG_DOMAIN="Gdk";GDK_COMPILATION;_CRT_SECURE_NO_WARNINGS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ConformanceMode>true</ConformanceMode>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
+      <LanguageStandard_C>stdc11</LanguageStandard_C>
+      <DisableSpecificWarnings>4996;4703</DisableSpecificWarnings>
+      <AdditionalIncludeDirectories>$(GDK_BUILD_INCLUDES)</AdditionalIncludeDirectories>
+      <LanguageStandard>stdcpp20</LanguageStandard>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <EnableUAC>false</EnableUAC>
+      <AdditionalDependencies>gdi32.lib;user32.lib;imm32.lib;shell32.lib;ole32.lib;uuid.lib;gio-2.0.lib;cairo.lib;gdk_pixbuf-2.0.lib;pango-1.0.lib;pangocairo-1.0.lib;intl.lib;$(CoreLibraryDependencies);%(AdditionalDependencies)</AdditionalDependencies>
+      <ModuleDefinitionFile>$(GTK_SOURCE_ROOT)gdk\gdk.def</ModuleDefinitionFile>
+      <ShowProgress>LinkVerbose</ShowProgress>
+    </Link>
+    <PreBuildEvent>
+      <Command>
+      </Command>
+    </PreBuildEvent>
+    <PostBuildEvent>
+      <Command>copy "$(GDK_LIB_BIN)*.dll" "$(OutDir)" &gt; nul
+copy "$(GDK_LIB_BIN)*.pdb" "$(OutDir)" &gt; nul
+</Command>
+    </PostBuildEvent>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|ARM64'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <SDLCheck>true</SDLCheck>
+      <PreprocessorDefinitions>_DEBUG;GDK2_EXPORTS;_WINDOWS;_USRDLL;HAVE_CONFIG_H;GDK_ENABLE_BROKEN;G_LOG_DOMAIN="Gdk";GDK_COMPILATION;_CRT_SECURE_NO_WARNINGS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ConformanceMode>true</ConformanceMode>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
+      <LanguageStandard_C>stdc11</LanguageStandard_C>
+      <DisableSpecificWarnings>4996;4703</DisableSpecificWarnings>
+      <AdditionalIncludeDirectories>$(GDK_BUILD_INCLUDES)</AdditionalIncludeDirectories>
+      <LanguageStandard>stdcpp20</LanguageStandard>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <EnableUAC>false</EnableUAC>
+      <AdditionalDependencies>gdi32.lib;user32.lib;imm32.lib;shell32.lib;ole32.lib;uuid.lib;gio-2.0.lib;cairo.lib;gdk_pixbuf-2.0.lib;pango-1.0.lib;pangocairo-1.0.lib;intl.lib;$(CoreLibraryDependencies);%(AdditionalDependencies)</AdditionalDependencies>
+      <ModuleDefinitionFile>$(GTK_SOURCE_ROOT)gdk\gdk.def</ModuleDefinitionFile>
+      <ShowProgress>LinkVerbose</ShowProgress>
+    </Link>
+    <PreBuildEvent>
+      <Command>
+      </Command>
+    </PreBuildEvent>
+    <PostBuildEvent>
+      <Command>copy "$(GDK_LIB_BIN)*.dll" "$(OutDir)" &gt; nul
+copy "$(GDK_LIB_BIN)*.pdb" "$(OutDir)" &gt; nul
+</Command>
+    </PostBuildEvent>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <SDLCheck>true</SDLCheck>
+      <PreprocessorDefinitions>NDEBUG;GDK2_EXPORTS;_WINDOWS;_USRDLL;HAVE_CONFIG_H;GDK_ENABLE_BROKEN;G_LOG_DOMAIN="Gdk";GDK_COMPILATION;_CRT_SECURE_NO_WARNINGS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ConformanceMode>true</ConformanceMode>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
+      <LanguageStandard_C>stdc11</LanguageStandard_C>
+      <DisableSpecificWarnings>4996;4703</DisableSpecificWarnings>
+      <AdditionalIncludeDirectories>$(GDK_BUILD_INCLUDES)</AdditionalIncludeDirectories>
+      <LanguageStandard>stdcpp20</LanguageStandard>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <EnableUAC>false</EnableUAC>
+      <AdditionalDependencies>gdi32.lib;user32.lib;imm32.lib;shell32.lib;ole32.lib;uuid.lib;gio-2.0.lib;cairo.lib;gdk_pixbuf-2.0.lib;pango-1.0.lib;pangocairo-1.0.lib;intl.lib;$(CoreLibraryDependencies);%(AdditionalDependencies)</AdditionalDependencies>
+      <ModuleDefinitionFile>$(GTK_SOURCE_ROOT)gdk\gdk.def</ModuleDefinitionFile>
+    </Link>
+    <PreBuildEvent>
+      <Command>
+      </Command>
+    </PreBuildEvent>
+    <PostBuildEvent>
+      <Command>copy "$(GDK_LIB_BIN)*.dll" "$(OutDir)" &gt; nul
+copy "$(GDK_LIB_BIN)*.pdb" "$(OutDir)" &gt; nul
+</Command>
+    </PostBuildEvent>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|ARM64'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <SDLCheck>true</SDLCheck>
+      <PreprocessorDefinitions>NDEBUG;GDK2_EXPORTS;_WINDOWS;_USRDLL;HAVE_CONFIG_H;GDK_ENABLE_BROKEN;G_LOG_DOMAIN="Gdk";GDK_COMPILATION;_CRT_SECURE_NO_WARNINGS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ConformanceMode>true</ConformanceMode>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
+      <LanguageStandard_C>stdc11</LanguageStandard_C>
+      <DisableSpecificWarnings>4996;4703</DisableSpecificWarnings>
+      <AdditionalIncludeDirectories>$(GDK_BUILD_INCLUDES)</AdditionalIncludeDirectories>
+      <LanguageStandard>stdcpp20</LanguageStandard>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <EnableUAC>false</EnableUAC>
+      <AdditionalDependencies>gdi32.lib;user32.lib;imm32.lib;shell32.lib;ole32.lib;uuid.lib;gio-2.0.lib;cairo.lib;gdk_pixbuf-2.0.lib;pango-1.0.lib;pangocairo-1.0.lib;intl.lib;$(CoreLibraryDependencies);%(AdditionalDependencies)</AdditionalDependencies>
+      <ModuleDefinitionFile>$(GTK_SOURCE_ROOT)gdk\gdk.def</ModuleDefinitionFile>
+    </Link>
+    <PreBuildEvent>
+      <Command>
+      </Command>
+    </PreBuildEvent>
+    <PostBuildEvent>
+      <Command>copy "$(GDK_LIB_BIN)*.dll" "$(OutDir)" &gt; nul
+copy "$(GDK_LIB_BIN)*.pdb" "$(OutDir)" &gt; nul
+</Command>
+    </PostBuildEvent>
+  </ItemDefinitionGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

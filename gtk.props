@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ImportGroup Label="PropertySheets" />
+  <PropertyGroup Label="UserMacros">
+    <VCPKG_INSTALLED_DIR>vcpkg_installed\$(PlatformShortname)-windows\$(PlatformShortname)-windows\</VCPKG_INSTALLED_DIR>
+    <VCPKG_INSTALLED_LIBSBIN>$(VCPKG_INSTALLED_DIR)$(Configuration.Replace("Release","."))\</VCPKG_INSTALLED_LIBSBIN>
+    <GTK_SOURCE_ROOT>$(MSBuildThisFileDirectory)gtk2-ng\</GTK_SOURCE_ROOT>
+    <GDK_LIB_ROOT>$(MSBuildThisFileDirectory)$(VCPKG_INSTALLED_DIR)</GDK_LIB_ROOT>
+    <GDK_LIB_INCLUDES>$(GDK_LIB_ROOT)include\</GDK_LIB_INCLUDES>
+    <GDK_LIB_LIBS>$(MSBuildThisFileDirectory)$(VCPKG_INSTALLED_LIBSBIN)lib\</GDK_LIB_LIBS>
+    <GDK_LIB_TOOLS>$(GDK_LIB_ROOT)tools\</GDK_LIB_TOOLS>
+    <GLIB_INCLUDES>$(GDK_LIB_INCLUDES)glib-2.0;$(GDK_LIB_LIBS)glib-2.0\include;$(GDK_LIB_INCLUDES)gio-win32-2.0</GLIB_INCLUDES>
+    <GDK_CAIRO_INCLUDE>$(GDK_LIB_INCLUDES)cairo</GDK_CAIRO_INCLUDE>
+    <GDK_PANGO_INCLUDE>$(GDK_LIB_INCLUDES)pango-1.0;$(GDK_LIB_INCLUDES)harfbuzz</GDK_PANGO_INCLUDE>
+    <GDK_PIXBUF_INCLUDES>$(GDK_LIB_INCLUDES)gdk-pixbuf-2.0</GDK_PIXBUF_INCLUDES>
+    <GLIB_TOOLS>$(GDK_LIB_TOOLS)glib\</GLIB_TOOLS>
+    <GDK_INCLUDES>$(MSBuildThisFileDirectory);$(MSBuildThisFileDirectory)projects\;$(MSBuildThisFileDirectory)projects\gdk;$(GDK_LIB_INCLUDES);$(GLIB_INCLUDES);$(GDK_CAIRO_INCLUDE);$(GDK_PANGO_INCLUDE);$(GDK_PIXBUF_INCLUDES);$(GTK_SOURCE_ROOT);$(GTK_SOURCE_ROOT)gdk</GDK_INCLUDES>
+    <GLIB_LIBS>$(GDK_LIB_LIBS);$(GDK_LIB_LIBS)glib-2.0</GLIB_LIBS>
+    <GDK_BUILD_INCLUDES>$(GDK_INCLUDES);$(GTK_SOURCE_ROOT)gdk\win32</GDK_BUILD_INCLUDES>
+    <GDK_BUILD_LIBS>$(GLIB_LIBS);$(GDK_LIB_LIBS)</GDK_BUILD_LIBS>
+    <GDK_LIBS>$(GLIB_LIBS)</GDK_LIBS>
+    <GDK_LIB_BIN>$(GDK_LIB_ROOT)$(Configuration.Replace("Release","."))\bin\</GDK_LIB_BIN>
+    <GTK_FRIBIDI_INCLUDES>$(GDK_LIB_INCLUDES)fribidi</GTK_FRIBIDI_INCLUDES>
+    <GTK_ATK_INCLUDES>$(GDK_LIB_INCLUDES)atk-1.0</GTK_ATK_INCLUDES>
+    <GTK_INCLUDES>$(GTK_SOURCE_ROOT)gtk;$(GDK_INCLUDES);$(GTK_ATK_INCLUDES)</GTK_INCLUDES>
+    <GTK_BUILD_INCLUDES>$(MSBuildThisFileDirectory)projects\gtk;$(GTK_SOURCE_ROOT)gtk;$(GDK_BUILD_INCLUDES);$(GTK_FRIBIDI_INCLUDES)</GTK_BUILD_INCLUDES>
+    <GTKGL_SOURCE_ROOT>$(MSBuildThisFileDirectory)gtkglext\</GTKGL_SOURCE_ROOT>
+    <GTKGL_INCLUDES>$(MSBuildThisFileDirectory)projects\gtkglext;$(MSBuildThisFileDirectory)projects\gdkglext;$(GTKGL_SOURCE_ROOT);$(GTKGL_SOURCE_ROOT)gdk;$(GTKGL_SOURCE_ROOT)gtk;$(GTK_INCLUDES)</GTKGL_INCLUDES>
+    <GTKGL_BUILD_INCLUDES>$(GTKGL_INCLUDES);;$(GTK_BUILD_INCLUDES);$(GTK_ATK_INCLUDES)</GTKGL_BUILD_INCLUDES>
+  </PropertyGroup>
+  <PropertyGroup />
+  <ItemDefinitionGroup>
+    <ClCompile>
+      <AdditionalIncludeDirectories>$(GTK_INCLUDES)</AdditionalIncludeDirectories>
+    </ClCompile>
+    <Link>
+      <AdditionalLibraryDirectories>$(GDK_LIBS)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>glib-2.0.lib;gobject-2.0.lib;%(AdditionalDependencies)</AdditionalDependencies>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <BuildMacro Include="VCPKG_INSTALLED_DIR">
+      <Value>$(VCPKG_INSTALLED_DIR)</Value>
+    </BuildMacro>
+    <BuildMacro Include="VCPKG_INSTALLED_LIBSBIN">
+      <Value>$(VCPKG_INSTALLED_LIBSBIN)</Value>
+    </BuildMacro>
+    <BuildMacro Include="GTK_SOURCE_ROOT">
+      <Value>$(GTK_SOURCE_ROOT)</Value>
+    </BuildMacro>
+    <BuildMacro Include="GDK_LIB_ROOT">
+      <Value>$(GDK_LIB_ROOT)</Value>
+    </BuildMacro>
+    <BuildMacro Include="GDK_LIB_INCLUDES">
+      <Value>$(GDK_LIB_INCLUDES)</Value>
+    </BuildMacro>
+    <BuildMacro Include="GDK_LIB_LIBS">
+      <Value>$(GDK_LIB_LIBS)</Value>
+    </BuildMacro>
+    <BuildMacro Include="GDK_LIB_TOOLS">
+      <Value>$(GDK_LIB_TOOLS)</Value>
+    </BuildMacro>
+    <BuildMacro Include="GLIB_INCLUDES">
+      <Value>$(GLIB_INCLUDES)</Value>
+    </BuildMacro>
+    <BuildMacro Include="GDK_CAIRO_INCLUDE">
+      <Value>$(GDK_CAIRO_INCLUDE)</Value>
+    </BuildMacro>
+    <BuildMacro Include="GDK_PANGO_INCLUDE">
+      <Value>$(GDK_PANGO_INCLUDE)</Value>
+    </BuildMacro>
+    <BuildMacro Include="GDK_PIXBUF_INCLUDES">
+      <Value>$(GDK_PIXBUF_INCLUDES)</Value>
+    </BuildMacro>
+    <BuildMacro Include="GLIB_TOOLS">
+      <Value>$(GLIB_TOOLS)</Value>
+    </BuildMacro>
+    <BuildMacro Include="GDK_INCLUDES">
+      <Value>$(GDK_INCLUDES)</Value>
+    </BuildMacro>
+    <BuildMacro Include="GLIB_LIBS">
+      <Value>$(GLIB_LIBS)</Value>
+    </BuildMacro>
+    <BuildMacro Include="GDK_BUILD_INCLUDES">
+      <Value>$(GDK_BUILD_INCLUDES)</Value>
+    </BuildMacro>
+    <BuildMacro Include="GDK_BUILD_LIBS">
+      <Value>$(GDK_BUILD_LIBS)</Value>
+    </BuildMacro>
+    <BuildMacro Include="GDK_LIBS">
+      <Value>$(GDK_LIBS)</Value>
+    </BuildMacro>
+    <BuildMacro Include="GDK_LIB_BIN">
+      <Value>$(GDK_LIB_BIN)</Value>
+    </BuildMacro>
+    <BuildMacro Include="GTK_FRIBIDI_INCLUDES">
+      <Value>$(GTK_FRIBIDI_INCLUDES)</Value>
+    </BuildMacro>
+    <BuildMacro Include="GTK_ATK_INCLUDES">
+      <Value>$(GTK_ATK_INCLUDES)</Value>
+    </BuildMacro>
+    <BuildMacro Include="GTK_INCLUDES">
+      <Value>$(GTK_INCLUDES)</Value>
+    </BuildMacro>
+    <BuildMacro Include="GTK_BUILD_INCLUDES">
+      <Value>$(GTK_BUILD_INCLUDES)</Value>
+    </BuildMacro>
+    <BuildMacro Include="GTKGL_SOURCE_ROOT">
+      <Value>$(GTKGL_SOURCE_ROOT)</Value>
+    </BuildMacro>
+    <BuildMacro Include="GTKGL_INCLUDES">
+      <Value>$(GTKGL_INCLUDES)</Value>
+    </BuildMacro>
+    <BuildMacro Include="GTKGL_BUILD_INCLUDES">
+      <Value>$(GTKGL_BUILD_INCLUDES)</Value>
+    </BuildMacro>
+  </ItemGroup>
+</Project>

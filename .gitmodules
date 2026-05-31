@@ -1,0 +1,8 @@
+[submodule "gtk2-ng"]
+	path = gtk2-ng
+	url = https://git.devuan.org/Daemonratte/gtk2-ng.git
+	ignore = dirty
+[submodule "gtkglext"]
+	path = gtkglext
+	url = https://github.com/wench/gtkglext.git
+	ignore = dirty

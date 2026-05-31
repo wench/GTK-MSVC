@@ -1,0 +1,18 @@
+// Not a template for areal config.h but this is jusy used to set some defines neededto compile gtk andto get the correct library version
+
+#pragma once
+#include "../../gtk2-ng/config.h.win32"
+
+
+#define GTK_DISABLE_COMPAT_H 
+#define G_LOG_DOMAIN "Gtk" 
+#define near xxnear 
+#define PANGO_ENABLE_BACKEND 
+#define GTK_VERSION "@GTK_VERSION@"
+#define GTK_BINARY_VERSION "@GTK_BINARY_VERSION@" 
+#define GTK_HOST "win32" 
+#define GTK_FILE_SYSTEM_ENABLE_UNSUPPORTED 
+#define GTK_PRINT_BACKENDS "file,lpr"	
+#define GTK_PRINT_PREVIEW_COMMAND "evince --unlink-tempfile --preview %f" 
+#define GTK_LIBDIR "/magic/path/replaced/at/runtime"
+#define _CRT_SECURE_NO_WARNINGS

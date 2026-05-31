@@ -1,0 +1,431 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;c++;cppm;ixx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;h++;hm;inl;inc;ipp;xsd</Extensions>
+    </Filter>
+    <Filter Include="Resource Files">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="Header Files\gdk">
+      <UniqueIdentifier>{46e44f27-cacb-462d-909b-89b58ec4bf2c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\gdk\win32">
+      <UniqueIdentifier>{dc045cff-577e-4c4b-b510-a0dee41fd596}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\gdk">
+      <UniqueIdentifier>{6deac53e-fc40-4f11-aa47-7ec82b16b803}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\gdk\win32">
+      <UniqueIdentifier>{9dd25a70-3300-4199-8020-85985c5ed28e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Custom Build Files">
+      <UniqueIdentifier>{b20eb7ef-cc69-4623-875a-06b41c22270e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Custom Build Files\gdk">
+      <UniqueIdentifier>{7b8cdec1-89eb-45e9-94fc-7f7ff02fa5d6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Custom Build Files\gdk\win32">
+      <UniqueIdentifier>{6af3b355-d985-42d7-b906-61136416a829}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Generated files">
+      <UniqueIdentifier>{e3e3fa6e-c181-423e-aab3-b421b7492d4f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Generated files\gdk">
+      <UniqueIdentifier>{f5fb1366-ccc6-40da-9d22-87665152a6d6}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\config.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\gtk2-ng\gdk\win32\gdkdrawable-win32.h">
+      <Filter>Header Files\gdk\win32</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\gtk2-ng\gdk\win32\gdkinput-win32.h">
+      <Filter>Header Files\gdk\win32</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\gtk2-ng\gdk\win32\gdkpixmap-win32.h">
+      <Filter>Header Files\gdk\win32</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\gtk2-ng\gdk\win32\gdkprivate-win32.h">
+      <Filter>Header Files\gdk\win32</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\gtk2-ng\gdk\win32\gdkwin32.h">
+      <Filter>Header Files\gdk\win32</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\gtk2-ng\gdk\win32\gdkwin32keys.h">
+      <Filter>Header Files\gdk\win32</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\gtk2-ng\gdk\win32\gdkwindow-win32.h">
+      <Filter>Header Files\gdk\win32</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\gtk2-ng\gdk\win32\pktdef.h">
+      <Filter>Header Files\gdk\win32</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\gtk2-ng\gdk\win32\wintab.h">
+      <Filter>Header Files\gdk\win32</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\gtk2-ng\gdk\win32\xcursors.h">
+      <Filter>Header Files\gdk\win32</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\gtk2-ng\gdk\gdk.h">
+      <Filter>Header Files\gdk</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\gtk2-ng\gdk\gdkapplaunchcontext.h">
+      <Filter>Header Files\gdk</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\gtk2-ng\gdk\gdkcairo.h">
+      <Filter>Header Files\gdk</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\gtk2-ng\gdk\gdkcolor.h">
+      <Filter>Header Files\gdk</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\gtk2-ng\gdk\gdkcursor.h">
+      <Filter>Header Files\gdk</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\gtk2-ng\gdk\gdkdisplay.h">
+      <Filter>Header Files\gdk</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\gtk2-ng\gdk\gdkdisplaymanager.h">
+      <Filter>Header Files\gdk</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\gtk2-ng\gdk\gdkdnd.h">
+      <Filter>Header Files\gdk</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\gtk2-ng\gdk\gdkdrawable.h">
+      <Filter>Header Files\gdk</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\gtk2-ng\gdk\gdkevents.h">
+      <Filter>Header Files\gdk</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\gtk2-ng\gdk\gdkfont.h">
+      <Filter>Header Files\gdk</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\gtk2-ng\gdk\gdkgc.h">
+      <Filter>Header Files\gdk</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\gtk2-ng\gdk\gdki18n.h">
+      <Filter>Header Files\gdk</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\gtk2-ng\gdk\gdkimage.h">
+      <Filter>Header Files\gdk</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\gtk2-ng\gdk\gdkinput.h">
+      <Filter>Header Files\gdk</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\gtk2-ng\gdk\gdkinternals.h">
+      <Filter>Header Files\gdk</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\gtk2-ng\gdk\gdkintl.h">
+      <Filter>Header Files\gdk</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\gtk2-ng\gdk\gdkkeys.h">
+      <Filter>Header Files\gdk</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\gtk2-ng\gdk\gdkkeysyms.h">
+      <Filter>Header Files\gdk</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\gtk2-ng\gdk\gdkkeysyms-compat.h">
+      <Filter>Header Files\gdk</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\gtk2-ng\gdk\gdkmedialib.h">
+      <Filter>Header Files\gdk</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\gtk2-ng\gdk\gdkpango.h">
+      <Filter>Header Files\gdk</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\gtk2-ng\gdk\gdkpixbuf.h">
+      <Filter>Header Files\gdk</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\gtk2-ng\gdk\gdkpixmap.h">
+      <Filter>Header Files\gdk</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\gtk2-ng\gdk\gdkpoly-generic.h">
+      <Filter>Header Files\gdk</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\gtk2-ng\gdk\gdkprivate.h">
+      <Filter>Header Files\gdk</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\gtk2-ng\gdk\gdkproperty.h">
+      <Filter>Header Files\gdk</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\gtk2-ng\gdk\gdkregion.h">
+      <Filter>Header Files\gdk</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\gtk2-ng\gdk\gdkregion-generic.h">
+      <Filter>Header Files\gdk</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\gtk2-ng\gdk\gdkrgb.h">
+      <Filter>Header Files\gdk</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\gtk2-ng\gdk\gdkscreen.h">
+      <Filter>Header Files\gdk</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\gtk2-ng\gdk\gdkselection.h">
+      <Filter>Header Files\gdk</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\gtk2-ng\gdk\gdkspawn.h">
+      <Filter>Header Files\gdk</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\gtk2-ng\gdk\gdktestutils.h">
+      <Filter>Header Files\gdk</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\gtk2-ng\gdk\gdktypes.h">
+      <Filter>Header Files\gdk</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\gtk2-ng\gdk\gdkvisual.h">
+      <Filter>Header Files\gdk</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\gtk2-ng\gdk\gdkwindow.h">
+      <Filter>Header Files\gdk</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\gtk2-ng\gdk\gdkwindowimpl.h">
+      <Filter>Header Files\gdk</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\gtk2-ng\gdk\keyname-table.h">
+      <Filter>Header Files\gdk</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\gtk2-ng\gdk\gdkalias.h">
+      <Filter>Generated files\gdk</Filter>
+    </ClInclude>
+    <ClInclude Include="gdkconfig.h">
+      <Filter>Header Files\gdk</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\gtk2-ng\gdk\gdkenumtypes.h">
+      <Filter>Generated files\gdk</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\gtk2-ng\gdk\gdkmarshalers.h">
+      <Filter>Generated files\gdk</Filter>
+    </ClInclude>
+    <ClInclude Include="gdkwin32.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="..\..\gtk2-ng\gdk\win32\rc\gdk.rc">
+      <Filter>Resource Files</Filter>
+    </ResourceCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\..\gtk2-ng\gdk\gdkconfig.h.win32">
+      <Filter>Header Files\gdk</Filter>
+    </None>
+    <None Include="..\..\vcpkg.json" />
+    <None Include="..\..\vcpkg-configuration.json" />
+    <None Include="..\..\gtk2-ng\gdk\gdk.def">
+      <Filter>Generated files\gdk</Filter>
+    </None>
+    <None Include="..\..\gtk2-ng\config.h.win32">
+      <Filter>Generated files</Filter>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\..\gtk2-ng\gdk\gdk.c">
+      <Filter>Source Files\gdk</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\gtk2-ng\gdk\gdkaliasdef.c">
+      <Filter>Generated files\gdk</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\gtk2-ng\gdk\gdkenumtypes.c">
+      <Filter>Generated files\gdk</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\gtk2-ng\gdk\gdkwindow.c">
+      <Filter>Source Files\gdk</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\gtk2-ng\gdk\gdkvisual.c">
+      <Filter>Source Files\gdk</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\gtk2-ng\gdk\gdkselection.c">
+      <Filter>Source Files\gdk</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\gtk2-ng\gdk\gdkscreen.c">
+      <Filter>Source Files\gdk</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\gtk2-ng\gdk\gdkrgb.c">
+      <Filter>Source Files\gdk</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\gtk2-ng\gdk\gdkregion-generic.c">
+      <Filter>Source Files\gdk</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\gtk2-ng\gdk\gdkrectangle.c">
+      <Filter>Source Files\gdk</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\gtk2-ng\gdk\gdkpolyreg-generic.c">
+      <Filter>Source Files\gdk</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\gtk2-ng\gdk\gdkpixmap.c">
+      <Filter>Source Files\gdk</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\gtk2-ng\gdk\gdkpixbuf-render.c">
+      <Filter>Source Files\gdk</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\gtk2-ng\gdk\gdkpixbuf-drawable.c">
+      <Filter>Source Files\gdk</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\gtk2-ng\gdk\gdkpango.c">
+      <Filter>Source Files\gdk</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\gtk2-ng\gdk\gdkoffscreenwindow.c">
+      <Filter>Source Files\gdk</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\gtk2-ng\gdk\gdkkeyuni.c">
+      <Filter>Source Files\gdk</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\gtk2-ng\gdk\gdkkeys.c">
+      <Filter>Source Files\gdk</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\gtk2-ng\gdk\gdkkeynames.c">
+      <Filter>Source Files\gdk</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\gtk2-ng\gdk\gdkimage.c">
+      <Filter>Source Files\gdk</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\gtk2-ng\gdk\gdkglobals.c">
+      <Filter>Source Files\gdk</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\gtk2-ng\gdk\gdkgc.c">
+      <Filter>Source Files\gdk</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\gtk2-ng\gdk\gdkfont.c">
+      <Filter>Source Files\gdk</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\gtk2-ng\gdk\gdkevents.c">
+      <Filter>Source Files\gdk</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\gtk2-ng\gdk\gdkdraw.c">
+      <Filter>Source Files\gdk</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\gtk2-ng\gdk\gdkdnd.c">
+      <Filter>Source Files\gdk</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\gtk2-ng\gdk\gdkdisplaymanager.c">
+      <Filter>Source Files\gdk</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\gtk2-ng\gdk\gdkdisplay.c">
+      <Filter>Source Files\gdk</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\gtk2-ng\gdk\gdkcursor.c">
+      <Filter>Source Files\gdk</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\gtk2-ng\gdk\gdkcolor.c">
+      <Filter>Source Files\gdk</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\gtk2-ng\gdk\gdkcairo.c">
+      <Filter>Source Files\gdk</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\gtk2-ng\gdk\gdkapplaunchcontext.c">
+      <Filter>Source Files\gdk</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\gtk2-ng\gdk\win32\gdkapplaunchcontext-win32.c">
+      <Filter>Source Files\gdk\win32</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\gtk2-ng\gdk\win32\gdkcolor-win32.c">
+      <Filter>Source Files\gdk\win32</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\gtk2-ng\gdk\win32\gdkcursor-win32.c">
+      <Filter>Source Files\gdk\win32</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\gtk2-ng\gdk\win32\gdkdisplay-win32.c">
+      <Filter>Source Files\gdk\win32</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\gtk2-ng\gdk\win32\gdkdnd-win32.c">
+      <Filter>Source Files\gdk\win32</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\gtk2-ng\gdk\win32\gdkdrawable-win32.c">
+      <Filter>Source Files\gdk\win32</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\gtk2-ng\gdk\win32\gdkevents-win32.c">
+      <Filter>Source Files\gdk\win32</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\gtk2-ng\gdk\win32\gdkfont-win32.c">
+      <Filter>Source Files\gdk\win32</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\gtk2-ng\gdk\win32\gdkgc-win32.c">
+      <Filter>Source Files\gdk\win32</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\gtk2-ng\gdk\win32\gdkgeometry-win32.c">
+      <Filter>Source Files\gdk\win32</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\gtk2-ng\gdk\win32\gdkglobals-win32.c">
+      <Filter>Source Files\gdk\win32</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\gtk2-ng\gdk\win32\gdkimage-win32.c">
+      <Filter>Source Files\gdk\win32</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\gtk2-ng\gdk\win32\gdkim-win32.c">
+      <Filter>Source Files\gdk\win32</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\gtk2-ng\gdk\win32\gdkinput.c">
+      <Filter>Source Files\gdk\win32</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\gtk2-ng\gdk\win32\gdkinput-win32.c">
+      <Filter>Source Files\gdk\win32</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\gtk2-ng\gdk\win32\gdkkeys-win32.c">
+      <Filter>Source Files\gdk\win32</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\gtk2-ng\gdk\win32\gdkmain-win32.c">
+      <Filter>Source Files\gdk\win32</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\gtk2-ng\gdk\win32\gdkpixmap-win32.c">
+      <Filter>Source Files\gdk\win32</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\gtk2-ng\gdk\win32\gdkproperty-win32.c">
+      <Filter>Source Files\gdk\win32</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\gtk2-ng\gdk\win32\gdkscreen-win32.c">
+      <Filter>Source Files\gdk\win32</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\gtk2-ng\gdk\win32\gdkselection-win32.c">
+      <Filter>Source Files\gdk\win32</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\gtk2-ng\gdk\win32\gdkspawn-win32.c">
+      <Filter>Source Files\gdk\win32</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\gtk2-ng\gdk\win32\gdktestutils-win32.c">
+      <Filter>Source Files\gdk\win32</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\gtk2-ng\gdk\win32\gdkvisual-win32.c">
+      <Filter>Source Files\gdk\win32</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\gtk2-ng\gdk\win32\gdkwin32id.c">
+      <Filter>Source Files\gdk\win32</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\gtk2-ng\gdk\win32\gdkwindow-win32.c">
+      <Filter>Source Files\gdk\win32</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\gtk2-ng\gdk\gdkmarshalers.c">
+      <Filter>Generated files\gdk</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\gtk2-ng\gdk\gdkwindowimpl.c">
+      <Filter>Source Files\gdk</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <CustomBuild Include="..\..\gtk2-ng\configure.ac">
+      <Filter>Custom Build Files</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\gtk2-ng\gdk\makegdkalias.pl">
+      <Filter>Custom Build Files\gdk</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\gtk2-ng\gdk\gdk.symbols">
+      <Filter>Custom Build Files\gdk</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\gtk2-ng\gdk\gdkenumtypes.h.template">
+      <Filter>Custom Build Files\gdk</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\gtk2-ng\gdk\gdkenumtypes.c.template">
+      <Filter>Custom Build Files\gdk</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\gtk2-ng\gdk\gdkmarshalers.list">
+      <Filter>Custom Build Files\gdk</Filter>
+    </CustomBuild>
+  </ItemGroup>
+</Project>
