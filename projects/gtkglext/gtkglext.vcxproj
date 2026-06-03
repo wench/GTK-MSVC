@@ -161,7 +161,7 @@
   </PropertyGroup>
   <PropertyGroup Label="Vcpkg" Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <VcpkgTriplet>$(PlatformShortName.ToLower)-windows</VcpkgTriplet>
-    <VcpkgHostTriplet>$(PreferredToolArchitecture.ToLower)-windows</VcpkgHostTriplet>
+    <VcpkgHostTriplet>$(PlatformShortName.ToLower)-windows</VcpkgHostTriplet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|ARM64'" Label="Vcpkg">
     <VcpkgTriplet>$(PlatformShortName.ToLower)-windows</VcpkgTriplet>
