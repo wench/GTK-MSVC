@@ -1,0 +1,130 @@
+# This workflow uses actions that are not certified by GitHub.
+# They are provided by a third-party and are governed by
+# separate terms of service, privacy policy, and support
+# documentation.
+
+name: build
+
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - "**"
+  pull_request:
+    paths:
+      - "**"
+
+
+env:
+  # Path to the solution file relative to the root of the project.
+  SOLUTION_FILE_PATH: 
+
+
+  VCPKGCACHE_PATH: vcpkg-caches
+  
+  TARGET_VCPKG_MANIFEST_INSTALL: VcpkgInstallManifestDependencies
+
+
+  #Set vcpkg to use an asset cache
+  X_VCPKG_ASSET_SOURCES: ${{format('clear;x-azurl,file://{0}\vcpkg-caches\asset,,readwrite', github.workspace) }}
+
+  VCPKG_BINARY_SOURCE: ${{format('clear;files,{0}\vcpkg-caches\binary,readwrite', github.workspace) }}
+
+  VCPKG_DEFAULT_BINARY_CACHE: ${{format('{0}\vcpkg-caches\binary', github.workspace) }}
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+
+    runs-on: windows-2022
+ 
+
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v6
+      with:
+       submodules: true
+    
+    - name: Add MSBuild to PATH
+      uses: microsoft/setup-msbuild@v3
+
+    - name: Setup VCPKG
+      working-directory: ${{env.GITHUB_WORKSPACE}}     
+      run: |
+        $vcpkgcfg_json = Get-Content vcpkg-configuration.json -Raw | ConvertFrom-Json
+        mkdir $Env:VCPKGCACHE_PATH
+        chdir $Env:VCPKGCACHE_PATH
+        mkdir asset
+        mkdir binary        
+        cd $Env:VCPKG_INSTALLATION_ROOT
+        git fetch
+        git checkout -f --detach $vcpkgcfg_json.'default-registry'.baseline
+        .\bootstrap-vcpkg.bat
+        ./vcpkg integrate install
+        ('VCPKG_REV='+$vcpkgcfg_json.'default-registry'.baseline)|Out-File -Append -NoNewLine ${{ github.env }}
+
+
+    - name: Restore VCPKG Cache
+      uses: actions/cache/restore@v5
+      id: vcpkg-cache-restore
+      with:
+        path: ${{env.VCPKGCACHE_PATH}}
+        # Use the git rev hash of vcpkg in the cache key because things are not 
+        # entirely compatible between versions
+        key: vcpkg-cache-${{env.VCPKG_REV}}-${{github.sha}}-${{github.run_attempt}}
+        restore-keys: |
+          vcpkg-cache-${{env.VCPKG_REV}}
+          vcpkg-cache
+
+      # If cache was restored from a different VCPKG_REV, try to clear the download cache of stale files
+      # do this by Setting the LastAccessTime to Jan 1 2000 before building and then after building before saving
+      # the cache, delete any files that were not acessed by the build and didn't have their access time changed
+    - name: Init Clearing Stale Files Cache
+      if: ${{!contains( steps.vcpkg-cache-restore.outputs.cache-matched-key, env.VCPKG_REV)}}
+      run: |
+          fsutil behavior set disablelastaccess 1
+          $longago = [DateTime]::Parse("2000-01-01") 
+          get-ChildItem $Env:VCPKGCACHE_PATH -filter *.* -File | ForEach-Object { $_.LastAccessTimeUTC = $longago; $_.Name }
+          # renable filesystem auto updating last access time 
+          fsutil behavior set disablelastaccess 0
+
+    - name: Install VCPKG packages for all configurations and platforms
+      working-directory: ${{env.GITHUB_WORKSPACE}}
+      run: |
+          msbuild /v:${{ runner.debug =='1' && 'detailed' || 'normal' }} /p:Configuration=Release /p:Platform=x64 ${{env.SOLUTION_FILE_PATH}} /t:${{env.TARGET_VCPKG_MANIFEST_INSTALL}}
+          msbuild /v:${{ runner.debug =='1' && 'detailed' || 'normal' }} /p:Configuration=Release /p:Platform=Win32 ${{env.SOLUTION_FILE_PATH}} /t:${{env.TARGET_VCPKG_MANIFEST_INSTALL}}
+          msbuild /v:${{ runner.debug =='1' && 'detailed' || 'normal' }} /p:Configuration=Release /p:Platform=ARM64 ${{env.SOLUTION_FILE_PATH}} /t:${{env.TARGET_VCPKG_MANIFEST_INSTALL}}
+          msbuild /v:${{ runner.debug =='1' && 'detailed' || 'normal' }} /p:Configuration=Debug /p:Platform=x64 ${{env.SOLUTION_FILE_PATH}} /t:${{env.TARGET_VCPKG_MANIFEST_INSTALL}}
+          msbuild /v:${{ runner.debug =='1' && 'detailed' || 'normal' }} /p:Configuration=Debug /p:Platform=Win32 ${{env.SOLUTION_FILE_PATH}} /t:${{env.TARGET_VCPKG_MANIFEST_INSTALL}}
+          msbuild /v:${{ runner.debug =='1' && 'detailed' || 'normal' }} /p:Configuration=Debug /p:Platform=ARM64 ${{env.SOLUTION_FILE_PATH}} /t:${{env.TARGET_VCPKG_MANIFEST_INSTALL}}
+
+    - name: Actually Clearing Stale Files In Cache
+      if: ${{!contains( steps.vcpkg-cache-restore.outputs.cache-matched-key, env.VCPKG_REV)}}
+      working-directory: ${{env.GITHUB_WORKSPACE}}     
+      run: |
+          $longago = [DateTime]::Parse("2000-01-01") 
+          #delete all files in cache directory where LastAccessTime is equal to $longago
+          get-ChildItem $Env:VCPKG_ASSETCACHE_PATH -file |where LastAccessTimeUTC -EQ $longago| Remove-Item -Force -Verbose
+
+    - name: Save VCPKG cache
+      id: vcpkg-cache-save
+      uses: actions/cache/save@v5
+      with:
+        path: ${{env.VCPKGCACHE_PATH}}
+        key: vcpkg-cache-${{env.VCPKG_REV}}-${{github.sha}}-${{github.run_attempt}}
+  
+    - name: Build Solution  for all configurations and platforms
+      working-directory: ${{env.GITHUB_WORKSPACE}}
+      run: |
+       msbuild /v:${{ runner.debug =='1' && 'detailed' || 'normal' }} /m /p:Configuration=Release /p:Platform=x64 ${{env.SOLUTION_FILE_PATH}}
+       msbuild /v:${{ runner.debug =='1' && 'detailed' || 'normal' }} /m /p:Configuration=Release /p:Platform=Win32 ${{env.SOLUTION_FILE_PATH}}
+       msbuild /v:${{ runner.debug =='1' && 'detailed' || 'normal' }} /m /p:Configuration=Release /p:Platform=ARM64 ${{env.SOLUTION_FILE_PATH}}
+       msbuild /v:${{ runner.debug =='1' && 'detailed' || 'normal' }} /m /p:Configuration=Debug /p:Platform=x64 ${{env.SOLUTION_FILE_PATH}}
+       msbuild /v:${{ runner.debug =='1' && 'detailed' || 'normal' }} /m /p:Configuration=Debug /p:Platform=Win32 ${{env.SOLUTION_FILE_PATH}}
+       msbuild /v:${{ runner.debug =='1' && 'detailed' || 'normal' }} /m /p:Configuration=Debug /p:Platform=ARM64 ${{env.SOLUTION_FILE_PATH}}
+      
+      
+      
+
