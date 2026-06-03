@@ -28,7 +28,9 @@
     <GTKGL_INCLUDES>$(MSBuildThisFileDirectory)projects\gtkglext;$(MSBuildThisFileDirectory)projects\gdkglext;$(GTKGL_SOURCE_ROOT);$(GTKGL_SOURCE_ROOT)gdk;$(GTKGL_SOURCE_ROOT)gtk;$(GTK_INCLUDES)</GTKGL_INCLUDES>
     <GTKGL_BUILD_INCLUDES>$(GTKGL_INCLUDES);;$(GTK_BUILD_INCLUDES);$(GTK_ATK_INCLUDES)</GTKGL_BUILD_INCLUDES>
   </PropertyGroup>
-  <PropertyGroup />
+  <PropertyGroup>
+    <IntDir>$(SolutionDir)\build\intermediate\$(Configuration)\$(PlatformShortname)\$(ProjectName)\</IntDir>
+  </PropertyGroup>
   <ItemDefinitionGroup>
     <ClCompile>
       <AdditionalIncludeDirectories>$(GTK_INCLUDES)</AdditionalIncludeDirectories>
