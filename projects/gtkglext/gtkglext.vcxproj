@@ -106,36 +106,36 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <CopyLocalDeploymentContent>true</CopyLocalDeploymentContent>
     <CopyLocalDebugSymbols>true</CopyLocalDebugSymbols>
-    <CustomBuildAfterTargets>VcpkgInstallManifestDependencies</CustomBuildAfterTargets>
     <OutDir>$(SolutionDir)build\$(Configuration)\$(PlatformShortname)\GTK\</OutDir>
     <IntDir>$(SolutionDir)build\intermediate\$(Configuration)\$(PlatformShortname)\$(ProjectName)\</IntDir>
+    <CustomBuildBeforeTargets>ClCompile</CustomBuildBeforeTargets>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|ARM64'">
     <CopyLocalDeploymentContent>true</CopyLocalDeploymentContent>
     <CopyLocalDebugSymbols>true</CopyLocalDebugSymbols>
-    <CustomBuildAfterTargets>VcpkgInstallManifestDependencies</CustomBuildAfterTargets>
     <OutDir>$(SolutionDir)build\$(Configuration)\$(PlatformShortname)\GTK\</OutDir>
     <IntDir>$(SolutionDir)build\intermediate\$(Configuration)\$(PlatformShortname)\$(ProjectName)\</IntDir>
+    <CustomBuildBeforeTargets>ClCompile</CustomBuildBeforeTargets>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <OutDir>$(SolutionDir)build\$(Configuration)\$(PlatformShortname)\GTK\</OutDir>
-    <CustomBuildAfterTargets>VcpkgInstallManifestDependencies</CustomBuildAfterTargets>
     <IntDir>$(SolutionDir)build\intermediate\$(Configuration)\$(PlatformShortname)\$(ProjectName)\</IntDir>
+    <CustomBuildBeforeTargets>ClCompile</CustomBuildBeforeTargets>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <OutDir>$(SolutionDir)build\$(Configuration)\$(PlatformShortname)\GTK\</OutDir>
-    <CustomBuildAfterTargets>VcpkgInstallManifestDependencies</CustomBuildAfterTargets>
     <IntDir>$(SolutionDir)build\intermediate\$(Configuration)\$(PlatformShortname)\$(ProjectName)\</IntDir>
+    <CustomBuildBeforeTargets>ClCompile</CustomBuildBeforeTargets>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <OutDir>$(SolutionDir)build\$(Configuration)\$(PlatformShortname)\GTK\</OutDir>
-    <CustomBuildAfterTargets>VcpkgInstallManifestDependencies</CustomBuildAfterTargets>
     <IntDir>$(SolutionDir)build\intermediate\$(Configuration)\$(PlatformShortname)\$(ProjectName)\</IntDir>
+    <CustomBuildBeforeTargets>ClCompile</CustomBuildBeforeTargets>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|ARM64'">
     <OutDir>$(SolutionDir)build\$(Configuration)\$(PlatformShortname)\GTK\</OutDir>
-    <CustomBuildAfterTargets>VcpkgInstallManifestDependencies</CustomBuildAfterTargets>
     <IntDir>$(SolutionDir)build\intermediate\$(Configuration)\$(PlatformShortname)\$(ProjectName)\</IntDir>
+    <CustomBuildBeforeTargets>ClCompile</CustomBuildBeforeTargets>
   </PropertyGroup>
   <PropertyGroup Label="Vcpkg">
     <VcpkgEnableManifest>true</VcpkgEnableManifest>

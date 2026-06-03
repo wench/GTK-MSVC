@@ -255,48 +255,48 @@ python3 "$(GLIB_TOOLS)\glib-mkenums"  --template "%(FullPath)"  gdkgl.h gdkgldef
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
-    <CustomBuildAfterTargets>VcpkgInstallManifestDependencies</CustomBuildAfterTargets>
     <CopyLocalProjectReference>true</CopyLocalProjectReference>
     <CopyLocalDebugSymbols>true</CopyLocalDebugSymbols>
     <OutDir>$(SolutionDir)build\$(Configuration)\$(PlatformShortname)\GTK\</OutDir>
     <IntDir>$(SolutionDir)build\intermediate\$(Configuration)\$(PlatformShortname)\$(ProjectName)\</IntDir>
+    <CustomBuildBeforeTargets>ClCompile</CustomBuildBeforeTargets>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
-    <CustomBuildAfterTargets>VcpkgInstallManifestDependencies</CustomBuildAfterTargets>
     <CopyLocalProjectReference>true</CopyLocalProjectReference>
     <CopyLocalDebugSymbols>true</CopyLocalDebugSymbols>
     <OutDir>$(SolutionDir)build\$(Configuration)\$(PlatformShortname)\GTK\</OutDir>
     <IntDir>$(SolutionDir)build\intermediate\$(Configuration)\$(PlatformShortname)\$(ProjectName)\</IntDir>
+    <CustomBuildBeforeTargets>ClCompile</CustomBuildBeforeTargets>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
-    <CustomBuildAfterTargets>VcpkgInstallManifestDependencies</CustomBuildAfterTargets>
     <CopyLocalProjectReference>false</CopyLocalProjectReference>
     <CopyLocalDebugSymbols>true</CopyLocalDebugSymbols>
     <CopyLocalDeploymentContent>true</CopyLocalDeploymentContent>
     <OutDir>$(SolutionDir)build\$(Configuration)\$(PlatformShortname)\GTK\</OutDir>
     <IntDir>$(SolutionDir)build\intermediate\$(Configuration)\$(PlatformShortname)\$(ProjectName)\</IntDir>
+    <CustomBuildBeforeTargets>ClCompile</CustomBuildBeforeTargets>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|ARM64'">
-    <CustomBuildAfterTargets>VcpkgInstallManifestDependencies</CustomBuildAfterTargets>
     <CopyLocalProjectReference>false</CopyLocalProjectReference>
     <CopyLocalDebugSymbols>true</CopyLocalDebugSymbols>
     <CopyLocalDeploymentContent>true</CopyLocalDeploymentContent>
     <OutDir>$(SolutionDir)build\$(Configuration)\$(PlatformShortname)\GTK\</OutDir>
     <IntDir>$(SolutionDir)build\intermediate\$(Configuration)\$(PlatformShortname)\$(ProjectName)\</IntDir>
+    <CustomBuildBeforeTargets>ClCompile</CustomBuildBeforeTargets>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
-    <CustomBuildAfterTargets>VcpkgInstallManifestDependencies</CustomBuildAfterTargets>
     <CopyLocalProjectReference>true</CopyLocalProjectReference>
     <CopyLocalDebugSymbols>true</CopyLocalDebugSymbols>
     <OutDir>$(SolutionDir)build\$(Configuration)\$(PlatformShortname)\GTK\</OutDir>
     <IntDir>$(SolutionDir)build\intermediate\$(Configuration)\$(PlatformShortname)\$(ProjectName)\</IntDir>
+    <CustomBuildBeforeTargets>ClCompile</CustomBuildBeforeTargets>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|ARM64'">
-    <CustomBuildAfterTargets>VcpkgInstallManifestDependencies</CustomBuildAfterTargets>
     <CopyLocalProjectReference>true</CopyLocalProjectReference>
     <CopyLocalDebugSymbols>true</CopyLocalDebugSymbols>
     <OutDir>$(SolutionDir)build\$(Configuration)\$(PlatformShortname)\GTK\</OutDir>
     <IntDir>$(SolutionDir)build\intermediate\$(Configuration)\$(PlatformShortname)\$(ProjectName)\</IntDir>
+    <CustomBuildBeforeTargets>ClCompile</CustomBuildBeforeTargets>
   </PropertyGroup>
   <PropertyGroup Label="Vcpkg">
     <VcpkgEnableManifest>true</VcpkgEnableManifest>

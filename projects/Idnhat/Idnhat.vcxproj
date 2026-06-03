@@ -116,9 +116,9 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|ARM64'">
     <CopyLocalDeploymentContent>true</CopyLocalDeploymentContent>
     <CopyLocalDebugSymbols>true</CopyLocalDebugSymbols>
-    <CustomBuildAfterTargets>VcpkgInstallManifestDependencies</CustomBuildAfterTargets>
     <OutDir>$(SolutionDir)build\$(Configuration)\$(PlatformShortname)\GTK\</OutDir>
     <IntDir>$(SolutionDir)build\intermediate\$(Configuration)\$(PlatformShortname)\$(ProjectName)\</IntDir>
+    <CustomBuildBeforeTargets>ClCompile</CustomBuildBeforeTargets>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <OutDir>$(SolutionDir)build\$(Configuration)\$(PlatformShortname)\GTK\</OutDir>
@@ -135,6 +135,7 @@
     <VcpkgAutoLink>false</VcpkgAutoLink>
     <VcpkgXUseBuiltInApplocalDeps>false</VcpkgXUseBuiltInApplocalDeps>
     <VcpkgApplocalDeps>false</VcpkgApplocalDeps>
+    <VcpkgEnableManifest>true</VcpkgEnableManifest>
   </PropertyGroup>
   <PropertyGroup Label="Vcpkg" Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <VcpkgTriplet>$(PlatformShortName.ToLower)-windows</VcpkgTriplet>

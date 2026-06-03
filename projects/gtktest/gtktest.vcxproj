@@ -132,10 +132,10 @@
     <CopyLocalProjectReference>false</CopyLocalProjectReference>
     <CopyLocalDebugSymbols>true</CopyLocalDebugSymbols>
     <CopyLocalDeploymentContent>true</CopyLocalDeploymentContent>
-    <CustomBuildAfterTargets>VcpkgInstallManifestDependencies</CustomBuildAfterTargets>
     <OutDir>$(SolutionDir)build\$(Configuration)\$(PlatformShortname)\GTK\</OutDir>
     <IntDir>$(SolutionDir)build\intermediate\$(Configuration)\$(PlatformShortname)\$(ProjectName)\</IntDir>
     <CopyCppRuntimeToOutputDir>true</CopyCppRuntimeToOutputDir>
+    <CustomBuildBeforeTargets>ClCompile</CustomBuildBeforeTargets>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <CopyLocalProjectReference>true</CopyLocalProjectReference>
