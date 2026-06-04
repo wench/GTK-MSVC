@@ -45,9 +45,14 @@ permissions:
 jobs:
   build:
 
-    runs-on: windows-2022
+    runs-on: ${{ matrix.runner }}
  
 
+    strategy:
+      max-parallel: 1 # force them to run sequentially
+      fail-fast: true
+      matrix:
+        runner: [windows-2022, windows-11-arm]    
     steps:
     - name: Checkout
       uses: actions/checkout@v6
@@ -71,7 +76,11 @@ jobs:
         .\bootstrap-vcpkg.bat
         ./vcpkg integrate install
         ('VCPKG_REV='+$vcpkgcfg_json.'default-registry'.baseline)|Out-File -Append  ${{ github.env }}
-
+        # download and install zstandard 1.5.7 to c:\windows so action caching works in windows-11-arm
+        Invoke-WebRequest -Uri https://github.com/facebook/zstd/releases/download/v1.5.7/zstd-v1.5.7-win64.zip -OutFile zstd-v1.5.7-win64.zip
+        Expand-Archive zstd-v1.5.7-win64.zip  -DestinationPath .
+        Copy-Item zstd-v1.5.7-win64\zstd.exe c:\windows
+        $Env:path
 
     - name: Restore VCPKG Cache
       uses: actions/cache/restore@v5
@@ -84,6 +93,7 @@ jobs:
         restore-keys: |
           vcpkg-cache-${{env.VCPKG_REV}}
           vcpkg-cache
+        enableCrossOsArchive: true
 
       # If cache was restored from a different VCPKG_REV, try to clear the download cache of stale files
       # do this by Setting the LastAccessTime to Jan 1 2000 before building and then after building before saving
@@ -143,6 +153,7 @@ jobs:
       with:
         path: ${{env.VCPKGCACHE_PATH}}
         key: vcpkg-cache-${{env.VCPKG_REV}}-${{github.sha}}-${{github.run_attempt}}-${{env.VCPKG_CACHE_HASH}}
+        enableCrossOsArchive: true
   
     - name: Build Solution  for configurations (${{env.BUILD_CONFIGURATIONS}}) and platforms (${{env.BUILD_PLATFORMS}})
       working-directory: ${{env.GITHUB_WORKSPACE}}
