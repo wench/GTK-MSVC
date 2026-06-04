@@ -19,6 +19,9 @@ env:
   # Path to the solution file relative to the root of the project.
   SOLUTION_FILE_PATH: 
 
+  BUILD_PLATFORMS: x64 x86 ARM64
+
+  BUILD_CONFIGURATIONS: Release Debug
 
   VCPKGCACHE_PATH: vcpkg-caches
   
@@ -31,6 +34,10 @@ env:
   VCPKG_BINARY_SOURCE: ${{format('clear;files,{0}\vcpkg-caches\binary,readwrite', github.workspace) }}
 
   VCPKG_DEFAULT_BINARY_CACHE: ${{format('{0}\vcpkg-caches\binary', github.workspace) }}
+
+  VCPKG_REV:
+
+  VCPKG_CACHE_HASH:
 
 permissions:
   contents: read
@@ -63,7 +70,7 @@ jobs:
         git checkout -f --detach $vcpkgcfg_json.'default-registry'.baseline
         .\bootstrap-vcpkg.bat
         ./vcpkg integrate install
-        ('VCPKG_REV='+$vcpkgcfg_json.'default-registry'.baseline)|Out-File -Append -NoNewLine ${{ github.env }}
+        ('VCPKG_REV='+$vcpkgcfg_json.'default-registry'.baseline)|Out-File -Append  ${{ github.env }}
 
 
     - name: Restore VCPKG Cache
@@ -90,40 +97,64 @@ jobs:
           # renable filesystem auto updating last access time 
           fsutil behavior set disablelastaccess 0
 
-    - name: Install VCPKG packages for all configurations and platforms
+    - name: Install VCPKG packages for configurations (${{env.BUILD_CONFIGURATIONS}}) and platforms (${{env.BUILD_PLATFORMS}})
       working-directory: ${{env.GITHUB_WORKSPACE}}
       run: |
-          msbuild /v:${{ runner.debug =='1' && 'detailed' || 'normal' }} /p:Configuration=Release /p:Platform=x64 ${{env.SOLUTION_FILE_PATH}} /t:${{env.TARGET_VCPKG_MANIFEST_INSTALL}}
-          msbuild /v:${{ runner.debug =='1' && 'detailed' || 'normal' }} /p:Configuration=Release /p:Platform=Win32 ${{env.SOLUTION_FILE_PATH}} /t:${{env.TARGET_VCPKG_MANIFEST_INSTALL}}
-          msbuild /v:${{ runner.debug =='1' && 'detailed' || 'normal' }} /p:Configuration=Release /p:Platform=ARM64 ${{env.SOLUTION_FILE_PATH}} /t:${{env.TARGET_VCPKG_MANIFEST_INSTALL}}
-          msbuild /v:${{ runner.debug =='1' && 'detailed' || 'normal' }} /p:Configuration=Debug /p:Platform=x64 ${{env.SOLUTION_FILE_PATH}} /t:${{env.TARGET_VCPKG_MANIFEST_INSTALL}}
-          msbuild /v:${{ runner.debug =='1' && 'detailed' || 'normal' }} /p:Configuration=Debug /p:Platform=Win32 ${{env.SOLUTION_FILE_PATH}} /t:${{env.TARGET_VCPKG_MANIFEST_INSTALL}}
-          msbuild /v:${{ runner.debug =='1' && 'detailed' || 'normal' }} /p:Configuration=Debug /p:Platform=ARM64 ${{env.SOLUTION_FILE_PATH}} /t:${{env.TARGET_VCPKG_MANIFEST_INSTALL}}
+        foreach($configuration  in $ENV:BUILD_CONFIGURATIONS.Split(" ",[System.StringSplitOptions]::RemoveEmptyEntries)){
+          foreach($platform  in $ENV:BUILD_PLATFORMS.Split(" ",[System.StringSplitOptions]::RemoveEmptyEntries)){
+            echo "`e[34m$platform $configuration`e[0m"
+            
+            msbuild /v:${{ runner.debug =='1' && 'detailed' || 'normal' }} /p:Configuration=$configuration /p:Platform=$platform ${{env.SOLUTION_FILE_PATH}} /t:${{env.TARGET_VCPKG_MANIFEST_INSTALL}}
+          }
+        }
 
-    - name: Actually Clearing Stale Files In Cache
-      if: ${{!contains( steps.vcpkg-cache-restore.outputs.cache-matched-key, env.VCPKG_REV)}}
-      working-directory: ${{env.GITHUB_WORKSPACE}}     
-      run: |
-          $longago = [DateTime]::Parse("2000-01-01") 
-          #delete all files in cache directory where LastAccessTime is equal to $longago
-          get-ChildItem $Env:VCPKG_ASSETCACHE_PATH -file |where LastAccessTimeUTC -EQ $longago| Remove-Item -Force -Verbose
+        # Hash the cache and delete any stale files. Only need to hash the filenames because they are a hash of the contents
+        fsutil behavior set disablelastaccess 1
+        chdir $Env:VCPKGCACHE_PATH     
+        $longago = [DateTime]::Parse("2000-01-01") 
+        [Uint128]$hash = 0
+        $oldhash = Get-Content hash -ErrorAction ignore
+        Remove-item hash -ErrorAction Ignore
+        get-ChildItem -Recurse . | ForEach-Object{
+            if ($_.LastAccessTimeUtc -eq $longago){
+                Remove-Item $_ -Force -Verbose
+            }
+            else {
+                $relativename = Resolve-Path $_.FullName -Relative
+                $stringAsStream = [System.IO.MemoryStream]::new()
+                $writer = [System.IO.StreamWriter]::new($stringAsStream)
+                $writer.Write($relativename)
+                $writer.Flush()
+                $stringAsStream.Position = 0                
+                $hash = $hash -bxor [UInt128]::Parse((Get-FileHash -InputStream $stringAsStream -Algorithm Md5).Hash,'HexNumber')
+            }
+        }
+        echo "old hash was $oldhash"            
+        echo "new hash is  $hash"
+        $hash|Out-File hash
+        if ($hash -ne $oldhash){ 
+          "VCPKG_CACHE_HASH=$hash"|Out-File -Append ${{ github.env }} 
+        }
 
     - name: Save VCPKG cache
+      if: ${{env.VCPKG_CACHE_HASH !=''}}
       id: vcpkg-cache-save
       uses: actions/cache/save@v5
       with:
         path: ${{env.VCPKGCACHE_PATH}}
-        key: vcpkg-cache-${{env.VCPKG_REV}}-${{github.sha}}-${{github.run_attempt}}
+        key: vcpkg-cache-${{env.VCPKG_REV}}-${{github.sha}}-${{github.run_attempt}}-${{env.VCPKG_CACHE_HASH}}
   
-    - name: Build Solution  for all configurations and platforms
+    - name: Build Solution  for configurations (${{env.BUILD_CONFIGURATIONS}}) and platforms (${{env.BUILD_PLATFORMS}})
       working-directory: ${{env.GITHUB_WORKSPACE}}
       run: |
-       msbuild /v:${{ runner.debug =='1' && 'detailed' || 'normal' }} /m /p:Configuration=Release /p:Platform=x64 ${{env.SOLUTION_FILE_PATH}}
-       msbuild /v:${{ runner.debug =='1' && 'detailed' || 'normal' }} /m /p:Configuration=Release /p:Platform=Win32 ${{env.SOLUTION_FILE_PATH}}
-       msbuild /v:${{ runner.debug =='1' && 'detailed' || 'normal' }} /m /p:Configuration=Release /p:Platform=ARM64 ${{env.SOLUTION_FILE_PATH}}
-       msbuild /v:${{ runner.debug =='1' && 'detailed' || 'normal' }} /m /p:Configuration=Debug /p:Platform=x64 ${{env.SOLUTION_FILE_PATH}}
-       msbuild /v:${{ runner.debug =='1' && 'detailed' || 'normal' }} /m /p:Configuration=Debug /p:Platform=Win32 ${{env.SOLUTION_FILE_PATH}}
-       msbuild /v:${{ runner.debug =='1' && 'detailed' || 'normal' }} /m /p:Configuration=Debug /p:Platform=ARM64 ${{env.SOLUTION_FILE_PATH}}
+        foreach($configuration  in $ENV:BUILD_CONFIGURATIONS.Split(" ",[System.StringSplitOptions]::RemoveEmptyEntries)){
+          foreach($platform  in $ENV:BUILD_PLATFORMS.Split(" ",[System.StringSplitOptions]::RemoveEmptyEntries)){
+            echo "`e[34m$platform $configuration`e[0m"
+            
+            msbuild /v:${{ runner.debug =='1' && 'detailed' || 'normal' }} /p:Configuration=$configuration /p:Platform=$platform ${{env.SOLUTION_FILE_PATH}} /t:Rebuild
+            msbuild /v:${{ runner.debug =='1' && 'detailed' || 'normal' }} /p:Configuration=$configuration /p:Platform=$platform ${{env.SOLUTION_FILE_PATH}} /t:clean
+          }
+        }
       
       
       
