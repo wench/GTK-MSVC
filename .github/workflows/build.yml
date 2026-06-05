@@ -23,21 +23,22 @@ env:
 
   BUILD_CONFIGURATIONS: Release Debug
 
+  MSBUILD_EXTRA_OPTIONS: -noWarn:MSB4011 -ds:true
+ 
   VCPKGCACHE_PATH: vcpkg-caches
   
   TARGET_VCPKG_MANIFEST_INSTALL: VcpkgInstallManifestDependencies
 
+  #enable multiprocess compiling with MSVC
+  CL_: /MP
 
-  #Set vcpkg to use an asset cache
-  X_VCPKG_ASSET_SOURCES: ${{format('clear;x-azurl,file://{0}\vcpkg-caches\asset,,readwrite', github.workspace) }}
+    # This is set to "IMAGE_VERSION-{Xored MD5 Hashes of both vcpkg json files in the repository}" by the Initial Setup step
+  # This is used to track when a change happens that should trigger cleaning of the cache and discarding old files
+  CACHE_KEY:
 
-  VCPKG_BINARY_SOURCE: ${{format('clear;files,{0}\vcpkg-caches\binary,readwrite', github.workspace) }}
-
-  VCPKG_DEFAULT_BINARY_CACHE: ${{format('{0}\vcpkg-caches\binary', github.workspace) }}
-
-  VCPKG_REV:
-
+    # has of the files being cached.
   VCPKG_CACHE_HASH:
+
 
 permissions:
   contents: read
@@ -53,80 +54,166 @@ jobs:
       fail-fast: true
       matrix:
         runner: [windows-2022, windows-11-arm]    
+
+
+    env:
+     #Vcpkg caches, Each platform writes to its own cache but can read from the Windows 2022 cache
+
+     # use a script for the asset cache
+      X_VCPKG_ASSET_SOURCES: ${{format('clear;x-script,{0}\vcpkg-caches\asset-cache-script.bat {{url}} {{sha512}} {{dst}};x-block-origin', github.workspace) }}
+
+      VCPKG_BINARY_SOURCE: ${{format('clear;files,{0}\vcpkg-caches\windows-2022\binary,read;files,{0}\vcpkg-caches\{1}\binary,readwrite', github.workspace,matrix.runner) }}
+
+      VCPKG_DEFAULT_BINARY_CACHE: ${{format('{0}\vcpkg-caches\{1}\binary', github.workspace,matrix.runner) }}
+    
+      
     steps:
     - name: Checkout
       uses: actions/checkout@v6
       with:
        submodules: true
-    
+  
     - name: Add MSBuild to PATH
       uses: microsoft/setup-msbuild@v3
 
-    - name: Setup VCPKG
-      working-directory: ${{env.GITHUB_WORKSPACE}}     
+    - name: Initial Setup
       run: |
         $vcpkgcfg_json = Get-Content vcpkg-configuration.json -Raw | ConvertFrom-Json
-        mkdir $Env:VCPKGCACHE_PATH
-        chdir $Env:VCPKGCACHE_PATH
-        mkdir asset
-        mkdir binary        
+        [uint128]$vcpkghash = [UInt128]::Parse((Get-FileHash .\vcpkg-configuration.json -Algorithm Md5).Hash,'HexNumber') -bxor [UInt128]::Parse((Get-FileHash vcpkg.json -Algorithm Md5).Hash,'HexNumber')        
+        mkdir "vcpkg-caches\windows-2022\asset" -force
+        mkdir "vcpkg-caches\windows-2022\binary" -force
+        mkdir "vcpkg-caches\${{matrix.runner}}\asset" -force
+        mkdir "vcpkg-caches\${{matrix.runner}}\binary" -force
+        # This multiline string is an embedded batch file that gets written out to use as a vcpkg asset cache script. 
+        # Use this to enable reading from 2 caches. VCPKG only normally allows reading from 1 asset cache
+        @'
+        @echo off
+        set url=%1
+        set sha512=%2
+        set dst=%3
+        set "_dst=%dst:/=\%"
+        mkdir %_dst%
+        rmdir %_dst%        
+        cd /d "${{github.workspace}}\vcpkg-caches\windows-2022\asset"
+        if exist %sha512% (
+            echo Asset cache hit in Windows-2022
+            copy %sha512% "%dst%"
+            exit
+        ) 
+        cd /d "${{github.workspace}}\vcpkg-caches\${{matrix.runner}}\asset"
+        if exist %sha512% (
+            echo Asset cache hit in ${{matrix.runner}}
+            copy %sha512% %_dst
+            exit
+        )
+        echo Asset cache miss downloading %url% 
+        curl.exe  --ssl-no-revoke --retry 5 --retry-delay 3 --retry-max-time 60 -L %url% --output .\%sha512%
+        copy .\%sha512% %_dst%
+        '@  | Out-File  "${{github.workspace}}\vcpkg-caches\asset-cache-script.bat"
+        #disable last access time updating 
+        fsutil behavior set disablelastaccess 1
+
         cd $Env:VCPKG_INSTALLATION_ROOT
         git fetch
         git checkout -f --detach $vcpkgcfg_json.'default-registry'.baseline
         .\bootstrap-vcpkg.bat
         ./vcpkg integrate install
-        ('VCPKG_REV='+$vcpkgcfg_json.'default-registry'.baseline)|Out-File -Append  ${{ github.env }}
+        "CACHE_KEY=$env:ImageVersion#$vcpkghash"|Out-File -Append  ${{ github.env }}
         # download and install zstandard 1.5.7 to c:\windows so action caching works in windows-11-arm
         Invoke-WebRequest -Uri https://github.com/facebook/zstd/releases/download/v1.5.7/zstd-v1.5.7-win64.zip -OutFile zstd-v1.5.7-win64.zip
         Expand-Archive zstd-v1.5.7-win64.zip  -DestinationPath .
         Copy-Item zstd-v1.5.7-win64\zstd.exe c:\windows
-        $Env:path
+        "MSBUILD_VERBOSITY=${{ case(runner.debug =='1','detailed','normal') }}"|Out-File -Append  ${{ github.env }}
 
-    - name: Restore VCPKG Cache
+
+    - name: Restore VCPKG windows-2022 Cache
       uses: actions/cache/restore@v5
-      id: vcpkg-cache-restore
+      if: ${{ matrix.runner != 'windows-2022' }}
+      id: vcpkg-2022-cache-restore
       with:
-        path: ${{env.VCPKGCACHE_PATH}}
-        # Use the git rev hash of vcpkg in the cache key because things are not 
-        # entirely compatible between versions
-        key: vcpkg-cache-${{env.VCPKG_REV}}-${{github.sha}}-${{github.run_attempt}}
+        path: vcpkg-caches/windows-2022
+        key: vcpkg-cache-windows-2022-${{env.CACHE_KEY}}-${{github.sha}}-${{github.run_attempt}}
         restore-keys: |
-          vcpkg-cache-${{env.VCPKG_REV}}
-          vcpkg-cache
+          vcpkg-cache-windows-2022-${{env.CACHE_KEY}}
+          vcpkg-cache-windows-2022
         enableCrossOsArchive: true
 
-      # If cache was restored from a different VCPKG_REV, try to clear the download cache of stale files
-      # do this by Setting the LastAccessTime to Jan 1 2000 before building and then after building before saving
-      # the cache, delete any files that were not acessed by the build and didn't have their access time changed
-    - name: Init Clearing Stale Files Cache
-      if: ${{!contains( steps.vcpkg-cache-restore.outputs.cache-matched-key, env.VCPKG_REV)}}
+    - name: Restore VCPKG Cache
+      uses: actions/cache/restore@v5      
+      id: vcpkg-cache-restore
+      with:
+        path: vcpkg-caches/${{matrix.runner}}
+        # Use the git rev hash of vcpkg in the cache key because things are not 
+        # entirely compatible between versions
+        key: vcpkg-cache-${{matrix.runner}}-${{env.CACHE_KEY}}-${{github.sha}}-${{github.run_attempt}}
+        restore-keys: |
+          vcpkg-cache-${{matrix.runner}}-${{env.CACHE_KEY}}
+          vcpkg-cache-${{matrix.runner}}
+        enableCrossOsArchive: true
+
+       # If the cache key was not matched clean the cache and delete any file that isn't't acceessed by vcpkg        
+       # do this by setting the last access time of ever file to jan 1st 2000 and then enable last access time updating
+       # any file that was not accessed by the install_packages step gets deleted by the cache cleanup and hash step
+    - name: Prepare for Cache Cleaning
+      if: ${{ steps.vcpkg-cache-restore.outputs.cache-matched-key}}
+      # && !contains( steps.vcpkg-cache-restore.outputs.cache-matched-key, env.CACHE_KEY) }}
       run: |
-          fsutil behavior set disablelastaccess 1
+        $restorekey = '${{steps.vcpkg-cache-restore.outputs.cache-matched-key}}';
+        $keyprefix = 'vcpkg-cache-${{matrix.runner}}-';
+        $currentkey = '${{env.CACHE_KEY}}'
+        $currenthash = $currentkey.Substring($env:ImageVersion.Length+1);
+        $restorekey = $restorekey.Substring($keyprefix.Length)
+        $separator = $restorekey.IndexOf('#')
+        if($separator -eq -1){
+        "failed to perse restore key string for image version no cache cleaning will be done"
+        return 0 
+        }
+        $restorehash= $restorekey.Substring($separator+1,$currenthash.Length)
+
+        $restoreversion = [semver]$restorekey.Substring(0,$separator);
+        $currentversion = [semver]$env:ImageVersion;
+        $hashmatched = $restorehash -eq $currenthash
+        $currentnewer = $currentversion -gt $restoreversion;
+        #only do it if the current image is newer than the cache or the hash didn't match
+        if(-not $hashmatched -or $currentnewer){
+          "Cache being cleaned. conditions met (currentnewer: $currentnewer, hashmatched: $hashmatched)"
           $longago = [DateTime]::Parse("2000-01-01") 
-          get-ChildItem $Env:VCPKGCACHE_PATH -filter *.* -File | ForEach-Object { $_.LastAccessTimeUTC = $longago; $_.Name }
-          # renable filesystem auto updating last access time 
+          get-ChildItem "vcpkg-caches\${{matrix.runner}}" -filter *.* -File | ForEach-Object { $_.LastAccessTimeUTC = $longago; $_.Name }
           fsutil behavior set disablelastaccess 0
+        }else {
+          "Cache not being cleaned. conditions not met (currentnewer: $currentnewer, hashmatched: $hashmatched) "
+        }
 
     - name: Install VCPKG packages for configurations (${{env.BUILD_CONFIGURATIONS}}) and platforms (${{env.BUILD_PLATFORMS}})
-      working-directory: ${{env.GITHUB_WORKSPACE}}
-      run: |
-        foreach($configuration  in $ENV:BUILD_CONFIGURATIONS.Split(" ",[System.StringSplitOptions]::RemoveEmptyEntries)){
-          foreach($platform  in $ENV:BUILD_PLATFORMS.Split(" ",[System.StringSplitOptions]::RemoveEmptyEntries)){
+      id: install_packages
+      run: |      
+        #immediately fail the script on any error
+        $PSNativeCommandUseErrorActionPreference = $true
+        $ErrorActionPreference = 'Stop'
+
+        foreach($configuration  in $ENV:BUILD_CONFIGURATIONS.Split(" ",[System.StringSplitOptions]::RemoveEmptyEntries)) {
+          foreach($platform  in $ENV:BUILD_PLATFORMS.Split(" ",[System.StringSplitOptions]::RemoveEmptyEntries)) {
             echo "`e[34m$platform $configuration`e[0m"
             
-            msbuild /v:${{ runner.debug =='1' && 'detailed' || 'normal' }} /p:Configuration=$configuration /p:Platform=$platform ${{env.SOLUTION_FILE_PATH}} /t:${{env.TARGET_VCPKG_MANIFEST_INSTALL}}
+            msbuild /v:${{ env.MSBUILD_VERBOSITY }} /p:Configuration=$configuration /p:Platform=$platform ${{env.SOLUTION_FILE_PATH}} /t:${{env.TARGET_VCPKG_MANIFEST_INSTALL}} ${{env.MSBUILD_EXTRA_OPTIONS}}
           }
         }
 
-        # Hash the cache and delete any stale files. Only need to hash the filenames because they are a hash of the contents
+      # Hash the cache and delete any unaccessed files. Only need to hash the filenames
+      # asset cache filenames are a sha512 has of the contents. binary cache filenames are unique identifer of what the file contents should be.
+      # Unaccessed files are only deleted if the install_packages step succeeded because the step might have failed before the files would have been accesssed
+    - name: Cleanup and Hash Cache
+      if: ${{ always() }}
+      run: |
         fsutil behavior set disablelastaccess 1
-        chdir $Env:VCPKGCACHE_PATH     
+        chdir "vcpkg-caches\${{matrix.runner}}"    
         $longago = [DateTime]::Parse("2000-01-01") 
-        [Uint128]$hash = 0
+        $failed = ${{case(steps.install_packages.outcome != 'success','$true','$false')}}
+        $hash = 0
         $oldhash = Get-Content hash -ErrorAction ignore
         Remove-item hash -ErrorAction Ignore
         get-ChildItem -Recurse . | ForEach-Object{
-            if ($_.LastAccessTimeUtc -eq $longago){
+            if ($_.LastAccessTimeUtc -eq $longago -and -not $failed){
                 Remove-Item $_ -Force -Verbose
             }
             else {
@@ -141,29 +228,42 @@ jobs:
         }
         echo "old hash was $oldhash"            
         echo "new hash is  $hash"
+        #write the new has out to a file to be store in the cache
         $hash|Out-File hash
+        
+        # on failure of install_packages step set the hash to the valuethe outcome of the step
+        # this will cause the cache to be always saved on failure
+        if ($failed){
+          $hash = '${{steps.install_packages.outcome}}'
+        }
+
         if ($hash -ne $oldhash){ 
           "VCPKG_CACHE_HASH=$hash"|Out-File -Append ${{ github.env }} 
         }
-
+      
+    # cache is only saved if the hash was set in the previous step. If the hash wasn't set there were no changes to the cache
     - name: Save VCPKG cache
-      if: ${{env.VCPKG_CACHE_HASH !=''}}
+      if: ${{ always() && env.VCPKG_CACHE_HASH}}
       id: vcpkg-cache-save
       uses: actions/cache/save@v5
       with:
-        path: ${{env.VCPKGCACHE_PATH}}
-        key: vcpkg-cache-${{env.VCPKG_REV}}-${{github.sha}}-${{github.run_attempt}}-${{env.VCPKG_CACHE_HASH}}
+        path: vcpkg-caches/${{ matrix.runner }}
+        key: vcpkg-cache-${{ matrix.runner }}-${{env.CACHE_KEY}}-${{github.sha}}-${{github.run_attempt}}-${{env.VCPKG_CACHE_HASH}}
         enableCrossOsArchive: true
   
-    - name: Build Solution  for configurations (${{env.BUILD_CONFIGURATIONS}}) and platforms (${{env.BUILD_PLATFORMS}})
-      working-directory: ${{env.GITHUB_WORKSPACE}}
+    - name: Build Solution for configurations (${{env.BUILD_CONFIGURATIONS}}) and platforms (${{env.BUILD_PLATFORMS}})
       run: |
+        #immediately fail the script on any error
+        $PSNativeCommandUseErrorActionPreference = $true
+        $ErrorActionPreference = 'Stop'
+
         foreach($configuration  in $ENV:BUILD_CONFIGURATIONS.Split(" ",[System.StringSplitOptions]::RemoveEmptyEntries)){
           foreach($platform  in $ENV:BUILD_PLATFORMS.Split(" ",[System.StringSplitOptions]::RemoveEmptyEntries)){
             echo "`e[34m$platform $configuration`e[0m"
             
-            msbuild /v:${{ runner.debug =='1' && 'detailed' || 'normal' }} /p:Configuration=$configuration /p:Platform=$platform ${{env.SOLUTION_FILE_PATH}} /t:Rebuild
-            msbuild /v:${{ runner.debug =='1' && 'detailed' || 'normal' }} /p:Configuration=$configuration /p:Platform=$platform ${{env.SOLUTION_FILE_PATH}} /t:clean
+            msbuild /v:${{ env.MSBUILD_VERBOSITY }} /p:Configuration=$configuration /p:Platform=$platform ${{env.SOLUTION_FILE_PATH}} ${{env.MSBUILD_EXTRA_OPTIONS}}
+            # clean the output so nothing is left that might influence other builds
+            msbuild /v:${{ env.MSBUILD_VERBOSITY }} /p:Configuration=$configuration /p:Platform=$platform ${{env.SOLUTION_FILE_PATH}} /t:clean ${{env.MSBUILD_EXTRA_OPTIONS}}
           }
         }
       
