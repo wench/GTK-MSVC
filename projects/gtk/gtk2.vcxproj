@@ -254,17 +254,35 @@ nmake -f %(FullPath) "TOP=$(GTK_SOURCE_ROOT)\" "GLIB_TOOLS=$(GLIB_TOOLS)\" gtkty
     <CustomBuild Include="build-icon-cache">
       <FileType>Document</FileType>
       <Command Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">cd "$(GTK_SOURCE_ROOT)gtk"
-"$(OutDir)gtk-update-icon-cache.exe" --force --ignore-theme-index  --source builtin_icons stock-icons &gt; gtkbuiltincache.h</Command>
+set "ICONCACHE_HEADER_NAME=$(GTK_SOURCE_ROOT)gtk\gtkbuiltincache.h"
+del %ICONCACHE_HEADER_NAME% &gt; nul
+"$(OutDir)gtk-update-icon-cache.exe" --force --ignore-theme-index  --source builtin_icons stock-icons
+</Command>
       <Command Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">cd "$(GTK_SOURCE_ROOT)gtk"
-"$(OutDir)gtk-update-icon-cache.exe" --force --ignore-theme-index  --source builtin_icons stock-icons &gt; gtkbuiltincache.h</Command>
+set "ICONCACHE_HEADER_NAME=$(GTK_SOURCE_ROOT)gtk\gtkbuiltincache.h"
+del %ICONCACHE_HEADER_NAME% &gt; nul
+"$(OutDir)gtk-update-icon-cache.exe" --force --ignore-theme-index  --source builtin_icons stock-icons
+</Command>
       <Command Condition="'$(Configuration)|$(Platform)'=='Debug|ARM64'">cd "$(GTK_SOURCE_ROOT)gtk"
-"$(SolutionDir)build\$(Configuration)\x64\GTK\gtk-update-icon-cache.exe" --force --ignore-theme-index  --source builtin_icons stock-icons &gt; gtkbuiltincache.h</Command>
+set "ICONCACHE_HEADER_NAME=$(GTK_SOURCE_ROOT)gtk\gtkbuiltincache.h"
+del %ICONCACHE_HEADER_NAME% &gt; nul
+"$(SolutionDir)build\$(Configuration)\x64\GTK\gtk-update-icon-cache.exe" --force --ignore-theme-index  --source builtin_icons stock-icons
+</Command>
       <Command Condition="'$(Configuration)|$(Platform)'=='Release|ARM64'">cd "$(GTK_SOURCE_ROOT)gtk"
-"$(SolutionDir)build\$(Configuration)\x64\GTK\gtk-update-icon-cache.exe" --force --ignore-theme-index  --source builtin_icons stock-icons &gt; gtkbuiltincache.h</Command>
+set "ICONCACHE_HEADER_NAME=$(GTK_SOURCE_ROOT)gtk\gtkbuiltincache.h"
+del %ICONCACHE_HEADER_NAME% &gt; nul
+"$(SolutionDir)build\$(Configuration)\x64\GTK\gtk-update-icon-cache.exe" --force --ignore-theme-index  --source builtin_icons stock-icons
+</Command>
       <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">cd "$(GTK_SOURCE_ROOT)gtk"
-"$(OutDir)gtk-update-icon-cache.exe" --force --ignore-theme-index  --source builtin_icons stock-icons &gt; gtkbuiltincache.h</Command>
+set "ICONCACHE_HEADER_NAME=$(GTK_SOURCE_ROOT)gtk\gtkbuiltincache.h"
+del %ICONCACHE_HEADER_NAME% &gt; nul
+"$(OutDir)gtk-update-icon-cache.exe" --force --ignore-theme-index  --source builtin_icons stock-icons
+</Command>
       <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">cd "$(GTK_SOURCE_ROOT)gtk"
-"$(OutDir)gtk-update-icon-cache.exe" --force --ignore-theme-index  --source builtin_icons stock-icons &gt; gtkbuiltincache.h</Command>
+set "ICONCACHE_HEADER_NAME=$(GTK_SOURCE_ROOT)gtk\gtkbuiltincache.h"
+del %ICONCACHE_HEADER_NAME% &gt; nul
+"$(OutDir)gtk-update-icon-cache.exe" --force --ignore-theme-index  --source builtin_icons stock-icons
+</Command>
       <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|ARM64'">$(GTK_SOURCE_ROOT)gtk\gtkbuiltincache.h</Outputs>
       <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|ARM64'">$(SolutionDir)build\$(Configuration)\x64\GTK\gtk-update-icon-cache.exe;$(GTK_SOURCE_ROOT)gtk\stock-icons\**\*.*</AdditionalInputs>
       <Message Condition="'$(Configuration)|$(Platform)'=='Release|ARM64'">Building Icon Cache</Message>
@@ -285,22 +303,16 @@ nmake -f %(FullPath) "TOP=$(GTK_SOURCE_ROOT)\" "GLIB_TOOLS=$(GLIB_TOOLS)\" gtkty
       <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(OutDir)gtk-update-icon-cache.exe;$(GTK_SOURCE_ROOT)gtk\stock-icons\**\*.*;%(AdditionalInputs)</AdditionalInputs>
       <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">false</LinkObjects>
       <OutputItemType Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">ClInclude</OutputItemType>
-      <BuildInParallel Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</BuildInParallel>
       <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">false</LinkObjects>
       <OutputItemType Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">ClInclude</OutputItemType>
-      <BuildInParallel Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</BuildInParallel>
       <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Debug|ARM64'">false</LinkObjects>
       <OutputItemType Condition="'$(Configuration)|$(Platform)'=='Debug|ARM64'">ClInclude</OutputItemType>
-      <BuildInParallel Condition="'$(Configuration)|$(Platform)'=='Debug|ARM64'">true</BuildInParallel>
       <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Release|ARM64'">false</LinkObjects>
       <OutputItemType Condition="'$(Configuration)|$(Platform)'=='Release|ARM64'">ClInclude</OutputItemType>
-      <BuildInParallel Condition="'$(Configuration)|$(Platform)'=='Release|ARM64'">true</BuildInParallel>
       <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</LinkObjects>
       <OutputItemType Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">ClInclude</OutputItemType>
-      <BuildInParallel Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</BuildInParallel>
       <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Release|x64'">false</LinkObjects>
       <OutputItemType Condition="'$(Configuration)|$(Platform)'=='Release|x64'">ClInclude</OutputItemType>
-      <BuildInParallel Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</BuildInParallel>
     </CustomBuild>
   </ItemGroup>
   <ItemGroup>
@@ -1017,6 +1029,12 @@ nmake -f %(FullPath) "TOP=$(GTK_SOURCE_ROOT)\" "GLIB_TOOLS=$(GLIB_TOOLS)\" gtkty
       <ModuleDefinitionFile>$(GTK_SOURCE_ROOT)gtk\gtk.def</ModuleDefinitionFile>
       <AdditionalDependencies>glib-2.0.lib;gobject-2.0.lib;gdk_pixbuf-2.0.lib;atk-1.0.lib;pango-1.0.lib;pangocairo-1.0.lib;cairo.lib;gio-2.0.lib;gmodule-2.0.lib;fribidi.lib;intl.lib;Comctl32.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
+    <CustomBuild>
+      <MaxProcesses>1</MaxProcesses>
+    </CustomBuild>
+    <CustomBuild>
+      <MaxItemsInBatch>1</MaxItemsInBatch>
+    </CustomBuild>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <ClCompile>
@@ -1040,6 +1058,12 @@ nmake -f %(FullPath) "TOP=$(GTK_SOURCE_ROOT)\" "GLIB_TOOLS=$(GLIB_TOOLS)\" gtkty
       <ModuleDefinitionFile>$(GTK_SOURCE_ROOT)gtk\gtk.def</ModuleDefinitionFile>
       <AdditionalDependencies>glib-2.0.lib;gobject-2.0.lib;gdk_pixbuf-2.0.lib;atk-1.0.lib;pango-1.0.lib;pangocairo-1.0.lib;cairo.lib;gio-2.0.lib;gmodule-2.0.lib;fribidi.lib;intl.lib;Comctl32.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
+    <CustomBuild>
+      <MaxProcesses>1</MaxProcesses>
+    </CustomBuild>
+    <CustomBuild>
+      <MaxItemsInBatch>1</MaxItemsInBatch>
+    </CustomBuild>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <ClCompile>
@@ -1061,6 +1085,12 @@ nmake -f %(FullPath) "TOP=$(GTK_SOURCE_ROOT)\" "GLIB_TOOLS=$(GLIB_TOOLS)\" gtkty
       <ModuleDefinitionFile>$(GTK_SOURCE_ROOT)gtk\gtk.def</ModuleDefinitionFile>
       <AdditionalDependencies>glib-2.0.lib;gobject-2.0.lib;gdk_pixbuf-2.0.lib;atk-1.0.lib;pango-1.0.lib;pangocairo-1.0.lib;cairo.lib;gio-2.0.lib;gmodule-2.0.lib;fribidi.lib;intl.lib;Comctl32.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
+    <CustomBuild>
+      <MaxProcesses>1</MaxProcesses>
+    </CustomBuild>
+    <CustomBuild>
+      <MaxItemsInBatch>1</MaxItemsInBatch>
+    </CustomBuild>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|ARM64'">
     <ClCompile>
@@ -1082,6 +1112,12 @@ nmake -f %(FullPath) "TOP=$(GTK_SOURCE_ROOT)\" "GLIB_TOOLS=$(GLIB_TOOLS)\" gtkty
       <ModuleDefinitionFile>$(GTK_SOURCE_ROOT)gtk\gtk.def</ModuleDefinitionFile>
       <AdditionalDependencies>glib-2.0.lib;gobject-2.0.lib;gdk_pixbuf-2.0.lib;atk-1.0.lib;pango-1.0.lib;pangocairo-1.0.lib;cairo.lib;gio-2.0.lib;gmodule-2.0.lib;fribidi.lib;intl.lib;Comctl32.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
+    <CustomBuild>
+      <MaxProcesses>1</MaxProcesses>
+    </CustomBuild>
+    <CustomBuild>
+      <MaxItemsInBatch>1</MaxItemsInBatch>
+    </CustomBuild>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <ClCompile>
@@ -1105,6 +1141,12 @@ nmake -f %(FullPath) "TOP=$(GTK_SOURCE_ROOT)\" "GLIB_TOOLS=$(GLIB_TOOLS)\" gtkty
       <ModuleDefinitionFile>$(GTK_SOURCE_ROOT)gtk\gtk.def</ModuleDefinitionFile>
       <AdditionalDependencies>glib-2.0.lib;gobject-2.0.lib;gdk_pixbuf-2.0.lib;atk-1.0.lib;pango-1.0.lib;pangocairo-1.0.lib;cairo.lib;gio-2.0.lib;gmodule-2.0.lib;fribidi.lib;intl.lib;Comctl32.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
+    <CustomBuild>
+      <MaxProcesses>1</MaxProcesses>
+    </CustomBuild>
+    <CustomBuild>
+      <MaxItemsInBatch>1</MaxItemsInBatch>
+    </CustomBuild>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|ARM64'">
     <ClCompile>
@@ -1128,6 +1170,12 @@ nmake -f %(FullPath) "TOP=$(GTK_SOURCE_ROOT)\" "GLIB_TOOLS=$(GLIB_TOOLS)\" gtkty
       <ModuleDefinitionFile>$(GTK_SOURCE_ROOT)gtk\gtk.def</ModuleDefinitionFile>
       <AdditionalDependencies>glib-2.0.lib;gobject-2.0.lib;gdk_pixbuf-2.0.lib;atk-1.0.lib;pango-1.0.lib;pangocairo-1.0.lib;cairo.lib;gio-2.0.lib;gmodule-2.0.lib;fribidi.lib;intl.lib;Comctl32.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
+    <CustomBuild>
+      <MaxProcesses>1</MaxProcesses>
+    </CustomBuild>
+    <CustomBuild>
+      <MaxItemsInBatch>1</MaxItemsInBatch>
+    </CustomBuild>
   </ItemDefinitionGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
