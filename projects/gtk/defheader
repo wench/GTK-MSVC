@@ -1,0 +1,10 @@
+// This is a helper file included when the compiler preprocesses Gtk.symbols to generate gtk.def
+EXPORTS
+#define INCLUDE_VARIABLES 
+#define G_OS_WIN32 
+#define ALL_FILES 
+#define G_GNUC_MALLOC 
+#define G_GNUC_CONST 
+#define G_GNUC_NULL_TERMINATED 
+#define G_GNUC_NORETURN 
+#define G_GNUC_PRINTF ;G_GNUC_PRINTF

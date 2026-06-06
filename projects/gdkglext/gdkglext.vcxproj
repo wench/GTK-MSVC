@@ -82,11 +82,11 @@ python3 "$(GLIB_TOOLS)\glib-mkenums"  --template "%(FullPath)"  gdkgl.h gdkgldef
       <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">cd %(relativedir)
 python3 "$(GLIB_TOOLS)\glib-mkenums"  --template "%(FullPath)"  gdkgl.h gdkgldefs.h gdkgltokens.h gdkgltypes.h gdkglinit.h gdkglquery.h gdkglconfig.h gdkglcontext.h gdkgldrawable.h gdkglwindow.h gdkglversion.h &gt; gdkglenumtypes.c</Command>
       <Command Condition="'$(Configuration)|$(Platform)'=='Debug|ARM64'">cd %(relativedir)
-python3 "$(GLIB_TOOLS)\glib-mkenums"  --template "%(FullPath)"  gdkgl.h gdkgldefs.h gdkgltokens.h gdkgltypes.h gdkglinit.h gdkglquery.h gdkglconfig.h gdkglcontext.h gdkgldrawable.h gdkglwindow.h gdkglversion.h &gt; gdkglenumtypes.c</Command>
+python3 "$(GLIB_TOOLS)\glib-mkenums"  --template "%(FullPath)"  gdkgl.h gdkgldefs.h gdkgltokens.h gdkgltypes.h gdkglinit.h gdkglquery.h gdkglconfig.h gdkglcontext.h gdkgldrawable.h gdkglwindow.h gdkglversion.h --output=gdkglenumtypes.c</Command>
       <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">cd %(relativedir)
 python3 "$(GLIB_TOOLS)\glib-mkenums"  --template "%(FullPath)"  gdkgl.h gdkgldefs.h gdkgltokens.h gdkgltypes.h gdkglinit.h gdkglquery.h gdkglconfig.h gdkglcontext.h gdkgldrawable.h gdkglwindow.h gdkglversion.h &gt; gdkglenumtypes.c</Command>
       <Command Condition="'$(Configuration)|$(Platform)'=='Release|ARM64'">cd %(relativedir)
-python3 "$(GLIB_TOOLS)\glib-mkenums"  --template "%(FullPath)"  gdkgl.h gdkgldefs.h gdkgltokens.h gdkgltypes.h gdkglinit.h gdkglquery.h gdkglconfig.h gdkglcontext.h gdkgldrawable.h gdkglwindow.h gdkglversion.h &gt; gdkglenumtypes.c</Command>
+python3 "$(GLIB_TOOLS)\glib-mkenums"  --template "%(FullPath)"  gdkgl.h gdkgldefs.h gdkgltokens.h gdkgltypes.h gdkglinit.h gdkglquery.h gdkglconfig.h gdkglcontext.h gdkgldrawable.h gdkglwindow.h gdkglversion.h --output=gdkglenumtypes.c</Command>
       <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">%(relativedir)gdkglenumtypes.c</Outputs>
       <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">%(relativedir)gdkglenumtypes.c</Outputs>
       <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">%(relativedir)gdkglenumtypes.c</Outputs>
@@ -112,13 +112,13 @@ python3 "$(GLIB_TOOLS)\glib-mkenums"  --template "%(FullPath)"  gdkgl.h gdkgldef
 python3 "$(GLIB_TOOLS)\glib-mkenums"  --template "%(FullPath)"  gdkgl.h gdkgldefs.h gdkgltokens.h gdkgltypes.h gdkglinit.h gdkglquery.h gdkglconfig.h gdkglcontext.h gdkgldrawable.h gdkglwindow.h gdkglversion.h &gt; gdkglenumtypes.h
 </Command>
       <Command Condition="'$(Configuration)|$(Platform)'=='Debug|ARM64'">cd %(relativedir)
-python3 "$(GLIB_TOOLS)\glib-mkenums"  --template "%(FullPath)"  gdkgl.h gdkgldefs.h gdkgltokens.h gdkgltypes.h gdkglinit.h gdkglquery.h gdkglconfig.h gdkglcontext.h gdkgldrawable.h gdkglwindow.h gdkglversion.h &gt; gdkglenumtypes.h
+python3 "$(GLIB_TOOLS)\glib-mkenums"  --template "%(FullPath)"  gdkgl.h gdkgldefs.h gdkgltokens.h gdkgltypes.h gdkglinit.h gdkglquery.h gdkglconfig.h gdkglcontext.h gdkgldrawable.h gdkglwindow.h gdkglversion.h --output=gdkglenumtypes.h
 </Command>
       <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">cd %(relativedir)
 python3 "$(GLIB_TOOLS)\glib-mkenums"  --template "%(FullPath)"  gdkgl.h gdkgldefs.h gdkgltokens.h gdkgltypes.h gdkglinit.h gdkglquery.h gdkglconfig.h gdkglcontext.h gdkgldrawable.h gdkglwindow.h gdkglversion.h &gt; gdkglenumtypes.h
 </Command>
       <Command Condition="'$(Configuration)|$(Platform)'=='Release|ARM64'">cd %(relativedir)
-python3 "$(GLIB_TOOLS)\glib-mkenums"  --template "%(FullPath)"  gdkgl.h gdkgldefs.h gdkgltokens.h gdkgltypes.h gdkglinit.h gdkglquery.h gdkglconfig.h gdkglcontext.h gdkgldrawable.h gdkglwindow.h gdkglversion.h &gt; gdkglenumtypes.h
+python3 "$(GLIB_TOOLS)\glib-mkenums"  --template "%(FullPath)"  gdkgl.h gdkgldefs.h gdkgltokens.h gdkgltypes.h gdkglinit.h gdkglquery.h gdkglconfig.h gdkglcontext.h gdkgldrawable.h gdkglwindow.h gdkglversion.h --output=gdkglenumtypes.h
 </Command>
       <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">%(relativedir)gdkglenumtypes.h</Outputs>
       <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|ARM64'">%(relativedir)gdkglenumtypes.h</Outputs>

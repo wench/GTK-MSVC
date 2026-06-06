@@ -1,0 +1,8 @@
+// This is a helper file included when the compiler preprocesses Gdk.symbols to generate gdk.def
+EXPORTS
+ #define INCLUDE_VARIABLES 
+ #define G_OS_WIN32 
+ #define GDK_WINDOWING_WIN32 
+ #define ALL_FILES 
+ #define G_GNUC_CONST
+ #define gdk_atom_get_type ;gdk_atom_get_type

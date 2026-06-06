@@ -56,15 +56,21 @@
     <None Include="..\..\gtk2-ng\gtk\gtk.def">
       <Filter>Generated files\gtk</Filter>
     </None>
+    <None Include="defheader">
+      <Filter>Custom Build Files\gtk</Filter>
+    </None>
+    <None Include="marshalguardend">
+      <Filter>Custom Build Files\gtk</Filter>
+    </None>
+    <None Include="marshalguardstart">
+      <Filter>Custom Build Files\gtk</Filter>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <CustomBuild Include="..\..\gtk2-ng\configure.ac">
       <Filter>Custom Build Files</Filter>
     </CustomBuild>
     <CustomBuild Include="..\..\gtk2-ng\gtk\gtk.symbols">
-      <Filter>Custom Build Files\gtk</Filter>
-    </CustomBuild>
-    <CustomBuild Include="..\..\gtk2-ng\gtk\makegtkalias.pl">
       <Filter>Custom Build Files\gtk</Filter>
     </CustomBuild>
     <CustomBuild Include="maketypebuiltins.mak">
@@ -97,9 +103,6 @@
     </ClCompile>
     <ClCompile Include="..\..\gtk2-ng\gtk\gtktypeutils.c">
       <Filter>Source Files\gtk</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\gtk2-ng\gtk\gtkaliasdef.c">
-      <Filter>Generated files\gtk</Filter>
     </ClCompile>
     <ClCompile Include="..\..\gtk2-ng\gtk\fnmatch.c">
       <Filter>Source Files\gtk</Filter>
@@ -842,6 +845,7 @@
     <ClCompile Include="..\..\gtk2-ng\gtk\gtktreedatalist.c">
       <Filter>Source Files\gtk</Filter>
     </ClCompile>
+    <ClCompile Include="gtkaliasdef.c" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\gtk2-ng\gtk\gtktypebuiltins.h">
@@ -858,9 +862,6 @@
     </ClInclude>
     <ClInclude Include="..\..\gtk2-ng\gtk\gtktypeutils.h">
       <Filter>Header Files\gtk</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\gtk2-ng\gtk\gtkalias.h">
-      <Filter>Generated files\gtk</Filter>
     </ClInclude>
     <ClInclude Include="..\..\gtk2-ng\gtk\xembed.h">
       <Filter>Header Files\gtk</Filter>
@@ -1705,5 +1706,6 @@
     <ClInclude Include="..\..\gtk2-ng\gtk\gtkbuiltincache.h">
       <Filter>Generated files\gtk</Filter>
     </ClInclude>
+    <ClInclude Include="gtkalias.h" />
   </ItemGroup>
 </Project>

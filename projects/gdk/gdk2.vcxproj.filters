@@ -225,6 +225,9 @@
     <None Include="..\..\gtk2-ng\config.h.win32">
       <Filter>Generated files</Filter>
     </None>
+    <None Include="defheader">
+      <Filter>Custom Build Files\gdk</Filter>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\gtk2-ng\gdk\gdk.c">

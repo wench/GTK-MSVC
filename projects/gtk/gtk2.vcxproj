@@ -68,86 +68,77 @@
     </CustomBuild>
     <CustomBuild Include="..\..\gtk2-ng\gtk\gtk.symbols">
       <FileType>Document</FileType>
-      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">echo EXPORTS &gt; %(RelativeDir)gtk.def
-cl /EP -DINCLUDE_VARIABLES -DG_OS_WIN32 -DALL_FILES -DG_GNUC_MALLOC= -DG_GNUC_CONST= -DG_GNUC_NULL_TERMINATED= -DG_GNUC_NORETURN= -DG_GNUC_PRINTF=;G_GNUC_PRINTF %(RelativeDir)gtk.symbols &gt;&gt; %(RelativeDir)gtk.def</Command>
-      <Command Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">echo EXPORTS &gt; %(RelativeDir)gtk.def
-cl /EP -DINCLUDE_VARIABLES -DG_OS_WIN32 -DALL_FILES -DG_GNUC_MALLOC= -DG_GNUC_CONST= -DG_GNUC_NULL_TERMINATED= -DG_GNUC_NORETURN= -DG_GNUC_PRINTF=;G_GNUC_PRINTF %(RelativeDir)gtk.symbols &gt;&gt; %(RelativeDir)gtk.def</Command>
-      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">echo EXPORTS &gt; %(RelativeDir)gtk.def
-cl /EP -DINCLUDE_VARIABLES -DG_OS_WIN32 -DALL_FILES -DG_GNUC_MALLOC= -DG_GNUC_CONST= -DG_GNUC_NULL_TERMINATED= -DG_GNUC_NORETURN= -DG_GNUC_PRINTF=;G_GNUC_PRINTF %(RelativeDir)gtk.symbols &gt;&gt; %(RelativeDir)gtk.def</Command>
-      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|ARM64'">echo EXPORTS &gt; %(RelativeDir)gtk.def
-cl /EP -DINCLUDE_VARIABLES -DG_OS_WIN32 -DALL_FILES -DG_GNUC_MALLOC= -DG_GNUC_CONST= -DG_GNUC_NULL_TERMINATED= -DG_GNUC_NORETURN= -DG_GNUC_PRINTF=;G_GNUC_PRINTF %(RelativeDir)gtk.symbols &gt;&gt; %(RelativeDir)gtk.def</Command>
-      <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">echo EXPORTS &gt; %(RelativeDir)gtk.def
-cl /EP -DINCLUDE_VARIABLES -DG_OS_WIN32 -DALL_FILES -DG_GNUC_MALLOC= -DG_GNUC_CONST= -DG_GNUC_NULL_TERMINATED= -DG_GNUC_NORETURN= -DG_GNUC_PRINTF=;G_GNUC_PRINTF %(RelativeDir)gtk.symbols &gt;&gt; %(RelativeDir)gtk.def</Command>
-      <Command Condition="'$(Configuration)|$(Platform)'=='Release|ARM64'">echo EXPORTS &gt; %(RelativeDir)gtk.def
-cl /EP -DINCLUDE_VARIABLES -DG_OS_WIN32 -DALL_FILES -DG_GNUC_MALLOC= -DG_GNUC_CONST= -DG_GNUC_NULL_TERMINATED= -DG_GNUC_NORETURN= -DG_GNUC_PRINTF=;G_GNUC_PRINTF %(RelativeDir)gtk.symbols &gt;&gt; %(RelativeDir)gtk.def</Command>
-      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">%(RelativeDir)gtk.def</Outputs>
-      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">%(RelativeDir)gtk.def</Outputs>
-      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">%(RelativeDir)gtk.def</Outputs>
-      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|ARM64'">%(RelativeDir)gtk.def</Outputs>
-      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">%(RelativeDir)gtk.def</Outputs>
-      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|ARM64'">%(RelativeDir)gtk.def</Outputs>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">cl /EP /P %(FullPath) /FI $(ProjectDir)defheader  
+move %(Filename).i %(RelativeDir)%(Filename).def
+
+</Command>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">cl /EP /P %(FullPath) /FI $(ProjectDir)defheader  
+move %(Filename).i %(RelativeDir)%(Filename).def
+
+</Command>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">cl /EP /P %(FullPath) /FI $(ProjectDir)defheader  
+move %(Filename).i %(RelativeDir)%(Filename).def
+
+</Command>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|ARM64'">cl /EP /P %(FullPath) /FI $(ProjectDir)defheader  
+move %(Filename).i %(RelativeDir)%(Filename).def
+
+</Command>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">cl /EP /P %(FullPath) /FI $(ProjectDir)defheader  
+move %(Filename).i %(RelativeDir)%(Filename).def
+
+</Command>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|ARM64'">cl /EP /P %(FullPath) /FI $(ProjectDir)defheader  
+move %(Filename).i %(RelativeDir)%(Filename).def
+
+</Command>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">%(RelativeDir)%(Filename).def</Outputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">%(RelativeDir)%(Filename).def</Outputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">%(RelativeDir)%(Filename).def</Outputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|ARM64'">%(RelativeDir)%(Filename).def</Outputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">%(RelativeDir)%(Filename).def</Outputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|ARM64'">%(RelativeDir)%(Filename).def</Outputs>
       <Message Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Generating gtk.def</Message>
       <Message Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Generating gtk.def</Message>
       <Message Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Generating gtk.def</Message>
       <Message Condition="'$(Configuration)|$(Platform)'=='Debug|ARM64'">Generating gtk.def</Message>
       <Message Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Generating gtk.def</Message>
       <Message Condition="'$(Configuration)|$(Platform)'=='Release|ARM64'">Generating gtk.def</Message>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">defheader</AdditionalInputs>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">defheader</AdditionalInputs>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|ARM64'">defheader</AdditionalInputs>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|ARM64'">defheader</AdditionalInputs>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">defheader</AdditionalInputs>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">defheader</AdditionalInputs>
     </CustomBuild>
     <None Include="..\..\gtk2-ng\gtk\gtk.def" />
-    <CustomBuild Include="..\..\gtk2-ng\gtk\makegtkalias.pl">
-      <FileType>Document</FileType>
-      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">perl %(RelativeDir)makegtkalias.pl &lt; %(RelativeDir)gtk.symbols &gt; %(RelativeDir)gtkalias.h
-perl %(RelativeDir)makegtkalias.pl -def &lt; %(RelativeDir)gtk.symbols &gt; %(RelativeDir)gtkaliasdef.c</Command>
-      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">%(RelativeDir)gtkalias.h;%(RelativeDir)gtkaliasdef.c;%(Outputs)</Outputs>
-      <Command Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">perl %(RelativeDir)makegtkalias.pl &lt; %(RelativeDir)gtk.symbols &gt; %(RelativeDir)gtkalias.h
-perl %(RelativeDir)makegtkalias.pl -def &lt; %(RelativeDir)gtk.symbols &gt; %(RelativeDir)gtkaliasdef.c</Command>
-      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">%(RelativeDir)gtkalias.h;%(RelativeDir)gtkaliasdef.c;%(Outputs)</Outputs>
-      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">perl %(RelativeDir)makegtkalias.pl &lt; %(RelativeDir)gtk.symbols &gt; %(RelativeDir)gtkalias.h
-perl %(RelativeDir)makegtkalias.pl -def &lt; %(RelativeDir)gtk.symbols &gt; %(RelativeDir)gtkaliasdef.c</Command>
-      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|ARM64'">perl %(RelativeDir)makegtkalias.pl &lt; %(RelativeDir)gtk.symbols &gt; %(RelativeDir)gtkalias.h
-perl %(RelativeDir)makegtkalias.pl -def &lt; %(RelativeDir)gtk.symbols &gt; %(RelativeDir)gtkaliasdef.c</Command>
-      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">%(RelativeDir)gtkalias.h;%(RelativeDir)gtkaliasdef.c;%(Outputs)</Outputs>
-      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|ARM64'">%(RelativeDir)gtkalias.h;%(RelativeDir)gtkaliasdef.c;%(Outputs)</Outputs>
-      <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">perl %(RelativeDir)makegtkalias.pl &lt; %(RelativeDir)gtk.symbols &gt; %(RelativeDir)gtkalias.h
-perl %(RelativeDir)makegtkalias.pl -def &lt; %(RelativeDir)gtk.symbols &gt; %(RelativeDir)gtkaliasdef.c</Command>
-      <Command Condition="'$(Configuration)|$(Platform)'=='Release|ARM64'">perl %(RelativeDir)makegtkalias.pl &lt; %(RelativeDir)gtk.symbols &gt; %(RelativeDir)gtkalias.h
-perl %(RelativeDir)makegtkalias.pl -def &lt; %(RelativeDir)gtk.symbols &gt; %(RelativeDir)gtkaliasdef.c</Command>
-      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">%(RelativeDir)gtkalias.h;%(RelativeDir)gtkaliasdef.c;%(Outputs)</Outputs>
-      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|ARM64'">%(RelativeDir)gtkalias.h;%(RelativeDir)gtkaliasdef.c;%(Outputs)</Outputs>
-      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Generating gtkalias</Message>
-      <Message Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Generating gtkalias</Message>
-      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Generating gtkalias</Message>
-      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|ARM64'">Generating gtkalias</Message>
-      <Message Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Generating gtkalias</Message>
-      <Message Condition="'$(Configuration)|$(Platform)'=='Release|ARM64'">Generating gtkalias</Message>
-    </CustomBuild>
     <CustomBuild Include="..\..\gtk2-ng\gtk\gtkmarshal.list">
       <FileType>Document</FileType>
-      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">	echo #ifndef GTK_DISABLE_DEPRECATED &gt;%(RelativeDir)gtkmarshal.h
-	python3 "$(GDK_LIB_TOOLS)glib\glib-genmarshal" --prefix=gtk_marshal "%(FullPath)"  --header &gt;&gt;"%(RelativeDir)gtkmarshal.h"
-	echo #endif /* GTK_DISABLE_DEPRECATED */ &gt;&gt;%(RelativeDir)gtkmarshal.h
-	python3 "$(GDK_LIB_TOOLS)glib\glib-genmarshal" --prefix=gtk_marshal "%(FullPath)"  --body &gt;"%(RelativeDir)gtkmarshal.c"</Command>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">python3 "$(GDK_LIB_TOOLS)glib\glib-genmarshal" --prefix=gtk_marshal "%(FullPath)"  --header --output=$(IntDir)header"
+copy "$(ProjectDir)marshalguardstart" + "$(IntDir)header" + "$(ProjectDir)marshalguardend" %(RelativeDir)gtkmarshal.h
+del "$(IntDir)header"
+python3 "$(GDK_LIB_TOOLS)glib\glib-genmarshal" --prefix=gtk_marshal "%(FullPath)"  --body --output="%(RelativeDir)gtkmarshal.c"</Command>
       <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">%(RelativeDir)gtkmarshal.h;%(RelativeDir)gtkmarshal.c</Outputs>
-      <Command Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">	echo #ifndef GTK_DISABLE_DEPRECATED &gt;%(RelativeDir)gtkmarshal.h
-	python3 "$(GDK_LIB_TOOLS)glib\glib-genmarshal" --prefix=gtk_marshal "%(FullPath)"  --header &gt;&gt;"%(RelativeDir)gtkmarshal.h"
-	echo #endif /* GTK_DISABLE_DEPRECATED */ &gt;&gt;%(RelativeDir)gtkmarshal.h
-	python3 "$(GDK_LIB_TOOLS)glib\glib-genmarshal" --prefix=gtk_marshal "%(FullPath)"  --body &gt;"%(RelativeDir)gtkmarshal.c"</Command>
-      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">	echo #ifndef GTK_DISABLE_DEPRECATED &gt;%(RelativeDir)gtkmarshal.h
-	python3 "$(GDK_LIB_TOOLS)glib\glib-genmarshal" --prefix=gtk_marshal "%(FullPath)"  --header &gt;&gt;"%(RelativeDir)gtkmarshal.h"
-	echo #endif /* GTK_DISABLE_DEPRECATED */ &gt;&gt;%(RelativeDir)gtkmarshal.h
-	python3 "$(GDK_LIB_TOOLS)glib\glib-genmarshal" --prefix=gtk_marshal "%(FullPath)"  --body &gt;"%(RelativeDir)gtkmarshal.c"</Command>
-      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|ARM64'">	echo #ifndef GTK_DISABLE_DEPRECATED &gt;%(RelativeDir)gtkmarshal.h
-	python3 "$(GDK_LIB_TOOLS)glib\glib-genmarshal" --prefix=gtk_marshal "%(FullPath)"  --header &gt;&gt;"%(RelativeDir)gtkmarshal.h"
-	echo #endif /* GTK_DISABLE_DEPRECATED */ &gt;&gt;%(RelativeDir)gtkmarshal.h
-	python3 "$(GDK_LIB_TOOLS)glib\glib-genmarshal" --prefix=gtk_marshal "%(FullPath)"  --body &gt;"%(RelativeDir)gtkmarshal.c"</Command>
-      <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">	echo #ifndef GTK_DISABLE_DEPRECATED &gt;%(RelativeDir)gtkmarshal.h
-	python3 "$(GDK_LIB_TOOLS)glib\glib-genmarshal" --prefix=gtk_marshal "%(FullPath)"  --header &gt;&gt;"%(RelativeDir)gtkmarshal.h"
-	echo #endif /* GTK_DISABLE_DEPRECATED */ &gt;&gt;%(RelativeDir)gtkmarshal.h
-	python3 "$(GDK_LIB_TOOLS)glib\glib-genmarshal" --prefix=gtk_marshal "%(FullPath)"  --body &gt;"%(RelativeDir)gtkmarshal.c"</Command>
-      <Command Condition="'$(Configuration)|$(Platform)'=='Release|ARM64'">	echo #ifndef GTK_DISABLE_DEPRECATED &gt;%(RelativeDir)gtkmarshal.h
-	python3 "$(GDK_LIB_TOOLS)glib\glib-genmarshal" --prefix=gtk_marshal "%(FullPath)"  --header &gt;&gt;"%(RelativeDir)gtkmarshal.h"
-	echo #endif /* GTK_DISABLE_DEPRECATED */ &gt;&gt;%(RelativeDir)gtkmarshal.h
-	python3 "$(GDK_LIB_TOOLS)glib\glib-genmarshal" --prefix=gtk_marshal "%(FullPath)"  --body &gt;"%(RelativeDir)gtkmarshal.c"</Command>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">python3 "$(GDK_LIB_TOOLS)glib\glib-genmarshal" --prefix=gtk_marshal "%(FullPath)"  --header --output=$(IntDir)header"
+copy "$(ProjectDir)marshalguardstart" + "$(IntDir)header" + "$(ProjectDir)marshalguardend" %(RelativeDir)gtkmarshal.h
+del "$(IntDir)header"
+python3 "$(GDK_LIB_TOOLS)glib\glib-genmarshal" --prefix=gtk_marshal "%(FullPath)"  --body --output="%(RelativeDir)gtkmarshal.c"</Command>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">python3 "$(GDK_LIB_TOOLS)glib\glib-genmarshal" --prefix=gtk_marshal "%(FullPath)"  --header --output=$(IntDir)header"
+copy "$(ProjectDir)marshalguardstart" + "$(IntDir)header" + "$(ProjectDir)marshalguardend" %(RelativeDir)gtkmarshal.h
+del "$(IntDir)header"
+python3 "$(GDK_LIB_TOOLS)glib\glib-genmarshal" --prefix=gtk_marshal "%(FullPath)"  --body --output="%(RelativeDir)gtkmarshal.c"</Command>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|ARM64'">python3 "$(GDK_LIB_TOOLS)glib\glib-genmarshal" --prefix=gtk_marshal "%(FullPath)"  --header --output=$(IntDir)header"
+copy "$(ProjectDir)marshalguardstart" + "$(IntDir)header" + "$(ProjectDir)marshalguardend" %(RelativeDir)gtkmarshal.h
+del "$(IntDir)header"
+python3 "$(GDK_LIB_TOOLS)glib\glib-genmarshal" --prefix=gtk_marshal "%(FullPath)"  --body --output="%(RelativeDir)gtkmarshal.c"</Command>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">python3 "$(GDK_LIB_TOOLS)glib\glib-genmarshal" --prefix=gtk_marshal "%(FullPath)"  --header --output=$(IntDir)header"
+copy "$(ProjectDir)marshalguardstart" + "$(IntDir)header" + "$(ProjectDir)marshalguardend" %(RelativeDir)gtkmarshal.h
+del "$(IntDir)header"
+python3 "$(GDK_LIB_TOOLS)glib\glib-genmarshal" --prefix=gtk_marshal "%(FullPath)"  --body --output="%(RelativeDir)gtkmarshal.c"</Command>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|ARM64'">python3 "$(GDK_LIB_TOOLS)glib\glib-genmarshal" --prefix=gtk_marshal "%(FullPath)"  --header --output=$(IntDir)header"
+copy "$(ProjectDir)marshalguardstart" + "$(IntDir)header" + "$(ProjectDir)marshalguardend" %(RelativeDir)gtkmarshal.h
+del "$(IntDir)header"
+python3 "$(GDK_LIB_TOOLS)glib\glib-genmarshal" --prefix=gtk_marshal "%(FullPath)"  --body --output="%(RelativeDir)gtkmarshal.c"</Command>
       <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">%(RelativeDir)gtkmarshal.h;%(RelativeDir)gtkmarshal.c</Outputs>
       <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">%(RelativeDir)gtkmarshal.h;%(RelativeDir)gtkmarshal.c</Outputs>
       <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|ARM64'">%(RelativeDir)gtkmarshal.h;%(RelativeDir)gtkmarshal.c</Outputs>
@@ -159,22 +150,28 @@ perl %(RelativeDir)makegtkalias.pl -def &lt; %(RelativeDir)gtk.symbols &gt; %(Re
       <Message Condition="'$(Configuration)|$(Platform)'=='Debug|ARM64'">Generating gtkmarshal</Message>
       <Message Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Generating gtkmarshal</Message>
       <Message Condition="'$(Configuration)|$(Platform)'=='Release|ARM64'">Generating gtkmarshal</Message>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">marshalguardstart;marshalguardend</AdditionalInputs>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">marshalguardstart;marshalguardend</AdditionalInputs>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|ARM64'">marshalguardstart;marshalguardend</AdditionalInputs>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|ARM64'">marshalguardstart;marshalguardend</AdditionalInputs>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">marshalguardstart;marshalguardend</AdditionalInputs>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">marshalguardstart;marshalguardend</AdditionalInputs>
     </CustomBuild>
     <CustomBuild Include="..\..\gtk2-ng\gtk\gtkmarshalers.list">
       <FileType>Document</FileType>
-      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">	python3 "$(GDK_LIB_TOOLS)glib\glib-genmarshal" --prefix=_gtk_marshal "%(FullPath)"  --header &gt;&gt;"%(RelativeDir)gtkmarshalers.h"
-	python3 "$(GDK_LIB_TOOLS)glib\glib-genmarshal" --prefix=_gtk_marshal "%(FullPath)"  --body &gt;"%(RelativeDir)gtkmarshalers.c"</Command>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">	python3 "$(GDK_LIB_TOOLS)glib\glib-genmarshal" --prefix=_gtk_marshal "%(FullPath)"  --header --output="%(RelativeDir)gtkmarshalers.h"
+	python3 "$(GDK_LIB_TOOLS)glib\glib-genmarshal" --prefix=_gtk_marshal "%(FullPath)"  --body --output="%(RelativeDir)gtkmarshalers.c"</Command>
       <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">%(RelativeDir)gtkmarshalers.h;%(RelativeDir)gtkmarshalers.c</Outputs>
-      <Command Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">	python3 "$(GDK_LIB_TOOLS)glib\glib-genmarshal" --prefix=_gtk_marshal "%(FullPath)"  --header &gt;&gt;"%(RelativeDir)gtkmarshalers.h"
-	python3 "$(GDK_LIB_TOOLS)glib\glib-genmarshal" --prefix=_gtk_marshal "%(FullPath)"  --body &gt;"%(RelativeDir)gtkmarshalers.c"</Command>
-      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">	python3 "$(GDK_LIB_TOOLS)glib\glib-genmarshal" --prefix=_gtk_marshal "%(FullPath)"  --header &gt;&gt;"%(RelativeDir)gtkmarshalers.h"
-	python3 "$(GDK_LIB_TOOLS)glib\glib-genmarshal" --prefix=_gtk_marshal "%(FullPath)"  --body &gt;"%(RelativeDir)gtkmarshalers.c"</Command>
-      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|ARM64'">	python3 "$(GDK_LIB_TOOLS)glib\glib-genmarshal" --prefix=_gtk_marshal "%(FullPath)"  --header &gt;&gt;"%(RelativeDir)gtkmarshalers.h"
-	python3 "$(GDK_LIB_TOOLS)glib\glib-genmarshal" --prefix=_gtk_marshal "%(FullPath)"  --body &gt;"%(RelativeDir)gtkmarshalers.c"</Command>
-      <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">	python3 "$(GDK_LIB_TOOLS)glib\glib-genmarshal" --prefix=_gtk_marshal "%(FullPath)"  --header &gt;&gt;"%(RelativeDir)gtkmarshalers.h"
-	python3 "$(GDK_LIB_TOOLS)glib\glib-genmarshal" --prefix=_gtk_marshal "%(FullPath)"  --body &gt;"%(RelativeDir)gtkmarshalers.c"</Command>
-      <Command Condition="'$(Configuration)|$(Platform)'=='Release|ARM64'">	python3 "$(GDK_LIB_TOOLS)glib\glib-genmarshal" --prefix=_gtk_marshal "%(FullPath)"  --header &gt;&gt;"%(RelativeDir)gtkmarshalers.h"
-	python3 "$(GDK_LIB_TOOLS)glib\glib-genmarshal" --prefix=_gtk_marshal "%(FullPath)"  --body &gt;"%(RelativeDir)gtkmarshalers.c"</Command>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">	python3 "$(GDK_LIB_TOOLS)glib\glib-genmarshal" --prefix=_gtk_marshal "%(FullPath)"  --header --output="%(RelativeDir)gtkmarshalers.h"
+	python3 "$(GDK_LIB_TOOLS)glib\glib-genmarshal" --prefix=_gtk_marshal "%(FullPath)"  --body --output="%(RelativeDir)gtkmarshalers.c"</Command>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">	python3 "$(GDK_LIB_TOOLS)glib\glib-genmarshal" --prefix=_gtk_marshal "%(FullPath)"  --header --output="%(RelativeDir)gtkmarshalers.h"
+	python3 "$(GDK_LIB_TOOLS)glib\glib-genmarshal" --prefix=_gtk_marshal "%(FullPath)"  --body --output="%(RelativeDir)gtkmarshalers.c"</Command>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|ARM64'">	python3 "$(GDK_LIB_TOOLS)glib\glib-genmarshal" --prefix=_gtk_marshal "%(FullPath)"  --header --output="%(RelativeDir)gtkmarshalers.h"
+	python3 "$(GDK_LIB_TOOLS)glib\glib-genmarshal" --prefix=_gtk_marshal "%(FullPath)"  --body --output="%(RelativeDir)gtkmarshalers.c"</Command>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">	python3 "$(GDK_LIB_TOOLS)glib\glib-genmarshal" --prefix=_gtk_marshal "%(FullPath)"  --header --output="%(RelativeDir)gtkmarshalers.h"
+	python3 "$(GDK_LIB_TOOLS)glib\glib-genmarshal" --prefix=_gtk_marshal "%(FullPath)"  --body --output="%(RelativeDir)gtkmarshalers.c"</Command>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|ARM64'">	python3 "$(GDK_LIB_TOOLS)glib\glib-genmarshal" --prefix=_gtk_marshal "%(FullPath)"  --header --output="%(RelativeDir)gtkmarshalers.h"
+	python3 "$(GDK_LIB_TOOLS)glib\glib-genmarshal" --prefix=_gtk_marshal "%(FullPath)"  --body --output="%(RelativeDir)gtkmarshalers.c"</Command>
       <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">%(RelativeDir)gtkmarshalers.h;%(RelativeDir)gtkmarshalers.c</Outputs>
       <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">%(RelativeDir)gtkmarshalers.h;%(RelativeDir)gtkmarshalers.c</Outputs>
       <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|ARM64'">%(RelativeDir)gtkmarshalers.h;%(RelativeDir)gtkmarshalers.c</Outputs>
@@ -314,6 +311,9 @@ del %ICONCACHE_HEADER_NAME% &gt; nul
       <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Release|x64'">false</LinkObjects>
       <OutputItemType Condition="'$(Configuration)|$(Platform)'=='Release|x64'">ClInclude</OutputItemType>
     </CustomBuild>
+    <None Include="defheader" />
+    <None Include="marshalguardend" />
+    <None Include="marshalguardstart" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="..\..\gtk2-ng\gtk\gtk-win32.rc" />
@@ -329,7 +329,6 @@ del %ICONCACHE_HEADER_NAME% &gt; nul
     <ClCompile Include="..\..\gtk2-ng\gtk\gtkactiongroup.c" />
     <ClCompile Include="..\..\gtk2-ng\gtk\gtkactivatable.c" />
     <ClCompile Include="..\..\gtk2-ng\gtk\gtkadjustment.c" />
-    <ClCompile Include="..\..\gtk2-ng\gtk\gtkaliasdef.c" />
     <ClCompile Include="..\..\gtk2-ng\gtk\gtkalignment.c" />
     <ClCompile Include="..\..\gtk2-ng\gtk\gtkarrow.c" />
     <ClCompile Include="..\..\gtk2-ng\gtk\gtkaspectframe.c" />
@@ -571,6 +570,7 @@ del %ICONCACHE_HEADER_NAME% &gt; nul
     <ClCompile Include="..\..\gtk2-ng\gtk\gtkwin32embedwidget.c" />
     <ClCompile Include="..\..\gtk2-ng\gtk\gtkwindow-decorate.c" />
     <ClCompile Include="..\..\gtk2-ng\gtk\gtkwindow.c" />
+    <ClCompile Include="gtkaliasdef.c" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\gtk2-ng\gtk\gtk.h" />
@@ -583,7 +583,6 @@ del %ICONCACHE_HEADER_NAME% &gt; nul
     <ClInclude Include="..\..\gtk2-ng\gtk\gtkactiongroup.h" />
     <ClInclude Include="..\..\gtk2-ng\gtk\gtkactivatable.h" />
     <ClInclude Include="..\..\gtk2-ng\gtk\gtkadjustment.h" />
-    <ClInclude Include="..\..\gtk2-ng\gtk\gtkalias.h" />
     <ClInclude Include="..\..\gtk2-ng\gtk\gtkalignment.h" />
     <ClInclude Include="..\..\gtk2-ng\gtk\gtkarrow.h" />
     <ClInclude Include="..\..\gtk2-ng\gtk\gtkaspectframe.h" />
@@ -860,6 +859,7 @@ del %ICONCACHE_HEADER_NAME% &gt; nul
     <ClInclude Include="..\..\gtk2-ng\gtk\gtkxembed.h" />
     <ClInclude Include="..\..\gtk2-ng\gtk\xembed.h" />
     <ClInclude Include="config.h" />
+    <ClInclude Include="gtkalias.h" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\gdk\GDK2.vcxproj">
