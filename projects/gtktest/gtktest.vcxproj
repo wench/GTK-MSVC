@@ -167,7 +167,6 @@
   </PropertyGroup>
   <PropertyGroup Label="Vcpkg" Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <VcpkgTriplet>$(PlatformShortName.ToLower)-windows</VcpkgTriplet>
-    <VcpkgHostTriplet>$(PlatformShortName.ToLower)-windows</VcpkgHostTriplet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|ARM64'" Label="Vcpkg">
     <VcpkgTriplet>$(PlatformShortName.ToLower)-windows</VcpkgTriplet>
@@ -175,7 +174,6 @@
   </PropertyGroup>
   <PropertyGroup Label="Vcpkg" Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <VcpkgTriplet>$(PlatformShortName.ToLower)-windows</VcpkgTriplet>
-    <VcpkgHostTriplet>$(PlatformShortName.ToLower)-windows</VcpkgHostTriplet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|ARM64'" Label="Vcpkg">
     <VcpkgTriplet>$(PlatformShortName.ToLower)-windows</VcpkgTriplet>
