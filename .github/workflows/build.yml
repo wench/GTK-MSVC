@@ -60,7 +60,7 @@ jobs:
      #Vcpkg caches, Each platform writes to its own cache but can read from the Windows 2022 cache
 
      # use a script for the asset cache
-      X_VCPKG_ASSET_SOURCES: ${{format('clear;x-script,{0}\vcpkg-caches\asset-cache-script.bat {{url}} {{sha512}} {{dst}};x-block-origin', github.workspace) }}
+      X_VCPKG_ASSET_SOURCES: ${{format('clear;x-script,{0}\vcpkg-caches\asset-cache-script.bat {{url}} {{sha512}} {{dst}};x-azurl,file://{0}\vcpkg-caches\{1}\asset,,write', github.workspace, github.workspace,matrix.runner) }}
 
       VCPKG_BINARY_SOURCE: ${{format('clear;files,{0}\vcpkg-caches\windows-2022\binary,read;files,{0}\vcpkg-caches\{1}\binary,readwrite', github.workspace,matrix.runner) }}
 
@@ -84,10 +84,11 @@ jobs:
         mkdir "vcpkg-caches\windows-2022\binary" -force
         mkdir "vcpkg-caches\${{matrix.runner}}\asset" -force
         mkdir "vcpkg-caches\${{matrix.runner}}\binary" -force
-        # This multiline string is an embedded batch file that gets written out to use as a vcpkg asset cache script. 
+        # These multiline string is an embedded batch file that gets written out to use as a vcpkg asset cache script. 
         # Use this to enable reading from 2 caches. VCPKG only normally allows reading from 1 asset cache
         @'
         @echo off
+        set esc=${{fromJSON('"\u001B"')}}
         set url=%1
         set sha512=%2
         set dst=%3
@@ -96,19 +97,32 @@ jobs:
         rmdir %_dst%        
         cd /d "${{github.workspace}}\vcpkg-caches\windows-2022\asset"
         if exist %sha512% (
-            echo Asset cache hit in Windows-2022
+            echo %esc%[32mAsset cache hit in Windows-2022%esc%[0m
             copy %sha512% "%dst%"
             exit
-        ) 
+        ) ELSE (
+         echo %esc%[33mAsset cache miss in Windows-2022 will try ${{matrix.runner}}%esc%[0m
+        )
         cd /d "${{github.workspace}}\vcpkg-caches\${{matrix.runner}}\asset"
         if exist %sha512% (
-            echo Asset cache hit in ${{matrix.runner}}
-            copy %sha512% %_dst
+            echo %esc%[32mAsset cache hit in ${{matrix.runner}}%esc%[0m
+            copy %sha512% "%dst%"
             exit
+        ) ELSE (
+          echo %esc%[33mAsset cache miss in ${{matrix.runner}} will download %url% %esc%[0m
         )
-        echo Asset cache miss downloading %url% 
         curl.exe  --ssl-no-revoke --retry 5 --retry-delay 3 --retry-max-time 60 -L %url% --output .\%sha512%
-        copy .\%sha512% %_dst%
+        set "PSModulePath="
+        powershell -command "if((Get-FileHash %sha512% -Algorithm SHA512 -erroraction SilentlyContinue).Hash -ne '%sha512%' ) {exit -1}" 
+        if ERRORLEVEL 0 (
+            echo %esc%[32mAsset cache SHA512 verify succeeded after download%esc%[0m
+            copy .\%sha512% %_dst%
+        ) ELSE (
+            echo %esc%[31mAsset cache SHA512 verify failed after download%esc%[0m  
+            del %sha512%
+            exit /b -1
+        )
+
         '@  | Out-File  "${{github.workspace}}\vcpkg-caches\asset-cache-script.bat"
         #disable last access time updating 
         fsutil behavior set disablelastaccess 1
