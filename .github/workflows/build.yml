@@ -9,12 +9,14 @@ on:
   workflow_dispatch:
   push:
     paths:
-      - "**"
+      - '**'
+      - '!.github/**'
+      - '.github/workflows/build.yml'
   pull_request:
     paths:
-      - "**"
-
-
+      - '**'
+      - '!.github/**'
+      - '.github/workflows/build.yml'      
 env:
   # Path to the solution file relative to the root of the project.
   SOLUTION_FILE_PATH: 
