@@ -156,10 +156,13 @@
   <PropertyGroup Label="Vcpkg">
     <VcpkgXUseBuiltInApplocalDeps>false</VcpkgXUseBuiltInApplocalDeps>
     <VcpkgApplocalDeps>false</VcpkgApplocalDeps>
+    <VcpkgEnableManifest>true</VcpkgEnableManifest>
+    <VcpkgManifestInstall>true</VcpkgManifestInstall>
+    <VcpkgAutoLink>false</VcpkgAutoLink>
   </PropertyGroup>
   <PropertyGroup Label="Vcpkg" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <VcpkgTriplet>$(PlatformShortName.ToLower)-windows</VcpkgTriplet>
-    <VcpkgHostTriplet>$(PlatformShortName.ToLower)-windows</VcpkgHostTriplet>
+    <VcpkgAdditionalInstallOptions>--clean-after-build</VcpkgAdditionalInstallOptions>
   </PropertyGroup>
   <PropertyGroup Label="Vcpkg" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <VcpkgTriplet>$(PlatformShortName.ToLower)-windows</VcpkgTriplet>
@@ -167,10 +170,11 @@
   </PropertyGroup>
   <PropertyGroup Label="Vcpkg" Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <VcpkgTriplet>$(PlatformShortName.ToLower)-windows</VcpkgTriplet>
+    <VcpkgAdditionalInstallOptions>--clean-after-build</VcpkgAdditionalInstallOptions>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|ARM64'" Label="Vcpkg">
     <VcpkgTriplet>$(PlatformShortName.ToLower)-windows</VcpkgTriplet>
-    <VcpkgHostTriplet>$(PreferredToolArchitecture.ToLower)-windows</VcpkgHostTriplet>
+    <VcpkgAdditionalInstallOptions>--clean-after-build</VcpkgAdditionalInstallOptions>
   </PropertyGroup>
   <PropertyGroup Label="Vcpkg" Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <VcpkgTriplet>$(PlatformShortName.ToLower)-windows</VcpkgTriplet>

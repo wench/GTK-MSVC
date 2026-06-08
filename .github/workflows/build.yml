@@ -19,7 +19,7 @@ on:
       - '.github/workflows/build.yml'      
 env:
   # Path to the solution file relative to the root of the project.
-  SOLUTION_FILE_PATH: 
+  SOLUTION_FILE_PATH: .
 
   BUILD_PLATFORMS: x64 x86 ARM64
 
@@ -212,6 +212,7 @@ jobs:
             echo "`e[34m$platform $configuration`e[0m"
             
             msbuild /v:${{ env.MSBUILD_VERBOSITY }} /p:Configuration=$configuration /p:Platform=$platform ${{env.SOLUTION_FILE_PATH}} /t:${{env.TARGET_VCPKG_MANIFEST_INSTALL}} ${{env.MSBUILD_EXTRA_OPTIONS}}
+            remove-Item -force -Recurse -ErrorAction SilentlyContinue "${{env.SOLUTION_FILE_PATH}}\vcpkg_installed"
           }
         }
 
@@ -257,6 +258,14 @@ jobs:
           "VCPKG_CACHE_HASH=$hash"|Out-File -Append ${{ github.env }} 
         }
       
+    - name: Upload Logs on failure
+      if:  ${{ failure() }}
+      uses: actions/upload-artifact@v7
+      with:
+        name: "build-${{matrix.runner}}"
+        path: c:\vcpkg\buildtrees
+        retention-days: 1
+
     # cache is only saved if the hash was set in the previous step. If the hash wasn't set there were no changes to the cache
     - name: Save VCPKG cache
       if: ${{ always() && env.VCPKG_CACHE_HASH}}
@@ -280,6 +289,7 @@ jobs:
             msbuild /v:${{ env.MSBUILD_VERBOSITY }} /p:Configuration=$configuration /p:Platform=$platform ${{env.SOLUTION_FILE_PATH}} ${{env.MSBUILD_EXTRA_OPTIONS}}
             # clean the output so nothing is left that might influence other builds
             msbuild /v:${{ env.MSBUILD_VERBOSITY }} /p:Configuration=$configuration /p:Platform=$platform ${{env.SOLUTION_FILE_PATH}} /t:clean ${{env.MSBUILD_EXTRA_OPTIONS}}
+            remove-Item -force -Recurse  -ErrorAction SilentlyContinue "${{env.SOLUTION_FILE_PATH}}\vcpkg_installed"
           }
         }
       

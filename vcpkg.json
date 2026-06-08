@@ -6,26 +6,6 @@
     "pango",
     "atk",
     "libiconv",
-    "fribidi",
-    "gettext-libintl",
-    {
-      "name": "glib",
-      "host": true
-    },
-    {
-      "name": "gdk-pixbuf",
-      "host": true
-    },
-    {
-      "name": "fribidi",
-      "host": true
-    }
-  ],
-  "overrides":[
-    {
-      "name": "fribidi",
-      "version": "1.0.11#3"
-    }
-
+    "fribidi"  
   ]
 }

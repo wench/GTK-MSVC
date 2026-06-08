@@ -699,10 +699,11 @@ python3 $(_ZVcpkgCurrentInstalledDir)tools\glib\glib-genmarshal  --prefix=_gdk_m
   </PropertyGroup>
   <PropertyGroup Label="Vcpkg" Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <VcpkgTriplet>$(PlatformShortName.ToLower)-windows</VcpkgTriplet>
+    <VcpkgAdditionalInstallOptions>--clean-after-build</VcpkgAdditionalInstallOptions>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|ARM64'" Label="Vcpkg">
     <VcpkgTriplet>$(PlatformShortName.ToLower)-windows</VcpkgTriplet>
-    <VcpkgHostTriplet>$(PreferredToolArchitecture.ToLower)-windows</VcpkgHostTriplet>
+    <VcpkgAdditionalInstallOptions>--clean-after-build</VcpkgAdditionalInstallOptions>
   </PropertyGroup>
   <PropertyGroup Label="Vcpkg" Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <VcpkgTriplet>$(PlatformShortName.ToLower)-windows</VcpkgTriplet>
@@ -713,7 +714,7 @@ python3 $(_ZVcpkgCurrentInstalledDir)tools\glib\glib-genmarshal  --prefix=_gdk_m
   </PropertyGroup>
   <PropertyGroup Label="Vcpkg" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <VcpkgTriplet>$(PlatformShortName.ToLower)-windows</VcpkgTriplet>
-    <VcpkgHostTriplet>$(PlatformShortName.ToLower)-windows</VcpkgHostTriplet>
+    <VcpkgAdditionalInstallOptions>--clean-after-build</VcpkgAdditionalInstallOptions>
   </PropertyGroup>
   <PropertyGroup Label="Vcpkg" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <VcpkgTriplet>$(PlatformShortName.ToLower)-windows</VcpkgTriplet>
@@ -725,6 +726,7 @@ python3 $(_ZVcpkgCurrentInstalledDir)tools\glib\glib-genmarshal  --prefix=_gdk_m
     <VcpkgXUseBuiltInApplocalDeps>false</VcpkgXUseBuiltInApplocalDeps>
     <VcpkgAutoLink>false</VcpkgAutoLink>
     <VcpkgApplocalDeps>false</VcpkgApplocalDeps>
+    <VcpkgManifestInstall>true</VcpkgManifestInstall>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
