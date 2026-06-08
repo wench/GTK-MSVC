@@ -29,12 +29,48 @@
   <ItemGroup>
     <CustomBuild Include="..\..\gtk2-ng\configure.ac">
       <FileType>Document</FileType>
-      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(OutDir)idnhat.exe %(RelativeDir)configure.ac %(RelativeDir)gtk\gtk-win32.rc.in %(RelativeDir)gtk\gtkversion.h.in "$(projectDir)config.h.in"</Command>
-      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(OutDir)idnhat.exe %(RelativeDir)configure.ac %(RelativeDir)gtk\gtk-win32.rc.in %(RelativeDir)gtk\gtkversion.h.in "$(projectDir)config.h.in"</Command>
-      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|ARM64'">"$(SolutionDir)build\$(Configuration)\x64\GTK\idnhat.exe" %(RelativeDir)configure.ac %(RelativeDir)gtk\gtk-win32.rc.in %(RelativeDir)gtk\gtkversion.h.in "$(projectDir)config.h.in"</Command>
-      <Command Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(OutDir)idnhat.exe %(RelativeDir)configure.ac %(RelativeDir)gtk\gtk-win32.rc.in %(RelativeDir)gtk\gtkversion.h.in "$(projectDir)config.h.in"</Command>
-      <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(OutDir)idnhat.exe %(RelativeDir)configure.ac %(RelativeDir)gtk\gtk-win32.rc.in %(RelativeDir)gtk\gtkversion.h.in "$(projectDir)config.h.in"</Command>
-      <Command Condition="'$(Configuration)|$(Platform)'=='Release|ARM64'">"$(SolutionDir)build\$(Configuration)\x64\GTK\idnhat.exe" %(RelativeDir)configure.ac %(RelativeDir)gtk\gtk-win32.rc.in %(RelativeDir)gtk\gtkversion.h.in "$(projectDir)config.h.in"</Command>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">if exist "$(IDNHAT)" (
+"$(IDNHAT)" "%(FullPath)" %(RelativeDir)gtk\gtk-win32.rc.in %(RelativeDir)gtk\gtkversion.h.in "$(projectDir)config.h.in"
+) ELSE (
+echo Warning: IDNHAT not built. Unable to parse  %(FileName)
+echo expected to find it at $(IDNHAT)
+)
+</Command>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">if exist "$(IDNHAT)" (
+"$(IDNHAT)" "%(FullPath)" %(RelativeDir)gtk\gtk-win32.rc.in %(RelativeDir)gtk\gtkversion.h.in "$(projectDir)config.h.in"
+) ELSE (
+echo Warning: IDNHAT not built. Unable to parse  %(FileName)
+echo expected to find it at $(IDNHAT)
+)
+</Command>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|ARM64'">if exist "$(IDNHAT)" (
+"$(IDNHAT)" "%(FullPath)" %(RelativeDir)gtk\gtk-win32.rc.in %(RelativeDir)gtk\gtkversion.h.in "$(projectDir)config.h.in"
+) ELSE (
+echo Warning: IDNHAT not built. Unable to parse  %(FileName)
+echo expected to find it at $(IDNHAT)
+)
+</Command>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">if exist "$(IDNHAT)" (
+"$(IDNHAT)" "%(FullPath)" %(RelativeDir)gtk\gtk-win32.rc.in %(RelativeDir)gtk\gtkversion.h.in "$(projectDir)config.h.in"
+) ELSE (
+echo Warning: IDNHAT not built. Unable to parse  %(FileName)
+echo expected to find it at $(IDNHAT)
+)
+</Command>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">if exist "$(IDNHAT)" (
+"$(IDNHAT)" "%(FullPath)" %(RelativeDir)gtk\gtk-win32.rc.in %(RelativeDir)gtk\gtkversion.h.in "$(projectDir)config.h.in"
+) ELSE (
+echo Warning: IDNHAT not built. Unable to parse  %(FileName)
+echo expected to find it at $(IDNHAT)
+)
+</Command>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|ARM64'">if exist "$(IDNHAT)" (
+"$(IDNHAT)" "%(FullPath)" %(RelativeDir)gtk\gtk-win32.rc.in %(RelativeDir)gtk\gtkversion.h.in "$(projectDir)config.h.in"
+) ELSE (
+echo Warning: IDNHAT not built. Unable to parse  %(FileName)
+echo expected to find it at $(IDNHAT)
+)
+</Command>
       <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(OutDir)idnhat.exe;%(RelativeDir)config.h.win32.in;%(RelativeDir)gtk\gtk-win32.rc.in</AdditionalInputs>
       <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(OutDir)idnhat.exe;%(RelativeDir)config.h.win32.in;%(RelativeDir)gtk\gtk-win32.rc.in</AdditionalInputs>
       <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|ARM64'">$(SolutionDir)build\$(Configuration)\x64\GTK\idnhat.exe;%(RelativeDir)config.h.win32.in;%(RelativeDir)gtk\gtk-win32.rc.in</AdditionalInputs>
@@ -68,27 +104,33 @@
     </CustomBuild>
     <CustomBuild Include="..\..\gtk2-ng\gtk\gtk.symbols">
       <FileType>Document</FileType>
-      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">cl /EP /P %(FullPath) /FI $(ProjectDir)defheader  
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">echo on
+cl /EP /P %(FullPath) /FI $(ProjectDir)defheader  
 move %(Filename).i %(RelativeDir)%(Filename).def
 
 </Command>
-      <Command Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">cl /EP /P %(FullPath) /FI $(ProjectDir)defheader  
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">echo on
+cl /EP /P %(FullPath) /FI $(ProjectDir)defheader  
 move %(Filename).i %(RelativeDir)%(Filename).def
 
 </Command>
-      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">cl /EP /P %(FullPath) /FI $(ProjectDir)defheader  
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">echo on
+cl /EP /P %(FullPath) /FI $(ProjectDir)defheader  
 move %(Filename).i %(RelativeDir)%(Filename).def
 
 </Command>
-      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|ARM64'">cl /EP /P %(FullPath) /FI $(ProjectDir)defheader  
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|ARM64'">echo on
+cl /EP /P %(FullPath) /FI $(ProjectDir)defheader  
 move %(Filename).i %(RelativeDir)%(Filename).def
 
 </Command>
-      <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">cl /EP /P %(FullPath) /FI $(ProjectDir)defheader  
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">echo on
+cl /EP /P %(FullPath) /FI $(ProjectDir)defheader  
 move %(Filename).i %(RelativeDir)%(Filename).def
 
 </Command>
-      <Command Condition="'$(Configuration)|$(Platform)'=='Release|ARM64'">cl /EP /P %(FullPath) /FI $(ProjectDir)defheader  
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|ARM64'">echo on
+cl /EP /P %(FullPath) /FI $(ProjectDir)defheader  
 move %(Filename).i %(RelativeDir)%(Filename).def
 
 </Command>
@@ -250,36 +292,54 @@ nmake -f %(FullPath) "TOP=$(GTK_SOURCE_ROOT)\" "GLIB_TOOLS=$(GLIB_TOOLS)\" gtkty
     </CustomBuild>
     <CustomBuild Include="build-icon-cache">
       <FileType>Document</FileType>
-      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">cd "$(GTK_SOURCE_ROOT)gtk"
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">if exist "$(OutDir)gtk-update-icon-cache.exe" (
+cd "$(GTK_SOURCE_ROOT)gtk"
 set "ICONCACHE_HEADER_NAME=$(GTK_SOURCE_ROOT)gtk\gtkbuiltincache.h"
 del %ICONCACHE_HEADER_NAME% &gt; nul
 "$(OutDir)gtk-update-icon-cache.exe" --force --ignore-theme-index  --source builtin_icons stock-icons
-</Command>
-      <Command Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">cd "$(GTK_SOURCE_ROOT)gtk"
+) ELSE (
+echo Warning: gtk-update-icon-cache.exe not found. Can't generate icon cache 
+)</Command>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">if exist "$(OutDir)gtk-update-icon-cache.exe" (
+cd "$(GTK_SOURCE_ROOT)gtk"
 set "ICONCACHE_HEADER_NAME=$(GTK_SOURCE_ROOT)gtk\gtkbuiltincache.h"
 del %ICONCACHE_HEADER_NAME% &gt; nul
 "$(OutDir)gtk-update-icon-cache.exe" --force --ignore-theme-index  --source builtin_icons stock-icons
-</Command>
-      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|ARM64'">cd "$(GTK_SOURCE_ROOT)gtk"
+) ELSE (
+echo Warning: gtk-update-icon-cache.exe not found. Can't generate icon cache 
+)</Command>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|ARM64'">if exist "$(SolutionDir)build\$(Configuration)\x64\GTK\gtk-update-icon-cache.exe" (
+cd "$(GTK_SOURCE_ROOT)gtk"
 set "ICONCACHE_HEADER_NAME=$(GTK_SOURCE_ROOT)gtk\gtkbuiltincache.h"
 del %ICONCACHE_HEADER_NAME% &gt; nul
 "$(SolutionDir)build\$(Configuration)\x64\GTK\gtk-update-icon-cache.exe" --force --ignore-theme-index  --source builtin_icons stock-icons
-</Command>
-      <Command Condition="'$(Configuration)|$(Platform)'=='Release|ARM64'">cd "$(GTK_SOURCE_ROOT)gtk"
+) ELSE (
+echo Warning: gtk-update-icon-cache.exe not found. Can't generate icon cache 
+)</Command>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|ARM64'">if exist "$(SolutionDir)build\$(Configuration)\x64\GTK\gtk-update-icon-cache.exe" (
+cd "$(GTK_SOURCE_ROOT)gtk"
 set "ICONCACHE_HEADER_NAME=$(GTK_SOURCE_ROOT)gtk\gtkbuiltincache.h"
 del %ICONCACHE_HEADER_NAME% &gt; nul
 "$(SolutionDir)build\$(Configuration)\x64\GTK\gtk-update-icon-cache.exe" --force --ignore-theme-index  --source builtin_icons stock-icons
-</Command>
-      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">cd "$(GTK_SOURCE_ROOT)gtk"
+) ELSE (
+echo Warning: gtk-update-icon-cache.exe not found. Can't generate icon cache 
+)</Command>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">if exist "$(OutDir)gtk-update-icon-cache.exe" (
+cd "$(GTK_SOURCE_ROOT)gtk"
 set "ICONCACHE_HEADER_NAME=$(GTK_SOURCE_ROOT)gtk\gtkbuiltincache.h"
 del %ICONCACHE_HEADER_NAME% &gt; nul
 "$(OutDir)gtk-update-icon-cache.exe" --force --ignore-theme-index  --source builtin_icons stock-icons
-</Command>
-      <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">cd "$(GTK_SOURCE_ROOT)gtk"
+) ELSE (
+echo Warning: gtk-update-icon-cache.exe not found. Can't generate icon cache 
+)</Command>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">if exist "$(OutDir)gtk-update-icon-cache.exe" (
+cd "$(GTK_SOURCE_ROOT)gtk"
 set "ICONCACHE_HEADER_NAME=$(GTK_SOURCE_ROOT)gtk\gtkbuiltincache.h"
 del %ICONCACHE_HEADER_NAME% &gt; nul
 "$(OutDir)gtk-update-icon-cache.exe" --force --ignore-theme-index  --source builtin_icons stock-icons
-</Command>
+) ELSE (
+echo Warning: gtk-update-icon-cache.exe not found. Can't generate icon cache 
+)</Command>
       <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|ARM64'">$(GTK_SOURCE_ROOT)gtk\gtkbuiltincache.h</Outputs>
       <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|ARM64'">$(SolutionDir)build\$(Configuration)\x64\GTK\gtk-update-icon-cache.exe;$(GTK_SOURCE_ROOT)gtk\stock-icons\**\*.*</AdditionalInputs>
       <Message Condition="'$(Configuration)|$(Platform)'=='Release|ARM64'">Building Icon Cache</Message>
@@ -947,36 +1007,36 @@ del %ICONCACHE_HEADER_NAME% &gt; nul
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <OutDir>$(SolutionDir)build\$(Configuration)\$(PlatformShortname)\GTK\</OutDir>
     <IntDir>$(SolutionDir)build\intermediate\$(Configuration)\$(PlatformShortname)\$(ProjectName)\</IntDir>
-    <CustomBuildBeforeTargets>ClCompile</CustomBuildBeforeTargets>
+    <CustomBuildAfterTargets>VcpkgInstallManifestDependencies</CustomBuildAfterTargets>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <OutDir>$(SolutionDir)build\$(Configuration)\$(PlatformShortname)\GTK\</OutDir>
     <IntDir>$(SolutionDir)build\intermediate\$(Configuration)\$(PlatformShortname)\$(ProjectName)\</IntDir>
-    <CustomBuildBeforeTargets>ClCompile</CustomBuildBeforeTargets>
+    <CustomBuildAfterTargets>VcpkgInstallManifestDependencies</CustomBuildAfterTargets>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <CopyLocalDeploymentContent>true</CopyLocalDeploymentContent>
     <CopyLocalDebugSymbols>true</CopyLocalDebugSymbols>
     <OutDir>$(SolutionDir)build\$(Configuration)\$(PlatformShortname)\GTK\</OutDir>
     <IntDir>$(SolutionDir)build\intermediate\$(Configuration)\$(PlatformShortname)\$(ProjectName)\</IntDir>
-    <CustomBuildBeforeTargets>ClCompile</CustomBuildBeforeTargets>
+    <CustomBuildAfterTargets>VcpkgInstallManifestDependencies</CustomBuildAfterTargets>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|ARM64'">
     <CopyLocalDeploymentContent>true</CopyLocalDeploymentContent>
     <CopyLocalDebugSymbols>true</CopyLocalDebugSymbols>
     <OutDir>$(SolutionDir)build\$(Configuration)\$(PlatformShortname)\GTK\</OutDir>
     <IntDir>$(SolutionDir)build\intermediate\$(Configuration)\$(PlatformShortname)\$(ProjectName)\</IntDir>
-    <CustomBuildBeforeTargets>ClCompile</CustomBuildBeforeTargets>
+    <CustomBuildAfterTargets>VcpkgInstallManifestDependencies</CustomBuildAfterTargets>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <OutDir>$(SolutionDir)build\$(Configuration)\$(PlatformShortname)\GTK\</OutDir>
     <IntDir>$(SolutionDir)build\intermediate\$(Configuration)\$(PlatformShortname)\$(ProjectName)\</IntDir>
-    <CustomBuildBeforeTargets>ClCompile</CustomBuildBeforeTargets>
+    <CustomBuildAfterTargets>VcpkgInstallManifestDependencies</CustomBuildAfterTargets>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|ARM64'">
     <OutDir>$(SolutionDir)build\$(Configuration)\$(PlatformShortname)\GTK\</OutDir>
     <IntDir>$(SolutionDir)build\intermediate\$(Configuration)\$(PlatformShortname)\$(ProjectName)\</IntDir>
-    <CustomBuildBeforeTargets>ClCompile</CustomBuildBeforeTargets>
+    <CustomBuildAfterTargets>VcpkgInstallManifestDependencies</CustomBuildAfterTargets>
   </PropertyGroup>
   <PropertyGroup Label="Vcpkg">
     <VcpkgEnableManifest>true</VcpkgEnableManifest>
@@ -987,26 +1047,31 @@ del %ICONCACHE_HEADER_NAME% &gt; nul
   </PropertyGroup>
   <PropertyGroup Label="Vcpkg" Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <VcpkgTriplet>$(PlatformShortName.ToLower)-windows</VcpkgTriplet>
-    <VcpkgAdditionalInstallOptions>--clean-after-build</VcpkgAdditionalInstallOptions>
+    <VcpkgAdditionalInstallOptions>--clean-after-build --keep-going --no-print-usage</VcpkgAdditionalInstallOptions>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|ARM64'" Label="Vcpkg">
     <VcpkgTriplet>$(PlatformShortName.ToLower)-windows</VcpkgTriplet>
-    <VcpkgAdditionalInstallOptions>--clean-after-build</VcpkgAdditionalInstallOptions>
+    <VcpkgAdditionalInstallOptions>--clean-after-build --keep-going --no-print-usage</VcpkgAdditionalInstallOptions>
   </PropertyGroup>
   <PropertyGroup Label="Vcpkg" Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <VcpkgTriplet>$(PlatformShortName.ToLower)-windows</VcpkgTriplet>
+    <VcpkgAdditionalInstallOptions>--clean-after-build --keep-going --no-print-usage</VcpkgAdditionalInstallOptions>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|ARM64'" Label="Vcpkg">
     <VcpkgTriplet>$(PlatformShortName.ToLower)-windows</VcpkgTriplet>
-    <VcpkgHostTriplet>$(PreferredToolArchitecture.ToLower)-windows</VcpkgHostTriplet>
+    <VcpkgHostTriplet>
+    </VcpkgHostTriplet>
+    <VcpkgAdditionalInstallOptions>--clean-after-build --keep-going --no-print-usage</VcpkgAdditionalInstallOptions>
   </PropertyGroup>
   <PropertyGroup Label="Vcpkg" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <VcpkgTriplet>$(PlatformShortName.ToLower)-windows</VcpkgTriplet>
-    <VcpkgAdditionalInstallOptions>--clean-after-build</VcpkgAdditionalInstallOptions>
+    <VcpkgAdditionalInstallOptions>--clean-after-build --keep-going --no-print-usage</VcpkgAdditionalInstallOptions>
   </PropertyGroup>
   <PropertyGroup Label="Vcpkg" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <VcpkgTriplet>$(PlatformShortName.ToLower)-windows</VcpkgTriplet>
-    <VcpkgHostTriplet>$(PlatformShortName.ToLower)-windows</VcpkgHostTriplet>
+    <VcpkgHostTriplet>
+    </VcpkgHostTriplet>
+    <VcpkgAdditionalInstallOptions>--clean-after-build --keep-going --no-print-usage</VcpkgAdditionalInstallOptions>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
@@ -1028,12 +1093,8 @@ del %ICONCACHE_HEADER_NAME% &gt; nul
       <ModuleDefinitionFile>$(GTK_SOURCE_ROOT)gtk\gtk.def</ModuleDefinitionFile>
       <AdditionalDependencies>glib-2.0.lib;gobject-2.0.lib;gdk_pixbuf-2.0.lib;atk-1.0.lib;pango-1.0.lib;pangocairo-1.0.lib;cairo.lib;gio-2.0.lib;gmodule-2.0.lib;fribidi.lib;intl.lib;Comctl32.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
-    <CustomBuild>
-      <MaxProcesses>1</MaxProcesses>
-    </CustomBuild>
-    <CustomBuild>
-      <MaxItemsInBatch>1</MaxItemsInBatch>
-    </CustomBuild>
+    <CustomBuild />
+    <CustomBuild />
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <ClCompile>
@@ -1057,12 +1118,8 @@ del %ICONCACHE_HEADER_NAME% &gt; nul
       <ModuleDefinitionFile>$(GTK_SOURCE_ROOT)gtk\gtk.def</ModuleDefinitionFile>
       <AdditionalDependencies>glib-2.0.lib;gobject-2.0.lib;gdk_pixbuf-2.0.lib;atk-1.0.lib;pango-1.0.lib;pangocairo-1.0.lib;cairo.lib;gio-2.0.lib;gmodule-2.0.lib;fribidi.lib;intl.lib;Comctl32.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
-    <CustomBuild>
-      <MaxProcesses>1</MaxProcesses>
-    </CustomBuild>
-    <CustomBuild>
-      <MaxItemsInBatch>1</MaxItemsInBatch>
-    </CustomBuild>
+    <CustomBuild />
+    <CustomBuild />
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <ClCompile>
@@ -1084,12 +1141,8 @@ del %ICONCACHE_HEADER_NAME% &gt; nul
       <ModuleDefinitionFile>$(GTK_SOURCE_ROOT)gtk\gtk.def</ModuleDefinitionFile>
       <AdditionalDependencies>glib-2.0.lib;gobject-2.0.lib;gdk_pixbuf-2.0.lib;atk-1.0.lib;pango-1.0.lib;pangocairo-1.0.lib;cairo.lib;gio-2.0.lib;gmodule-2.0.lib;fribidi.lib;intl.lib;Comctl32.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
-    <CustomBuild>
-      <MaxProcesses>1</MaxProcesses>
-    </CustomBuild>
-    <CustomBuild>
-      <MaxItemsInBatch>1</MaxItemsInBatch>
-    </CustomBuild>
+    <CustomBuild />
+    <CustomBuild />
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|ARM64'">
     <ClCompile>
@@ -1111,12 +1164,8 @@ del %ICONCACHE_HEADER_NAME% &gt; nul
       <ModuleDefinitionFile>$(GTK_SOURCE_ROOT)gtk\gtk.def</ModuleDefinitionFile>
       <AdditionalDependencies>glib-2.0.lib;gobject-2.0.lib;gdk_pixbuf-2.0.lib;atk-1.0.lib;pango-1.0.lib;pangocairo-1.0.lib;cairo.lib;gio-2.0.lib;gmodule-2.0.lib;fribidi.lib;intl.lib;Comctl32.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
-    <CustomBuild>
-      <MaxProcesses>1</MaxProcesses>
-    </CustomBuild>
-    <CustomBuild>
-      <MaxItemsInBatch>1</MaxItemsInBatch>
-    </CustomBuild>
+    <CustomBuild />
+    <CustomBuild />
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <ClCompile>
@@ -1140,12 +1189,8 @@ del %ICONCACHE_HEADER_NAME% &gt; nul
       <ModuleDefinitionFile>$(GTK_SOURCE_ROOT)gtk\gtk.def</ModuleDefinitionFile>
       <AdditionalDependencies>glib-2.0.lib;gobject-2.0.lib;gdk_pixbuf-2.0.lib;atk-1.0.lib;pango-1.0.lib;pangocairo-1.0.lib;cairo.lib;gio-2.0.lib;gmodule-2.0.lib;fribidi.lib;intl.lib;Comctl32.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
-    <CustomBuild>
-      <MaxProcesses>1</MaxProcesses>
-    </CustomBuild>
-    <CustomBuild>
-      <MaxItemsInBatch>1</MaxItemsInBatch>
-    </CustomBuild>
+    <CustomBuild />
+    <CustomBuild />
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|ARM64'">
     <ClCompile>
@@ -1169,12 +1214,8 @@ del %ICONCACHE_HEADER_NAME% &gt; nul
       <ModuleDefinitionFile>$(GTK_SOURCE_ROOT)gtk\gtk.def</ModuleDefinitionFile>
       <AdditionalDependencies>glib-2.0.lib;gobject-2.0.lib;gdk_pixbuf-2.0.lib;atk-1.0.lib;pango-1.0.lib;pangocairo-1.0.lib;cairo.lib;gio-2.0.lib;gmodule-2.0.lib;fribidi.lib;intl.lib;Comctl32.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
-    <CustomBuild>
-      <MaxProcesses>1</MaxProcesses>
-    </CustomBuild>
-    <CustomBuild>
-      <MaxItemsInBatch>1</MaxItemsInBatch>
-    </CustomBuild>
+    <CustomBuild />
+    <CustomBuild />
   </ItemDefinitionGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

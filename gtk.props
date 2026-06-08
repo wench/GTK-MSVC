@@ -27,6 +27,8 @@
     <GTKGL_SOURCE_ROOT>$(MSBuildThisFileDirectory)gtkglext\</GTKGL_SOURCE_ROOT>
     <GTKGL_INCLUDES>$(MSBuildThisFileDirectory)projects\gtkglext;$(MSBuildThisFileDirectory)projects\gdkglext;$(GTKGL_SOURCE_ROOT);$(GTKGL_SOURCE_ROOT)gdk;$(GTKGL_SOURCE_ROOT)gtk;$(GTK_INCLUDES)</GTKGL_INCLUDES>
     <GTKGL_BUILD_INCLUDES>$(GTKGL_INCLUDES);;$(GTK_BUILD_INCLUDES);$(GTK_ATK_INCLUDES)</GTKGL_BUILD_INCLUDES>
+    <IDNHAT Condition="'$(Platform)'=='ARM64'">$(SolutionDir)build\$(Configuration)\x64\GTK\idnhat.exe</IDNHAT>
+    <IDNHAT Condition="'$(Platform)'!='ARM64'">$(SolutionDir)build\$(Configuration)\$(PlatformShortname)\GTK\idnhat.exe</IDNHAT>
   </PropertyGroup>
   <PropertyGroup>
     <IntDir>$(SolutionDir)\build\intermediate\$(Configuration)\$(PlatformShortname)\$(ProjectName)\</IntDir>
@@ -115,6 +117,9 @@
     </BuildMacro>
     <BuildMacro Include="GTKGL_BUILD_INCLUDES">
       <Value>$(GTKGL_BUILD_INCLUDES)</Value>
+    </BuildMacro>
+    <BuildMacro Include="IDNHAT">
+      <Value>$(IDNHAT)</Value>
     </BuildMacro>
   </ItemGroup>
 </Project>

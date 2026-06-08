@@ -54,12 +54,42 @@
   <ItemGroup>
     <CustomBuild Include="..\..\gtkglext\configure.ac">
       <FileType>Document</FileType>
-      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">"$(OutDir)idnhat.exe" %(FullPath) %(RelativeDir)gdk\gdkglversion.h.in</Command>
-      <Command Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">"$(OutDir)idnhat.exe" %(FullPath) %(RelativeDir)gdk\gdkglversion.h.in</Command>
-      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">"$(OutDir)idnhat.exe" %(FullPath) %(RelativeDir)gdk\gdkglversion.h.in</Command>
-      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|ARM64'">"$(SolutionDir)build\$(Configuration)\x64\GTK\idnhat.exe" %(FullPath) %(RelativeDir)gdk\gdkglversion.h.in</Command>
-      <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">"$(OutDir)idnhat.exe" %(FullPath) %(RelativeDir)gdk\gdkglversion.h.in</Command>
-      <Command Condition="'$(Configuration)|$(Platform)'=='Release|ARM64'">"$(SolutionDir)build\$(Configuration)\x64\GTK\idnhat.exe" %(FullPath) %(RelativeDir)gdk\gdkglversion.h.in</Command>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">if exist "$(IDNHAT)" (
+"$(IDNHAT)" "%(FullPath)" %(RelativeDir)gdk\gdkglversion.h.in
+) ELSE (
+echo Warning: IDNHAT not built. Unable to parse  %(FileName)
+)
+</Command>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">if exist "$(IDNHAT)" (
+"$(IDNHAT)" "%(FullPath)" %(RelativeDir)gdk\gdkglversion.h.in
+) ELSE (
+echo Warning: IDNHAT not built. Unable to parse  %(FileName)
+)
+</Command>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">if exist "$(IDNHAT)" (
+"$(IDNHAT)" "%(FullPath)" %(RelativeDir)gdk\gdkglversion.h.in
+) ELSE (
+echo Warning: IDNHAT not built. Unable to parse  %(FileName)
+)
+</Command>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|ARM64'">if exist "$(IDNHAT)" (
+"$(IDNHAT)" "%(FullPath)" %(RelativeDir)gdk\gdkglversion.h.in
+) ELSE (
+echo Warning: IDNHAT not built. Unable to parse  %(FileName)
+)
+</Command>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">if exist "$(IDNHAT)" (
+"$(IDNHAT)" "%(FullPath)" %(RelativeDir)gdk\gdkglversion.h.in
+) ELSE (
+echo Warning: IDNHAT not built. Unable to parse  %(FileName)
+)
+</Command>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|ARM64'">if exist "$(IDNHAT)" (
+"$(IDNHAT)" "%(FullPath)" %(RelativeDir)gdk\gdkglversion.h.in
+) ELSE (
+echo Warning: IDNHAT not built. Unable to parse  %(FileName)
+)
+</Command>
       <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(OutDir)idnhat.exe;%(RelativeDir)gdk\gdkglversion.h.in</AdditionalInputs>
       <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(OutDir)idnhat.exe;%(RelativeDir)gdk\gdkglversion.h.in</AdditionalInputs>
       <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(OutDir)idnhat.exe;%(RelativeDir)gdk\gdkglversion.h.in</AdditionalInputs>
@@ -259,14 +289,14 @@ python3 "$(GLIB_TOOLS)\glib-mkenums"  --template "%(FullPath)"  gdkgl.h gdkgldef
     <CopyLocalDebugSymbols>true</CopyLocalDebugSymbols>
     <OutDir>$(SolutionDir)build\$(Configuration)\$(PlatformShortname)\GTK\</OutDir>
     <IntDir>$(SolutionDir)build\intermediate\$(Configuration)\$(PlatformShortname)\$(ProjectName)\</IntDir>
-    <CustomBuildBeforeTargets>ClCompile</CustomBuildBeforeTargets>
+    <CustomBuildAfterTargets>VcpkgInstallManifestDependencies</CustomBuildAfterTargets>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <CopyLocalProjectReference>true</CopyLocalProjectReference>
     <CopyLocalDebugSymbols>true</CopyLocalDebugSymbols>
     <OutDir>$(SolutionDir)build\$(Configuration)\$(PlatformShortname)\GTK\</OutDir>
     <IntDir>$(SolutionDir)build\intermediate\$(Configuration)\$(PlatformShortname)\$(ProjectName)\</IntDir>
-    <CustomBuildBeforeTargets>ClCompile</CustomBuildBeforeTargets>
+    <CustomBuildAfterTargets>VcpkgInstallManifestDependencies</CustomBuildAfterTargets>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <CopyLocalProjectReference>false</CopyLocalProjectReference>
@@ -274,7 +304,7 @@ python3 "$(GLIB_TOOLS)\glib-mkenums"  --template "%(FullPath)"  gdkgl.h gdkgldef
     <CopyLocalDeploymentContent>true</CopyLocalDeploymentContent>
     <OutDir>$(SolutionDir)build\$(Configuration)\$(PlatformShortname)\GTK\</OutDir>
     <IntDir>$(SolutionDir)build\intermediate\$(Configuration)\$(PlatformShortname)\$(ProjectName)\</IntDir>
-    <CustomBuildBeforeTargets>ClCompile</CustomBuildBeforeTargets>
+    <CustomBuildAfterTargets>VcpkgInstallManifestDependencies</CustomBuildAfterTargets>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|ARM64'">
     <CopyLocalProjectReference>false</CopyLocalProjectReference>
@@ -282,21 +312,21 @@ python3 "$(GLIB_TOOLS)\glib-mkenums"  --template "%(FullPath)"  gdkgl.h gdkgldef
     <CopyLocalDeploymentContent>true</CopyLocalDeploymentContent>
     <OutDir>$(SolutionDir)build\$(Configuration)\$(PlatformShortname)\GTK\</OutDir>
     <IntDir>$(SolutionDir)build\intermediate\$(Configuration)\$(PlatformShortname)\$(ProjectName)\</IntDir>
-    <CustomBuildBeforeTargets>ClCompile</CustomBuildBeforeTargets>
+    <CustomBuildAfterTargets>VcpkgInstallManifestDependencies</CustomBuildAfterTargets>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <CopyLocalProjectReference>true</CopyLocalProjectReference>
     <CopyLocalDebugSymbols>true</CopyLocalDebugSymbols>
     <OutDir>$(SolutionDir)build\$(Configuration)\$(PlatformShortname)\GTK\</OutDir>
     <IntDir>$(SolutionDir)build\intermediate\$(Configuration)\$(PlatformShortname)\$(ProjectName)\</IntDir>
-    <CustomBuildBeforeTargets>ClCompile</CustomBuildBeforeTargets>
+    <CustomBuildAfterTargets>VcpkgInstallManifestDependencies</CustomBuildAfterTargets>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|ARM64'">
     <CopyLocalProjectReference>true</CopyLocalProjectReference>
     <CopyLocalDebugSymbols>true</CopyLocalDebugSymbols>
     <OutDir>$(SolutionDir)build\$(Configuration)\$(PlatformShortname)\GTK\</OutDir>
     <IntDir>$(SolutionDir)build\intermediate\$(Configuration)\$(PlatformShortname)\$(ProjectName)\</IntDir>
-    <CustomBuildBeforeTargets>ClCompile</CustomBuildBeforeTargets>
+    <CustomBuildAfterTargets>VcpkgInstallManifestDependencies</CustomBuildAfterTargets>
   </PropertyGroup>
   <PropertyGroup Label="Vcpkg">
     <VcpkgEnableManifest>true</VcpkgEnableManifest>
@@ -307,26 +337,31 @@ python3 "$(GLIB_TOOLS)\glib-mkenums"  --template "%(FullPath)"  gdkgl.h gdkgldef
   </PropertyGroup>
   <PropertyGroup Label="Vcpkg" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <VcpkgTriplet>$(PlatformShortName.ToLower)-windows</VcpkgTriplet>
-    <VcpkgAdditionalInstallOptions>--clean-after-build</VcpkgAdditionalInstallOptions>
+    <VcpkgAdditionalInstallOptions>--clean-after-build --keep-going --no-print-usage</VcpkgAdditionalInstallOptions>
   </PropertyGroup>
   <PropertyGroup Label="Vcpkg" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <VcpkgTriplet>$(PlatformShortName.ToLower)-windows</VcpkgTriplet>
-    <VcpkgHostTriplet>$(PlatformShortName.ToLower)-windows</VcpkgHostTriplet>
+    <VcpkgHostTriplet>
+    </VcpkgHostTriplet>
+    <VcpkgAdditionalInstallOptions>--clean-after-build --keep-going --no-print-usage</VcpkgAdditionalInstallOptions>
   </PropertyGroup>
   <PropertyGroup Label="Vcpkg" Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <VcpkgTriplet>$(PlatformShortName.ToLower)-windows</VcpkgTriplet>
-    <VcpkgAdditionalInstallOptions>--clean-after-build</VcpkgAdditionalInstallOptions>
+    <VcpkgAdditionalInstallOptions>--clean-after-build --keep-going --no-print-usage</VcpkgAdditionalInstallOptions>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|ARM64'" Label="Vcpkg">
     <VcpkgTriplet>$(PlatformShortName.ToLower)-windows</VcpkgTriplet>
-    <VcpkgAdditionalInstallOptions>--clean-after-build</VcpkgAdditionalInstallOptions>
+    <VcpkgAdditionalInstallOptions>--clean-after-build --keep-going --no-print-usage</VcpkgAdditionalInstallOptions>
   </PropertyGroup>
   <PropertyGroup Label="Vcpkg" Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <VcpkgTriplet>$(PlatformShortName.ToLower)-windows</VcpkgTriplet>
+    <VcpkgAdditionalInstallOptions>--clean-after-build --keep-going --no-print-usage</VcpkgAdditionalInstallOptions>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|ARM64'" Label="Vcpkg">
     <VcpkgTriplet>$(PlatformShortName.ToLower)-windows</VcpkgTriplet>
-    <VcpkgHostTriplet>$(PreferredToolArchitecture.ToLower)-windows</VcpkgHostTriplet>
+    <VcpkgHostTriplet>
+    </VcpkgHostTriplet>
+    <VcpkgAdditionalInstallOptions>--clean-after-build --keep-going --no-print-usage</VcpkgAdditionalInstallOptions>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
@@ -348,6 +383,8 @@ python3 "$(GLIB_TOOLS)\glib-mkenums"  --template "%(FullPath)"  gdkgl.h gdkgldef
       <ModuleDefinitionFile>..\..\gtkglext\gdk\gdkglext.def</ModuleDefinitionFile>
       <AdditionalDependencies>glib-2.0.lib;gobject-2.0.lib;opengl32.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
+    <CustomBuild />
+    <CustomBuild />
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <ClCompile>
@@ -371,6 +408,8 @@ python3 "$(GLIB_TOOLS)\glib-mkenums"  --template "%(FullPath)"  gdkgl.h gdkgldef
       <ModuleDefinitionFile>..\..\gtkglext\gdk\gdkglext.def</ModuleDefinitionFile>
       <AdditionalDependencies>glib-2.0.lib;gobject-2.0.lib;opengl32.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
+    <CustomBuild />
+    <CustomBuild />
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <ClCompile>
@@ -392,6 +431,8 @@ python3 "$(GLIB_TOOLS)\glib-mkenums"  --template "%(FullPath)"  gdkgl.h gdkgldef
       <ModuleDefinitionFile>..\..\gtkglext\gdk\gdkglext.def</ModuleDefinitionFile>
       <AdditionalDependencies>glib-2.0.lib;gobject-2.0.lib;opengl32.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
+    <CustomBuild />
+    <CustomBuild />
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|ARM64'">
     <ClCompile>
@@ -413,6 +454,8 @@ python3 "$(GLIB_TOOLS)\glib-mkenums"  --template "%(FullPath)"  gdkgl.h gdkgldef
       <ModuleDefinitionFile>..\..\gtkglext\gdk\gdkglext.def</ModuleDefinitionFile>
       <AdditionalDependencies>glib-2.0.lib;gobject-2.0.lib;opengl32.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
+    <CustomBuild />
+    <CustomBuild />
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <ClCompile>
@@ -436,6 +479,8 @@ python3 "$(GLIB_TOOLS)\glib-mkenums"  --template "%(FullPath)"  gdkgl.h gdkgldef
       <ModuleDefinitionFile>..\..\gtkglext\gdk\gdkglext.def</ModuleDefinitionFile>
       <AdditionalDependencies>glib-2.0.lib;gobject-2.0.lib;opengl32.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
+    <CustomBuild />
+    <CustomBuild />
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|ARM64'">
     <ClCompile>
@@ -459,6 +504,8 @@ python3 "$(GLIB_TOOLS)\glib-mkenums"  --template "%(FullPath)"  gdkgl.h gdkgldef
       <ModuleDefinitionFile>..\..\gtkglext\gdk\gdkglext.def</ModuleDefinitionFile>
       <AdditionalDependencies>glib-2.0.lib;gobject-2.0.lib;opengl32.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
+    <CustomBuild />
+    <CustomBuild />
   </ItemDefinitionGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

@@ -1,4 +1,4 @@
-// Not a template for areal config.h but this is jusy used to set some defines neededto compile gtk andto get the correct library version
+// Not a template for a real config.h but this is jusy used to set some defines neededto compile gtk andto get the correct library version
 
 #pragma once
 #include "../../gtk2-ng/config.h.win32"

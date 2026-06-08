@@ -89,16 +89,35 @@
   <ItemGroup>
     <CustomBuild Include="..\..\gtk2-ng\configure.ac">
       <FileType>Document</FileType>
-      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">"$(OutDir)idnhat.exe" %(RelativeDir)configure.ac %(RelativeDir)config.h.win32.in %(RelativeDir)gdk\win32\rc\gdk.rc.in </Command>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">if exist "$(IDNHAT)" (
+"$(IDNHAT)" "%(FullPath)" %(RelativeDir)config.h.win32.in %(RelativeDir)gdk\win32\rc\gdk.rc.in 
+) ELSE (
+echo Warning: IDNHAT not built. Unable to parse  %(FileName)
+)
+</Command>
       <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(OutDir)idnhat.exe;%(RelativeDir)config.h.win32.in;%(RelativeDir)gdk\win32\rc\gdk.rc.in</AdditionalInputs>
       <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">false</LinkObjects>
       <BuildInParallel Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</BuildInParallel>
-      <Command Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">"$(OutDir)idnhat.exe" %(RelativeDir)configure.ac %(RelativeDir)config.h.win32.in %(RelativeDir)gdk\win32\rc\gdk.rc.in </Command>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">if exist "$(IDNHAT)" (
+"$(IDNHAT)" "%(FullPath)" %(RelativeDir)config.h.win32.in %(RelativeDir)gdk\win32\rc\gdk.rc.in 
+) ELSE (
+echo Warning: IDNHAT not built. Unable to parse  %(FileName)
+)
+</Command>
       <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(OutDir)idnhat.exe;%(RelativeDir)config.h.win32.in;%(RelativeDir)gdk\win32\rc\gdk.rc.in</AdditionalInputs>
       <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">false</LinkObjects>
       <BuildInParallel Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</BuildInParallel>
-      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">"$(OutDir)idnhat.exe" %(RelativeDir)configure.ac %(RelativeDir)config.h.win32.in %(RelativeDir)gdk\win32\rc\gdk.rc.in </Command>
-      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|ARM64'">"$(SolutionDir)build\$(Configuration)\x64\GTK\idnhat.exe" %(RelativeDir)configure.ac %(RelativeDir)config.h.win32.in %(RelativeDir)gdk\win32\rc\gdk.rc.in 
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">if exist "$(IDNHAT)" (
+"$(IDNHAT)" "%(FullPath)" %(RelativeDir)config.h.win32.in %(RelativeDir)gdk\win32\rc\gdk.rc.in 
+) ELSE (
+echo Warning: IDNHAT not built. Unable to parse  %(FileName)
+)
+</Command>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|ARM64'">if exist "$(IDNHAT)" (
+"$(IDNHAT)" "%(FullPath)" %(RelativeDir)config.h.win32.in %(RelativeDir)gdk\win32\rc\gdk.rc.in 
+) ELSE (
+echo Warning: IDNHAT not built. Unable to parse  %(FileName)
+)
 </Command>
       <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(OutDir)idnhat.exe;%(RelativeDir)config.h.win32.in;%(RelativeDir)gdk\win32\rc\gdk.rc.in</AdditionalInputs>
       <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|ARM64'">$(SolutionDir)build\$(Configuration)\x64\GTK\idnhat.exe;%(RelativeDir)config.h.win32.in;%(RelativeDir)gdk\win32\rc\gdk.rc.in</AdditionalInputs>
@@ -106,8 +125,17 @@
       <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Debug|ARM64'">false</LinkObjects>
       <BuildInParallel Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</BuildInParallel>
       <BuildInParallel Condition="'$(Configuration)|$(Platform)'=='Debug|ARM64'">true</BuildInParallel>
-      <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">"$(OutDir)idnhat.exe" %(RelativeDir)configure.ac %(RelativeDir)config.h.win32.in %(RelativeDir)gdk\win32\rc\gdk.rc.in </Command>
-      <Command Condition="'$(Configuration)|$(Platform)'=='Release|ARM64'">"$(SolutionDir)build\$(Configuration)\x64\GTK\idnhat.exe" %(RelativeDir)configure.ac %(RelativeDir)config.h.win32.in %(RelativeDir)gdk\win32\rc\gdk.rc.in 
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">if exist "$(IDNHAT)" (
+"$(IDNHAT)" "%(FullPath)" %(RelativeDir)config.h.win32.in %(RelativeDir)gdk\win32\rc\gdk.rc.in 
+) ELSE (
+echo Warning: IDNHAT not built. Unable to parse  %(FileName)
+)
+</Command>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|ARM64'">if exist "$(IDNHAT)" (
+"$(IDNHAT)" "%(FullPath)" %(RelativeDir)config.h.win32.in %(RelativeDir)gdk\win32\rc\gdk.rc.in 
+) ELSE (
+echo Warning: IDNHAT not built. Unable to parse  %(FileName)
+)
 </Command>
       <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(OutDir)idnhat.exe;%(RelativeDir)config.h.win32.in;%(RelativeDir)gdk\win32\rc\gdk.rc.in</AdditionalInputs>
       <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|ARM64'">$(SolutionDir)build\$(Configuration)\x64\GTK\idnhat.exe;%(RelativeDir)config.h.win32.in;%(RelativeDir)gdk\win32\rc\gdk.rc.in</AdditionalInputs>
@@ -359,7 +387,26 @@ python3 $(_ZVcpkgCurrentInstalledDir)tools\glib\glib-genmarshal  --prefix=_gdk_m
     <ClCompile Include="..\..\gtk2-ng\gdk\gdkdisplaymanager.c" />
     <ClCompile Include="..\..\gtk2-ng\gdk\gdkdnd.c" />
     <ClCompile Include="..\..\gtk2-ng\gdk\gdkdraw.c" />
-    <ClCompile Include="..\..\gtk2-ng\gdk\gdkenumtypes.c" />
+    <ClCompile Include="..\..\gtk2-ng\gdk\gdkenumtypes.c">
+      <UndefinePreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+      </UndefinePreprocessorDefinitions>
+      <UndefinePreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+      </UndefinePreprocessorDefinitions>
+      <UndefinePreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Debug|ARM64'">
+      </UndefinePreprocessorDefinitions>
+      <UndefinePreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Release|ARM64'">
+      </UndefinePreprocessorDefinitions>
+      <UndefinePreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+      </UndefinePreprocessorDefinitions>
+      <UndefinePreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+      </UndefinePreprocessorDefinitions>
+      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">NDEBUG;GDK2_EXPORTS;_WINDOWS;_USRDLL;HAVE_CONFIG_H;G_LOG_DOMAIN="Gdk";GDK_COMPILATION;_CRT_SECURE_NO_WARNINGS</PreprocessorDefinitions>
+      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">NDEBUG;GDK2_EXPORTS;_WINDOWS;_USRDLL;HAVE_CONFIG_H;G_LOG_DOMAIN="Gdk";GDK_COMPILATION;_CRT_SECURE_NO_WARNINGS</PreprocessorDefinitions>
+      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Debug|ARM64'">NDEBUG;GDK2_EXPORTS;_WINDOWS;_USRDLL;HAVE_CONFIG_H;G_LOG_DOMAIN="Gdk";GDK_COMPILATION;_CRT_SECURE_NO_WARNINGS</PreprocessorDefinitions>
+      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Release|x64'">NDEBUG;GDK2_EXPORTS;_WINDOWS;_USRDLL;HAVE_CONFIG_H;G_LOG_DOMAIN="Gdk";GDK_COMPILATION;_CRT_SECURE_NO_WARNINGS</PreprocessorDefinitions>
+      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">NDEBUG;GDK2_EXPORTS;_WINDOWS;_USRDLL;HAVE_CONFIG_H;G_LOG_DOMAIN="Gdk";GDK_COMPILATION;_CRT_SECURE_NO_WARNINGS</PreprocessorDefinitions>
+      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Release|ARM64'">NDEBUG;GDK2_EXPORTS;_WINDOWS;_USRDLL;HAVE_CONFIG_H;G_LOG_DOMAIN="Gdk";GDK_COMPILATION;_CRT_SECURE_NO_WARNINGS</PreprocessorDefinitions>
+    </ClCompile>
     <ClCompile Include="..\..\gtk2-ng\gdk\gdkevents.c" />
     <ClCompile Include="..\..\gtk2-ng\gdk\gdkfont.c" />
     <ClCompile Include="..\..\gtk2-ng\gdk\gdkgc.c" />
@@ -664,61 +711,66 @@ python3 $(_ZVcpkgCurrentInstalledDir)tools\glib\glib-genmarshal  --prefix=_gdk_m
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
-    <CustomBuildBeforeTargets>ClCompile</CustomBuildBeforeTargets>
     <OutDir>$(SolutionDir)build\$(Configuration)\$(PlatformShortname)\GTK\</OutDir>
     <IntDir>$(SolutionDir)build\intermediate\$(Configuration)\$(PlatformShortname)\$(ProjectName)\</IntDir>
+    <CustomBuildAfterTargets>VcpkgInstallManifestDependencies</CustomBuildAfterTargets>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
-    <CustomBuildBeforeTargets>ClCompile</CustomBuildBeforeTargets>
     <OutDir>$(SolutionDir)build\$(Configuration)\$(PlatformShortname)\GTK\</OutDir>
     <IntDir>$(SolutionDir)build\intermediate\$(Configuration)\$(PlatformShortname)\$(ProjectName)\</IntDir>
+    <CustomBuildAfterTargets>VcpkgInstallManifestDependencies</CustomBuildAfterTargets>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
-    <CustomBuildBeforeTargets>ClCompile</CustomBuildBeforeTargets>
     <CopyLocalDeploymentContent>true</CopyLocalDeploymentContent>
     <CopyLocalDebugSymbols>true</CopyLocalDebugSymbols>
     <OutDir>$(SolutionDir)build\$(Configuration)\$(PlatformShortname)\GTK\</OutDir>
     <IntDir>$(SolutionDir)build\intermediate\$(Configuration)\$(PlatformShortname)\$(ProjectName)\</IntDir>
+    <CustomBuildAfterTargets>VcpkgInstallManifestDependencies</CustomBuildAfterTargets>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|ARM64'">
-    <CustomBuildBeforeTargets>ClCompile</CustomBuildBeforeTargets>
     <CopyLocalDeploymentContent>true</CopyLocalDeploymentContent>
     <CopyLocalDebugSymbols>true</CopyLocalDebugSymbols>
     <OutDir>$(SolutionDir)build\$(Configuration)\$(PlatformShortname)\GTK\</OutDir>
     <IntDir>$(SolutionDir)build\intermediate\$(Configuration)\$(PlatformShortname)\$(ProjectName)\</IntDir>
+    <CustomBuildAfterTargets>VcpkgInstallManifestDependencies</CustomBuildAfterTargets>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
-    <CustomBuildBeforeTargets>ClCompile</CustomBuildBeforeTargets>
     <OutDir>$(SolutionDir)build\$(Configuration)\$(PlatformShortname)\GTK\</OutDir>
     <IntDir>$(SolutionDir)build\intermediate\$(Configuration)\$(PlatformShortname)\$(ProjectName)\</IntDir>
+    <CustomBuildAfterTargets>VcpkgInstallManifestDependencies</CustomBuildAfterTargets>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|ARM64'">
-    <CustomBuildBeforeTargets>ClCompile</CustomBuildBeforeTargets>
     <OutDir>$(SolutionDir)build\$(Configuration)\$(PlatformShortname)\GTK\</OutDir>
     <IntDir>$(SolutionDir)build\intermediate\$(Configuration)\$(PlatformShortname)\$(ProjectName)\</IntDir>
+    <CustomBuildAfterTargets>VcpkgInstallManifestDependencies</CustomBuildAfterTargets>
   </PropertyGroup>
   <PropertyGroup Label="Vcpkg" Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <VcpkgTriplet>$(PlatformShortName.ToLower)-windows</VcpkgTriplet>
-    <VcpkgAdditionalInstallOptions>--clean-after-build</VcpkgAdditionalInstallOptions>
+    <VcpkgAdditionalInstallOptions>--clean-after-build --keep-going --no-print-usage</VcpkgAdditionalInstallOptions>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|ARM64'" Label="Vcpkg">
     <VcpkgTriplet>$(PlatformShortName.ToLower)-windows</VcpkgTriplet>
-    <VcpkgAdditionalInstallOptions>--clean-after-build</VcpkgAdditionalInstallOptions>
+    <VcpkgAdditionalInstallOptions>--clean-after-build --keep-going --no-print-usage</VcpkgAdditionalInstallOptions>
   </PropertyGroup>
   <PropertyGroup Label="Vcpkg" Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <VcpkgTriplet>$(PlatformShortName.ToLower)-windows</VcpkgTriplet>
+    <VcpkgAdditionalInstallOptions>--clean-after-build --keep-going --no-print-usage</VcpkgAdditionalInstallOptions>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|ARM64'" Label="Vcpkg">
     <VcpkgTriplet>$(PlatformShortName.ToLower)-windows</VcpkgTriplet>
-    <VcpkgHostTriplet>$(PreferredToolArchitecture.ToLower)-windows</VcpkgHostTriplet>
+    <VcpkgHostTriplet>
+    </VcpkgHostTriplet>
+    <VcpkgAdditionalInstallOptions>--clean-after-build --keep-going --no-print-usage</VcpkgAdditionalInstallOptions>
   </PropertyGroup>
   <PropertyGroup Label="Vcpkg" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <VcpkgTriplet>$(PlatformShortName.ToLower)-windows</VcpkgTriplet>
-    <VcpkgAdditionalInstallOptions>--clean-after-build</VcpkgAdditionalInstallOptions>
+    <VcpkgAdditionalInstallOptions>--clean-after-build --keep-going --no-print-usage</VcpkgAdditionalInstallOptions>
   </PropertyGroup>
   <PropertyGroup Label="Vcpkg" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <VcpkgTriplet>$(PlatformShortName.ToLower)-windows</VcpkgTriplet>
-    <VcpkgHostTriplet>$(PlatformShortName.ToLower)-windows</VcpkgHostTriplet>
+    <VcpkgHostTriplet>
+    </VcpkgHostTriplet>
+    <VcpkgAdditionalInstallOptions>--clean-after-build --keep-going --no-print-usage</VcpkgAdditionalInstallOptions>
   </PropertyGroup>
   <PropertyGroup Label="Vcpkg">
     <VcpkgEnabled>true</VcpkgEnabled>
@@ -757,6 +809,8 @@ python3 $(_ZVcpkgCurrentInstalledDir)tools\glib\glib-genmarshal  --prefix=_gdk_m
 copy "$(GDK_LIB_BIN)*.pdb" "$(OutDir)" &gt; nul
 </Command>
     </PostBuildEvent>
+    <CustomBuild />
+    <CustomBuild />
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <ClCompile>
@@ -789,6 +843,8 @@ copy "$(GDK_LIB_BIN)*.pdb" "$(OutDir)" &gt; nul
 copy "$(GDK_LIB_BIN)*.pdb" "$(OutDir)" &gt; nul
 </Command>
     </PostBuildEvent>
+    <CustomBuild />
+    <CustomBuild />
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <ClCompile>
@@ -820,6 +876,8 @@ copy "$(GDK_LIB_BIN)*.pdb" "$(OutDir)" &gt; nul
 copy "$(GDK_LIB_BIN)*.pdb" "$(OutDir)" &gt; nul
 </Command>
     </PostBuildEvent>
+    <CustomBuild />
+    <CustomBuild />
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|ARM64'">
     <ClCompile>
@@ -851,6 +909,8 @@ copy "$(GDK_LIB_BIN)*.pdb" "$(OutDir)" &gt; nul
 copy "$(GDK_LIB_BIN)*.pdb" "$(OutDir)" &gt; nul
 </Command>
     </PostBuildEvent>
+    <CustomBuild />
+    <CustomBuild />
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <ClCompile>
@@ -883,6 +943,8 @@ copy "$(GDK_LIB_BIN)*.pdb" "$(OutDir)" &gt; nul
 copy "$(GDK_LIB_BIN)*.pdb" "$(OutDir)" &gt; nul
 </Command>
     </PostBuildEvent>
+    <CustomBuild />
+    <CustomBuild />
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|ARM64'">
     <ClCompile>
@@ -915,6 +977,8 @@ copy "$(GDK_LIB_BIN)*.pdb" "$(OutDir)" &gt; nul
 copy "$(GDK_LIB_BIN)*.pdb" "$(OutDir)" &gt; nul
 </Command>
     </PostBuildEvent>
+    <CustomBuild />
+    <CustomBuild />
   </ItemDefinitionGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

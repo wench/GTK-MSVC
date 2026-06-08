@@ -108,34 +108,34 @@
     <CopyLocalDebugSymbols>true</CopyLocalDebugSymbols>
     <OutDir>$(SolutionDir)build\$(Configuration)\$(PlatformShortname)\GTK\</OutDir>
     <IntDir>$(SolutionDir)build\intermediate\$(Configuration)\$(PlatformShortname)\$(ProjectName)\</IntDir>
-    <CustomBuildBeforeTargets>ClCompile</CustomBuildBeforeTargets>
+    <CustomBuildAfterTargets>VcpkgInstallManifestDependencies</CustomBuildAfterTargets>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|ARM64'">
     <CopyLocalDeploymentContent>true</CopyLocalDeploymentContent>
     <CopyLocalDebugSymbols>true</CopyLocalDebugSymbols>
     <OutDir>$(SolutionDir)build\$(Configuration)\$(PlatformShortname)\GTK\</OutDir>
     <IntDir>$(SolutionDir)build\intermediate\$(Configuration)\$(PlatformShortname)\$(ProjectName)\</IntDir>
-    <CustomBuildBeforeTargets>ClCompile</CustomBuildBeforeTargets>
+    <CustomBuildAfterTargets>VcpkgInstallManifestDependencies</CustomBuildAfterTargets>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <OutDir>$(SolutionDir)build\$(Configuration)\$(PlatformShortname)\GTK\</OutDir>
     <IntDir>$(SolutionDir)build\intermediate\$(Configuration)\$(PlatformShortname)\$(ProjectName)\</IntDir>
-    <CustomBuildBeforeTargets>ClCompile</CustomBuildBeforeTargets>
+    <CustomBuildAfterTargets>VcpkgInstallManifestDependencies</CustomBuildAfterTargets>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <OutDir>$(SolutionDir)build\$(Configuration)\$(PlatformShortname)\GTK\</OutDir>
     <IntDir>$(SolutionDir)build\intermediate\$(Configuration)\$(PlatformShortname)\$(ProjectName)\</IntDir>
-    <CustomBuildBeforeTargets>ClCompile</CustomBuildBeforeTargets>
+    <CustomBuildAfterTargets>VcpkgInstallManifestDependencies</CustomBuildAfterTargets>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <OutDir>$(SolutionDir)build\$(Configuration)\$(PlatformShortname)\GTK\</OutDir>
     <IntDir>$(SolutionDir)build\intermediate\$(Configuration)\$(PlatformShortname)\$(ProjectName)\</IntDir>
-    <CustomBuildBeforeTargets>ClCompile</CustomBuildBeforeTargets>
+    <CustomBuildAfterTargets>VcpkgInstallManifestDependencies</CustomBuildAfterTargets>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|ARM64'">
     <OutDir>$(SolutionDir)build\$(Configuration)\$(PlatformShortname)\GTK\</OutDir>
     <IntDir>$(SolutionDir)build\intermediate\$(Configuration)\$(PlatformShortname)\$(ProjectName)\</IntDir>
-    <CustomBuildBeforeTargets>ClCompile</CustomBuildBeforeTargets>
+    <CustomBuildAfterTargets>VcpkgInstallManifestDependencies</CustomBuildAfterTargets>
   </PropertyGroup>
   <PropertyGroup Label="Vcpkg">
     <VcpkgEnableManifest>true</VcpkgEnableManifest>
@@ -146,26 +146,31 @@
   </PropertyGroup>
   <PropertyGroup Label="Vcpkg" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <VcpkgTriplet>$(PlatformShortName.ToLower)-windows</VcpkgTriplet>
-    <VcpkgAdditionalInstallOptions>--clean-after-build</VcpkgAdditionalInstallOptions>
+    <VcpkgAdditionalInstallOptions>--clean-after-build --keep-going --no-print-usage</VcpkgAdditionalInstallOptions>
   </PropertyGroup>
   <PropertyGroup Label="Vcpkg" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <VcpkgTriplet>$(PlatformShortName.ToLower)-windows</VcpkgTriplet>
-    <VcpkgHostTriplet>$(PlatformShortName.ToLower)-windows</VcpkgHostTriplet>
+    <VcpkgHostTriplet>
+    </VcpkgHostTriplet>
+    <VcpkgAdditionalInstallOptions>--clean-after-build --keep-going --no-print-usage</VcpkgAdditionalInstallOptions>
   </PropertyGroup>
   <PropertyGroup Label="Vcpkg" Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <VcpkgTriplet>$(PlatformShortName.ToLower)-windows</VcpkgTriplet>
-    <VcpkgAdditionalInstallOptions>--clean-after-build</VcpkgAdditionalInstallOptions>
+    <VcpkgAdditionalInstallOptions>--clean-after-build --keep-going --no-print-usage</VcpkgAdditionalInstallOptions>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|ARM64'" Label="Vcpkg">
     <VcpkgTriplet>$(PlatformShortName.ToLower)-windows</VcpkgTriplet>
-    <VcpkgAdditionalInstallOptions>--clean-after-build</VcpkgAdditionalInstallOptions>
+    <VcpkgAdditionalInstallOptions>--clean-after-build --keep-going --no-print-usage</VcpkgAdditionalInstallOptions>
   </PropertyGroup>
   <PropertyGroup Label="Vcpkg" Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <VcpkgTriplet>$(PlatformShortName.ToLower)-windows</VcpkgTriplet>
+    <VcpkgAdditionalInstallOptions>--clean-after-build --keep-going --no-print-usage</VcpkgAdditionalInstallOptions>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|ARM64'" Label="Vcpkg">
     <VcpkgTriplet>$(PlatformShortName.ToLower)-windows</VcpkgTriplet>
-    <VcpkgHostTriplet>$(PreferredToolArchitecture.ToLower)-windows</VcpkgHostTriplet>
+    <VcpkgHostTriplet>
+    </VcpkgHostTriplet>
+    <VcpkgAdditionalInstallOptions>--clean-after-build --keep-going --no-print-usage</VcpkgAdditionalInstallOptions>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
@@ -186,6 +191,8 @@
       <AdditionalDependencies>glib-2.0.lib;gobject-2.0.lib;opengl32.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <ModuleDefinitionFile>..\..\gtkglext\gtk\gtkglext.def</ModuleDefinitionFile>
     </Link>
+    <CustomBuild />
+    <CustomBuild />
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <ClCompile>
@@ -208,6 +215,8 @@
       <AdditionalDependencies>glib-2.0.lib;gobject-2.0.lib;opengl32.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <ModuleDefinitionFile>..\..\gtkglext\gtk\gtkglext.def</ModuleDefinitionFile>
     </Link>
+    <CustomBuild />
+    <CustomBuild />
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <ClCompile>
@@ -228,6 +237,8 @@
       <AdditionalDependencies>glib-2.0.lib;gobject-2.0.lib;opengl32.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <ModuleDefinitionFile>..\..\gtkglext\gtk\gtkglext.def</ModuleDefinitionFile>
     </Link>
+    <CustomBuild />
+    <CustomBuild />
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|ARM64'">
     <ClCompile>
@@ -248,6 +259,8 @@
       <AdditionalDependencies>glib-2.0.lib;gobject-2.0.lib;opengl32.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <ModuleDefinitionFile>..\..\gtkglext\gtk\gtkglext.def</ModuleDefinitionFile>
     </Link>
+    <CustomBuild />
+    <CustomBuild />
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <ClCompile>
@@ -270,6 +283,8 @@
       <AdditionalDependencies>glib-2.0.lib;gobject-2.0.lib;opengl32.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <ModuleDefinitionFile>..\..\gtkglext\gtk\gtkglext.def</ModuleDefinitionFile>
     </Link>
+    <CustomBuild />
+    <CustomBuild />
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|ARM64'">
     <ClCompile>
@@ -292,6 +307,8 @@
       <AdditionalDependencies>glib-2.0.lib;gobject-2.0.lib;opengl32.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <ModuleDefinitionFile>..\..\gtkglext\gtk\gtkglext.def</ModuleDefinitionFile>
     </Link>
+    <CustomBuild />
+    <CustomBuild />
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="..\..\gtkglext\gtk\gtkgl.h" />
@@ -326,12 +343,42 @@
   <ItemGroup>
     <CustomBuild Include="..\..\gtkglext\configure.ac">
       <FileType>Document</FileType>
-      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">"$(OutDir)idnhat.exe" "%(FullPath)" %(RelativeDir)gtk\gtkglversion.h.in</Command>
-      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">"$(OutDir)idnhat.exe" "%(FullPath)" %(RelativeDir)gtk\gtkglversion.h.in</Command>
-      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|ARM64'">"$(SolutionDir)build\$(Configuration)\x64\GTK\idnhat.exe" %(FullPath) %(RelativeDir)gtk\gtkglversion.h.in</Command>
-      <Command Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">"$(OutDir)idnhat.exe" "%(FullPath)" %(RelativeDir)gtk\gtkglversion.h.in</Command>
-      <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">"$(OutDir)idnhat.exe" "%(FullPath)" %(RelativeDir)gtk\gtkglversion.h.in</Command>
-      <Command Condition="'$(Configuration)|$(Platform)'=='Release|ARM64'">"$(SolutionDir)build\$(Configuration)\x64\GTK\idnhat.exe" %(FullPath) %(RelativeDir)gtk\gtkglversion.h.in</Command>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">if exist "$(IDNHAT)" (
+"$(IDNHAT)" "%(FullPath)" %(RelativeDir)gtk\gtkglversion.h.in
+) ELSE (
+echo Warning: IDNHAT not built. Unable to parse  %(FileName)
+)
+</Command>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">if exist "$(IDNHAT)" (
+"$(IDNHAT)" "%(FullPath)" %(RelativeDir)gtk\gtkglversion.h.in
+) ELSE (
+echo Warning: IDNHAT not built. Unable to parse  %(FileName)
+)
+</Command>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|ARM64'">if exist "$(IDNHAT)" (
+"$(IDNHAT)" "%(FullPath)" %(RelativeDir)gtk\gtkglversion.h.in
+) ELSE (
+echo Warning: IDNHAT not built. Unable to parse  %(FileName)
+)
+</Command>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">if exist "$(IDNHAT)" (
+"$(IDNHAT)" "%(FullPath)" %(RelativeDir)gtk\gtkglversion.h.in
+) ELSE (
+echo Warning: IDNHAT not built. Unable to parse  %(FileName)
+)
+</Command>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">if exist "$(IDNHAT)" (
+"$(IDNHAT)" "%(FullPath)" %(RelativeDir)gtk\gtkglversion.h.in
+) ELSE (
+echo Warning: IDNHAT not built. Unable to parse  %(FileName)
+)
+</Command>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|ARM64'">if exist "$(IDNHAT)" (
+"$(IDNHAT)" "%(FullPath)" %(RelativeDir)gtk\gtkglversion.h.in
+) ELSE (
+echo Warning: IDNHAT not built. Unable to parse  %(FileName)
+)
+</Command>
       <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(OutDir)idnhat.exe;%(RelativeDir)gtk\gtkglversion.h.in</AdditionalInputs>
       <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(OutDir)idnhat.exe;%(RelativeDir)gtk\gtkglversion.h.in</AdditionalInputs>
       <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|ARM64'">$(SolutionDir)build\$(Configuration)\x64\GTK\idnhat.exe;%(RelativeDir)gtk\gtkglversion.h.in</AdditionalInputs>
