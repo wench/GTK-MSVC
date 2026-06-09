@@ -209,10 +209,11 @@ jobs:
 
         foreach($configuration  in $ENV:BUILD_CONFIGURATIONS.Split(" ",[System.StringSplitOptions]::RemoveEmptyEntries)) {
           foreach($platform  in $ENV:BUILD_PLATFORMS.Split(" ",[System.StringSplitOptions]::RemoveEmptyEntries)) {
-            echo "`e[34m$platform $configuration`e[0m"
+             "::group::`e[4;1m$platform $configuration"
             
             msbuild /v:${{ env.MSBUILD_VERBOSITY }} /p:Configuration=$configuration /p:Platform=$platform ${{env.SOLUTION_FILE_PATH}} /t:${{env.TARGET_VCPKG_MANIFEST_INSTALL}} ${{env.MSBUILD_EXTRA_OPTIONS}}
             remove-Item -force -Recurse -ErrorAction SilentlyContinue "${{env.SOLUTION_FILE_PATH}}\vcpkg_installed"
+            "::endgroup::"
           }
         }
 
@@ -284,12 +285,13 @@ jobs:
 
         foreach($configuration  in $ENV:BUILD_CONFIGURATIONS.Split(" ",[System.StringSplitOptions]::RemoveEmptyEntries)){
           foreach($platform  in $ENV:BUILD_PLATFORMS.Split(" ",[System.StringSplitOptions]::RemoveEmptyEntries)){
-            echo "`e[34m$platform $configuration`e[0m"
+            "::group::`e[4;1m$platform $configuration"
             
             msbuild /v:${{ env.MSBUILD_VERBOSITY }} /p:Configuration=$configuration /p:Platform=$platform ${{env.SOLUTION_FILE_PATH}} ${{env.MSBUILD_EXTRA_OPTIONS}}
             # clean the output so nothing is left that might influence other builds
             msbuild /v:${{ env.MSBUILD_VERBOSITY }} /p:Configuration=$configuration /p:Platform=$platform ${{env.SOLUTION_FILE_PATH}} /t:clean ${{env.MSBUILD_EXTRA_OPTIONS}}
             remove-Item -force -Recurse  -ErrorAction SilentlyContinue "${{env.SOLUTION_FILE_PATH}}\vcpkg_installed"
+            "::endgroup::"
           }
         }
       
